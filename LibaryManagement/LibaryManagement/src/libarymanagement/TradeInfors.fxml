@@ -163,9 +163,9 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="TRẢ SÁCH">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Tab text="TRẢ SÁCH">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField layoutX="130.0" layoutY="32.0" prefHeight="26.0" prefWidth="211.0" />
                         <Text layoutX="23.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN ">
@@ -251,15 +251,16 @@
                         </Text>
                         <Button layoutX="628.0" layoutY="477.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="118.0" text="XÁC NHẬN" />
                         <TableView layoutX="390.0" layoutY="2.0" prefHeight="478.0" prefWidth="390.0">
-                          <columns>
-                            <TableColumn prefWidth="55.199951171875" text="STT" />
-                            <TableColumn prefWidth="221.60012817382812" text="TÊN SÁCH" />
+                           <columns>
+                              <TableColumn prefWidth="55.199951171875" text="STT" />
+                              <TableColumn prefWidth="221.60012817382812" text="TÊN SÁCH" />
                               <TableColumn prefWidth="112.7999267578125" text="TÌNH TRẠNG" />
-                          </columns>
+                           </columns>
                         </TableView>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
       <Pane prefHeight="72.0" prefWidth="780.0">
