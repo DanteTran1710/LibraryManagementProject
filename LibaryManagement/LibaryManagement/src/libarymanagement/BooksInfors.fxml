@@ -848,16 +848,6 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="192.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="76.47087860107422">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="191.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="76.47087860107422">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
                                        </children>
                                     </AnchorPane>
                                  </content>
