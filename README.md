@@ -1,5 +1,5 @@
 # LibraryManagementProject
-How to Create and Manage a Library 
-Member of team 
+How to Create and Manage a Library
+  Member of team 
   Developers :  Tấn Thành , Hồng Thịnh  
   Testers : Mỹ Duyên, Kim Ngân 
