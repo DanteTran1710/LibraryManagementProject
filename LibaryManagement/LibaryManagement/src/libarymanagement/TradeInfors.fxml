@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="638.0" prefWidth="780.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="libarymanagement.TradeInforsController">
+   <children>
+      <TabPane layoutY="75.0" prefHeight="562.0" prefWidth="780.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="MƯỢN SÁCH">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="772.0">
+                     <children>
+                        <Text layoutX="48.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="82.98281860351562">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Accordion layoutX="-3.0" prefHeight="533.0" prefWidth="780.0">
+                          <panes>
+                            <TitledPane animated="false" text="THÔNG TIN KHÁCH">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Text layoutX="46.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="46.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ ĐIỆN THOẠI">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="46.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOẠI KHÁCH HÀNG">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="46.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG SÁCH ">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="46.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY MƯỢN">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="42.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY TRẢ (DỰ KIẾN)">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="166.0" layoutY="94.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <ComboBox layoutX="200.0" layoutY="149.0" prefWidth="150.0" />
+                                          <Spinner layoutX="200.0" layoutY="207.0" nodeOrientation="LEFT_TO_RIGHT">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Spinner>
+                                          <DatePicker layoutX="188.0" layoutY="269.0" />
+                                          <DatePicker layoutX="209.0" layoutY="330.0" />
+                                          <Text layoutX="42.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÊN SÁCH">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="409.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <ComboBox layoutX="552.0" layoutY="387.0" prefWidth="150.0" />
+                                          <TextField layoutX="165.0" layoutY="33.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <TextField layoutX="130.0" layoutY="387.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <Button layoutX="564.0" layoutY="428.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="XÁC NHẬN" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" prefHeight="502.0" prefWidth="782.0" text="THÔNG TIN SÁCH MƯỢN">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="781.0">
+                                       <children>
+                                          <TableView layoutY="-2.0" prefHeight="412.0" prefWidth="780.0">
+                                             <columns>
+                                                <TableColumn prefWidth="42.39999544620514" text="STT" />
+                                                <TableColumn prefWidth="153.60002899169922" text="TÊN SÁCH" />
+                                                <TableColumn prefWidth="118.4000244140625" text="THỂ LOẠI" />
+                                                <TableColumn prefWidth="153.60003662109375" text="TÊN TÁC GIẢ" />
+                                                <TableColumn minWidth="4.79998779296875" prefWidth="148.00003051757812" text="NHÀ XUẤT BẢN" />
+                                                <TableColumn prefWidth="164.800048828125" text="NGÀY MƯỢN" />
+                                             </columns>
+                                          </TableView>
+                                          <Button layoutX="630.0" layoutY="419.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="XÁC NHẬN" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="TRẢ SÁCH">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="28.0" prefHeight="74.0" prefWidth="487.0" text="THÔNG TIN MƯỢN TRẢ SÁCH" textAlignment="CENTER">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="640.0" layoutY="29.0" />
+   </children>
+</AnchorPane>
