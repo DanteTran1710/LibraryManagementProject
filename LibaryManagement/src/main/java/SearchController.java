@@ -1,5 +1,3 @@
-package com.mycompany.libarymanagement;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,9 +11,9 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author hp
+ * @author thinh
  */
-public class MuonTraSachController implements Initializable {
+public class SearchController implements Initializable {
 
     /**
      * Initializes the controller class.
