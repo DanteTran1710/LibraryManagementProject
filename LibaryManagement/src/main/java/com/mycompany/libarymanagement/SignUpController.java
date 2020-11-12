@@ -13,9 +13,9 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author hp
+ * @author thinh
  */
-public class MuonTraSachController implements Initializable {
+public class SignUpController implements Initializable {
 
     /**
      * Initializes the controller class.
