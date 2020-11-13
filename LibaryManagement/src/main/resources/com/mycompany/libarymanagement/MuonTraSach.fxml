@@ -127,7 +127,7 @@
                                           <TextField layoutX="608.0" layoutY="410.0" prefHeight="26.0" prefWidth="142.0" />
                                           <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
                                              <font>
-                                                <Font size="21.0" />
+                                                <Font size="20.0" />
                                              </font>
                                           </Button>
                                        </children>
@@ -138,7 +138,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="781.0">
                                        <children>
-                                          <TableView layoutY="-2.0" prefHeight="483.0" prefWidth="780.0">
+                                          <TableView layoutY="-2.0" prefHeight="482.0" prefWidth="780.0">
                                              <columns>
                                                 <TableColumn prefWidth="42.39999544620514" text="STT" />
                                                 <TableColumn prefWidth="153.60002899169922" text="TÊN SÁCH" />
@@ -264,5 +264,6 @@
          </font>
       </Label>
       <Label layoutX="640.0" layoutY="29.0" />
+      <Button layoutX="683.0" layoutY="17.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="82.0" text="TRỞ LẠI" />
    </children>
 </AnchorPane>
