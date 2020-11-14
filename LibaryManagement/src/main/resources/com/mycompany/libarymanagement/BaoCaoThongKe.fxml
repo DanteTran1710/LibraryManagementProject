@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="571.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.libarymanagement.BaoCaoThongKeController">
+<AnchorPane id="AnchorPane" prefHeight="571.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.libarymanagement.BaoCaoThongKeController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="380.0" layoutX="4.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="662.0" />
       <Text fontSmoothingType="LCD" layoutX="122.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BÁO CÁO THỐNG KÊ QUA TỪNG QUÝ" wrappingWidth="426.9932861328125">
@@ -40,7 +40,7 @@
             <Font size="17.0" />
          </font>
       </CheckBox>
-      <Text layoutX="549.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THỜI GIAN">
+      <Text layoutX="549.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIME">
          <font>
             <Font size="17.0" />
          </font>
