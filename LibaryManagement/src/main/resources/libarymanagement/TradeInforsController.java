@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.libarymanagement;
+package libarymanagement;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author hp
  */
-public class BaoCaoThongKeController implements Initializable {
+public class TradeInforsController implements Initializable {
 
     /**
      * Initializes the controller class.
