@@ -125,7 +125,7 @@
                                           </Text>
                                           <TextField fx:id="stateBook" layoutX="608.0" layoutY="251.0" prefHeight="26.0" prefWidth="142.0" />
                                           <TextField fx:id="stateCard" layoutX="608.0" layoutY="410.0" prefHeight="26.0" prefWidth="142.0" />
-                                          <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
+                                          <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" onAction="#noticeCompleteBorrowForm" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -223,36 +223,41 @@
                            </font>
                         </Text>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="248.0" layoutX="20.0" layoutY="276.0" stroke="BLACK" strokeType="INSIDE" width="576.0" />
-                        <Button layoutX="623.0" layoutY="355.0" mnemonicParsing="false" onAction="#switchtoChoice" prefHeight="74.0" prefWidth="140.0" text="XÁC NHẬN">
+                        <Button layoutX="622.0" layoutY="323.0" mnemonicParsing="false" onAction="#noticeCompleteReturnForm" prefHeight="51.0" prefWidth="140.0" text="XÁC NHẬN">
                            <font>
-                              <Font size="21.0" />
+                              <Font size="15.0" />
                            </font>
                         </Button>
-                        <Text layoutX="157.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIÊN LAI TRẢ SÁCH">
+                        <Text fx:id="bienlai" layoutX="157.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIÊN LAI TRẢ SÁCH">
                            <font>
                               <Font size="35.0" />
                            </font>
                         </Text>
-                        <Text layoutX="47.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
+                        <Text fx:id="bienlai" layoutX="47.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="51.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
+                        <Text fx:id="bienlai" layoutX="51.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="190.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
+                        <Text fx:id="bienlai" layoutX="190.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="199.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
+                        <Text fx:id="bienlai" layoutX="199.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
+                        <Button layoutX="622.0" layoutY="411.0" mnemonicParsing="false" onAction="#switchtoChoice" prefHeight="51.0" prefWidth="140.0" text="XEM HÓA ĐƠN">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
                </content>
             </Tab>

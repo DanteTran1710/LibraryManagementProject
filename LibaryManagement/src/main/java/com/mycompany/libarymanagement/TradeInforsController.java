@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -47,6 +48,7 @@ public class TradeInforsController implements Initializable{
     @FXML CheckBox stolenBookChk;
     @FXML Spinner tornBookCounted;
     @FXML Spinner stolenBookCounted;
+    @FXML Text bienlai;
     
     @FXML 
     public void swtichToIndex() throws IOException
@@ -55,28 +57,45 @@ public class TradeInforsController implements Initializable{
     }
     
     @FXML
-    public void switchtoChoice() throws IOException
-    {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Choose to choice");
-        alert.setContentText("Your returning-fill informations is done!/n"
-                + "Do you want to see your bills?");
+    public void switchtoChoice() throws IOException  {
+            
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Choose to choice");
+            alert.setContentText("Do you want to see your bill ?");
+
+            
+            ButtonType btnYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+
+            alert.getButtonTypes().setAll(btnNo, btnYes);
+            Optional<ButtonType> result = alert.showAndWait();
+            alert.show();
+
+            if (result.get() == btnYes) {
+                alert.close();
+            } else {
+                App.setRoot("Index");
+            }
+    }
+    @FXML 
+    public void noticeCompleteReturnForm(){
         
-        ButtonType btnYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-        ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
-        
-        alert.getButtonTypes().setAll(btnNo,btnYes);
-        Optional<ButtonType> result = alert.showAndWait();
-        
-        if(result.get() == btnYes)
-        {
-            // Show the total bills
-             App.setRoot("TradeInfors");
-        }
-        else
-            App.setRoot("Index");
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setContentText("Your returning-fill informations is done!");
+        alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES)); 
+        if(alert.showAndWait().get() == ButtonType.YES)
+            alert.close();
     }
     
+    @FXML 
+    public void noticeCompleteBorrowForm(){
+        
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setContentText("Your borrow-fill informations is done!");
+        alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES)); 
+        if(alert.showAndWait().get() == ButtonType.YES)
+            alert.close();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
