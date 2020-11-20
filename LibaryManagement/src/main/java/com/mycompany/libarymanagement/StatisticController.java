@@ -5,10 +5,12 @@
  */
 package com.mycompany.libarymanagement;
 
+import javafx.fxml.FXML;
+
 /**
  *
  * @author hp
  */
 public class StatisticController {
-    
+
 }

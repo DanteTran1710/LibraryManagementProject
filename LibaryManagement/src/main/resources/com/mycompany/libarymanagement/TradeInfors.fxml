@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="638.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.libarymanagement.TradeInforsController">
+<AnchorPane prefHeight="638.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.libarymanagement.TradeInforsController">
    <children>
       <TabPane layoutY="75.0" prefHeight="562.0" prefWidth="780.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -63,16 +63,16 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField layoutX="164.0" layoutY="88.0" prefHeight="6.0" prefWidth="218.0" />
-                                          <ComboBox layoutX="200.0" layoutY="146.0" prefWidth="150.0" />
-                                          <Spinner layoutX="198.0" layoutY="206.0" nodeOrientation="LEFT_TO_RIGHT">
+                                          <TextField fx:id="phoneNumber" layoutX="164.0" layoutY="88.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <ComboBox fx:id="candidate" layoutX="200.0" layoutY="146.0" prefWidth="150.0" />
+                                          <Spinner fx:id="bookCounted" layoutX="198.0" layoutY="206.0" nodeOrientation="LEFT_TO_RIGHT">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
                                           </Spinner>
-                                          <DatePicker layoutX="186.0" layoutY="264.0" />
-                                          <DatePicker layoutX="211.0" layoutY="323.0" />
-                                          <TextField layoutX="165.0" layoutY="33.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <DatePicker fx:id="borrowDay" layoutX="186.0" layoutY="264.0" />
+                                          <DatePicker fx:id="returnDay" layoutX="211.0" layoutY="323.0" />
+                                          <TextField fx:id="name" layoutX="165.0" layoutY="33.0" prefHeight="6.0" prefWidth="218.0" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="134.0" layoutX="491.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
                                           <Text layoutX="527.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUY ĐỊNH MƯỢN SÁCH">
                                              <font>
@@ -100,7 +100,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField layoutX="576.0" layoutY="212.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <TextField fx:id="bookName" layoutX="576.0" layoutY="212.0" prefHeight="26.0" prefWidth="184.0" />
                                           <Text layoutX="499.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
@@ -117,15 +117,15 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField layoutX="578.0" layoutY="371.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <TextField fx:id="cardName" layoutX="578.0" layoutY="371.0" prefHeight="26.0" prefWidth="184.0" />
                                           <Text layoutX="498.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField layoutX="608.0" layoutY="251.0" prefHeight="26.0" prefWidth="142.0" />
-                                          <TextField layoutX="608.0" layoutY="410.0" prefHeight="26.0" prefWidth="142.0" />
-                                          <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
+                                          <TextField fx:id="stateBook" layoutX="608.0" layoutY="251.0" prefHeight="26.0" prefWidth="142.0" />
+                                          <TextField fx:id="stateCard" layoutX="608.0" layoutY="410.0" prefHeight="26.0" prefWidth="142.0" />
+                                          <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" onAction="#noticeCompleteBorrowForm" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -167,26 +167,26 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="130.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" />
+                        <TextField fx:id="nameCus" layoutX="130.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" />
                         <Text layoutX="403.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ THẺ ĐỘC GIẢ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="551.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" />
+                        <TextField fx:id="idCus" layoutX="551.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" />
                         <Text layoutX="39.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ĐỐI TƯỢNG">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <ComboBox layoutX="159.0" layoutY="106.0" prefWidth="150.0" />
+                        <ComboBox fx:id="candidate1" layoutX="159.0" layoutY="106.0" prefWidth="150.0" />
                         <Text layoutX="31.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG SÁCH">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Spinner layoutX="174.0" layoutY="234.0" />
-                        <DatePicker layoutX="155.0" layoutY="165.0" />
+                        <Spinner fx:id="bookCounted1" layoutX="174.0" layoutY="234.0" />
+                        <DatePicker fx:id="borrowDay1" layoutX="155.0" layoutY="165.0" />
                         <Text layoutX="31.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY MƯỢN">
                            <font>
                               <Font size="15.0" />
@@ -208,10 +208,10 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <CheckBox layoutX="447.0" layoutY="178.0" mnemonicParsing="false" />
-                        <CheckBox layoutX="447.0" layoutY="227.0" mnemonicParsing="false" />
-                        <Spinner layoutX="640.0" layoutY="172.0" prefHeight="0.0" prefWidth="52.0" />
-                        <Spinner layoutX="640.0" layoutY="221.0" prefHeight="26.0" prefWidth="52.0" />
+                        <CheckBox fx:id="tornBookChk" layoutX="447.0" layoutY="178.0" mnemonicParsing="false" />
+                        <CheckBox fx:id="stolenBookChk" layoutX="447.0" layoutY="227.0" mnemonicParsing="false" />
+                        <Spinner fx:id="stolenBookCounted" layoutX="640.0" layoutY="172.0" prefHeight="0.0" prefWidth="52.0" />
+                        <Spinner fx:id="tornBookCounted" layoutX="640.0" layoutY="221.0" prefHeight="26.0" prefWidth="52.0" />
                         <Text layoutX="711.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(SL)">
                            <font>
                               <Font size="18.0" />
@@ -223,36 +223,41 @@
                            </font>
                         </Text>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="248.0" layoutX="20.0" layoutY="276.0" stroke="BLACK" strokeType="INSIDE" width="576.0" />
-                        <Button layoutX="623.0" layoutY="355.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="140.0" text="XÁC NHẬN">
+                        <Button layoutX="622.0" layoutY="323.0" mnemonicParsing="false" onAction="#noticeCompleteReturnForm" prefHeight="51.0" prefWidth="140.0" text="XÁC NHẬN">
                            <font>
-                              <Font size="21.0" />
+                              <Font size="15.0" />
                            </font>
                         </Button>
-                        <Text layoutX="157.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIÊN LAI TRẢ SÁCH">
+                        <Text fx:id="bienlai" layoutX="157.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIÊN LAI TRẢ SÁCH">
                            <font>
                               <Font size="35.0" />
                            </font>
                         </Text>
-                        <Text layoutX="47.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
+                        <Text fx:id="bienlai" layoutX="47.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="51.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
+                        <Text fx:id="bienlai" layoutX="51.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="190.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
+                        <Text fx:id="bienlai" layoutX="190.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="199.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
+                        <Text fx:id="bienlai" layoutX="199.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
+                        <Button layoutX="622.0" layoutY="411.0" mnemonicParsing="false" onAction="#switchtoChoice" prefHeight="51.0" prefWidth="140.0" text="XEM HÓA ĐƠN">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -264,6 +269,6 @@
          </font>
       </Label>
       <Label layoutX="640.0" layoutY="29.0" />
-      <Button layoutX="683.0" layoutY="17.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="82.0" text="TRỞ LẠI" />
+      <Button layoutX="683.0" layoutY="17.0" mnemonicParsing="false" onAction="#swtichToIndex" prefHeight="41.0" prefWidth="82.0" text="TRỞ LẠI" />
    </children>
 </AnchorPane>
