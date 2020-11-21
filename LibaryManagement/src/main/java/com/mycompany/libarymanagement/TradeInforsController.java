@@ -5,10 +5,15 @@
  */
 package com.mycompany.libarymanagement;
 
+import com.mycompany.libarymanagement.pojo.MemberCard;
+import com.mycompany.libarymanagement.services.MemberCardServices;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -29,7 +34,7 @@ public class TradeInforsController implements Initializable{
     // Borrow Book
     @FXML TextField name;
     @FXML TextField phoneNumber;
-    @FXML ComboBox candidate;
+    @FXML ComboBox<MemberCard> candidate;
     @FXML Spinner bookCounted;
     @FXML DatePicker returnDay;
     @FXML TextField bookName;
@@ -98,6 +103,10 @@ public class TradeInforsController implements Initializable{
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        try {
+            candidate.getItems().addAll(MemberCardServices.getMember());
+        } catch (SQLException ex) {
+            Logger.getLogger(TradeInforsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 }
