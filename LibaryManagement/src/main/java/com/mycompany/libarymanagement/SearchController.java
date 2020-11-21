@@ -6,9 +6,12 @@ package com.mycompany.libarymanagement;
  * and open the template in the editor.
  */
 
+import com.test.pojo.testhv;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 
 /**
  * FXML Controller class
@@ -16,6 +19,7 @@ import javafx.fxml.Initializable;
  * @author thinh
  */
 public class SearchController implements Initializable {
+    @FXML TableColumn<testhv> tc;
 
     /**
      * Initializes the controller class.
