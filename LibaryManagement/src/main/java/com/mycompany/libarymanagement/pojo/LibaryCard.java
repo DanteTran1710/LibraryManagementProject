@@ -12,14 +12,14 @@ import java.util.Date;
  * @author hp
  */
 public class LibaryCard {
-    private int idLC;
+    private String idLC;
     private int idB;
     private int idMC;
-    private Date returnDate;
+    private String returnDate;
     private int lateDay;
     private float lateDateMoney; 
 
-    public LibaryCard(int idLC, int idB, int idMC, Date returnDate, int lateDay, float lateDateMoney) {
+    public LibaryCard(String idLC, int idB, int idMC, String returnDate, int lateDay, float lateDateMoney) {
         this.idLC = idLC;
         this.idB = idB;
         this.idMC = idMC;
@@ -31,14 +31,14 @@ public class LibaryCard {
     /**
      * @return the idLC
      */
-    public int getIdLC() {
+    public String getIdLC() {
         return idLC;
     }
 
     /**
      * @param idLC the idLC to set
      */
-    public void setIdLC(int idLC) {
+    public void setIdLC(String idLC) {
         this.idLC = idLC;
     }
 
@@ -73,14 +73,14 @@ public class LibaryCard {
     /**
      * @return the returnDate
      */
-    public Date getReturnDate() {
+    public String getReturnDate() {
         return returnDate;
     }
 
     /**
      * @param returnDate the returnDate to set
      */
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -111,4 +111,6 @@ public class LibaryCard {
     public void setLateDateMoney(float lateDateMoney) {
         this.lateDateMoney = lateDateMoney;
     }
+
+   
 }

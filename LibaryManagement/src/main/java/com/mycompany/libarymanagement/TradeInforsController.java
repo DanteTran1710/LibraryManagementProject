@@ -108,5 +108,6 @@ public class TradeInforsController implements Initializable{
         } catch (SQLException ex) {
             Logger.getLogger(TradeInforsController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String s = returnDay.promptTextProperty().toString();
     }    
 }

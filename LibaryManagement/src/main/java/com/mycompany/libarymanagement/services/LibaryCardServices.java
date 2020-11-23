@@ -26,9 +26,9 @@ public class LibaryCardServices {
         
         List<LibaryCard> listLC = new ArrayList<>();
         while(rs.next()){
-           LibaryCard lc = new LibaryCard(rs.getInt("idLibaryCard"), 
+           LibaryCard lc = new LibaryCard(rs.getString("idLibaryCard"), 
                    rs.getInt("idMC"), rs.getInt("idB"), 
-                   rs.getDate("ReturnDate"), rs.getInt("LateDay"), 
+                   rs.getString("ReturnDate"), rs.getInt("LateDay"), 
                    rs.getInt("LateDateMoney"));
         }
         return listLC;

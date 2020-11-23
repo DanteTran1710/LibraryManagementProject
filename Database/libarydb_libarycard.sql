@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `libarycard`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `libarycard` (
-  `idLibaryCard` int NOT NULL,
-  `idMC` int NOT NULL,
-  `idB` int NOT NULL,
-  `ReturnDay` date NOT NULL,
+  `idLibaryCard` varchar(7) NOT NULL,
+  `idMC` varchar(7) NOT NULL,
+  `idB` varchar(7) NOT NULL,
+  `ReturnDay` varchar(15) NOT NULL,
   `LateDay` int NOT NULL,
   `LateDateMoney` decimal(10,0) NOT NULL,
   PRIMARY KEY (`idLibaryCard`),
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-23  7:34:46
+-- Dump completed on 2020-11-23 23:50:46

@@ -89,45 +89,55 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="133.0" layoutX="491.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
-                                          <Text layoutX="514.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG SÁCH">
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="155.0" layoutX="491.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
+                                          <Text layoutX="516.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG SÁCH">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="499.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÊN SÁCH">
+                                          <Text layoutX="501.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÊN SÁCH">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="bookName" layoutX="576.0" layoutY="212.0" prefHeight="26.0" prefWidth="184.0" />
-                                          <Text layoutX="499.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                          <TextField fx:id="bookName" layoutX="578.0" layoutY="190.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <Text layoutX="501.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="133.0" layoutX="491.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
-                                          <Text layoutX="514.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG THẺ">
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="153.0" layoutX="491.0" layoutY="304.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
+                                          <Text layoutX="515.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG THẺ">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="501.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ THẺ">
+                                          <Text layoutX="502.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ THẺ">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="cardName" layoutX="578.0" layoutY="371.0" prefHeight="26.0" prefWidth="184.0" />
-                                          <Text layoutX="498.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                          <TextField fx:id="cardName" layoutX="579.0" layoutY="349.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <Text layoutX="499.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="stateBook" layoutX="608.0" layoutY="251.0" prefHeight="26.0" prefWidth="142.0" />
-                                          <TextField fx:id="stateCard" layoutX="608.0" layoutY="410.0" prefHeight="26.0" prefWidth="142.0" />
+                                          <TextField fx:id="stateBook" layoutX="610.0" layoutY="229.0" prefHeight="26.0" prefWidth="142.0" />
+                                          <TextField fx:id="stateCard" layoutX="609.0" layoutY="388.0" prefHeight="26.0" prefWidth="142.0" />
                                           <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" onAction="#noticeCompleteBorrowForm" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
                                              <font>
                                                 <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="591.0" layoutY="261.0" mnemonicParsing="false" text="KIỂM TRA">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="589.0" layoutY="423.0" mnemonicParsing="false" text="KIỂM TRA">
+                                             <font>
+                                                <Font size="15.0" />
                                              </font>
                                           </Button>
                                        </children>

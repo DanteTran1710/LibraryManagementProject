@@ -12,14 +12,14 @@ import java.util.Date;
  * @author hp
  */
 public class Book {
-    private int idB;
+    private String idB;
     private String nameB;
     private String authorName;
     private String Descriptions;
-    private Date release;
+    private String release;
     private String releasePlace;
 
-    public Book(int idB, String nameB, String authorName, String Descriptions, Date release, String releasePlace) {
+    public Book(String idB, String nameB, String authorName, String Descriptions, String release, String releasePlace) {
         this.idB = idB;
         this.nameB = nameB;
         this.authorName = authorName;
@@ -28,17 +28,18 @@ public class Book {
         this.releasePlace = releasePlace;
     }
 
+
     /**
      * @return the idB
      */
-    public int getIdB() {
+    public String getIdB() {
         return idB;
     }
 
     /**
      * @param idB the idB to set
      */
-    public void setIdB(int idB) {
+    public void setIdB(String idB) {
         this.idB = idB;
     }
 
@@ -87,17 +88,7 @@ public class Book {
     /**
      * @return the release
      */
-    public Date getRelease() {
-        return release;
-    }
-
-    /**
-     * @param release the release to set
-     */
-    public void setRelease(Date release) {
-        this.release = release;
-    }
-
+    
     /**
      * @return the releasePlace
      */
@@ -111,4 +102,19 @@ public class Book {
     public void setReleasePlace(String releasePlace) {
         this.releasePlace = releasePlace;
     }
+
+    /**
+     * @return the release
+     */
+    public String getRelease() {
+        return release;
+    }
+
+    /**
+     * @param release the release to set
+     */
+    public void setRelease(String release) {
+        this.release = release;
+    }
+    
 }

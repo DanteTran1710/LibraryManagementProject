@@ -12,33 +12,29 @@ import java.util.Date;
  * @author hp
  */
 public class MemberCard {
-    private int idMC;
+    private String idMC;
     private String memberName;
-    private Date DOB;
+    private String DOB;
     private String object;
 
-    public MemberCard(int idMC, String memberName, Date DOB, String object) {
+    public MemberCard(String idMC, String memberName, String DOB, String object) {
         this.idMC = idMC;
         this.memberName = memberName;
         this.DOB = DOB;
         this.object = object;
     }
 
-    @Override
-    public String toString() {
-        return this.object; //To change body of generated methods, choose Tools | Templates.
-    }
     /**
      * @return the idMC
      */
-    public int getIdMC() {
+    public String getIdMC() {
         return idMC;
     }
 
     /**
      * @param idMC the idMC to set
      */
-    public void setIdMC(int idMC) {
+    public void setIdMC(String idMC) {
         this.idMC = idMC;
     }
 
@@ -59,14 +55,14 @@ public class MemberCard {
     /**
      * @return the DOB
      */
-    public Date getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
     /**
      * @param DOB the DOB to set
      */
-    public void setDOB(Date DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
@@ -83,4 +79,5 @@ public class MemberCard {
     public void setObject(String object) {
         this.object = object;
     }
+    
 }

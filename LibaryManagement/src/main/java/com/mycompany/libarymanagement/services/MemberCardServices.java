@@ -26,8 +26,8 @@ public class MemberCardServices {
         
         List<MemberCard> listMember = new ArrayList<>();
         while(rs.next()){
-          MemberCard member = new MemberCard(rs.getInt("idMemberCard"),
-                  rs.getString("MemberName"), rs.getDate("DOB"),
+          MemberCard member = new MemberCard(rs.getString("idMemberCard"),
+                  rs.getString("MemberName"), rs.getString("DOB"),
                   rs.getString("Object"));
            
            listMember.add(member);
