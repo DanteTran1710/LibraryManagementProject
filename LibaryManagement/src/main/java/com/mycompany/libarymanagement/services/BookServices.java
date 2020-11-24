@@ -45,7 +45,7 @@ public class BookServices {
         connect.setAutoCommit(false);
         
         PreparedStatement stm = connect.prepareCall(query);
-        stm.setString(1, MethodNeeded.createUUID());
+        stm.setString(1, b.getIdB());
         stm.setString(2, b.getNameB());
         stm.setString(3, b.getAuthorName());
         stm.setString(4, b.getDescriptions());

@@ -5,7 +5,6 @@
  */
 package com.mycompany.libarymanagement.services;
 
-import com.mycompany.libarymanagement.MethodNeeded;
 import com.mycompany.libarymanagement.pojo.ReturnInfor;
 import com.mycompany.libarymanagement.pojo.jdbcUtils;
 import java.sql.Connection;
@@ -25,7 +24,7 @@ public class ReturnInforServices {
         connect.setAutoCommit(false);
         
         PreparedStatement stm = connect.prepareCall(query);
-        stm.setString(1, MethodNeeded.createUUID());
+        stm.setString(1, infor.getId());
         stm.setString(2, infor.getObject());
         stm.setInt(3, infor.getBook());
         stm.setString(4, infor.getBorrowDate());

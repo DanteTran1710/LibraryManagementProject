@@ -24,7 +24,7 @@ public class jdbcUtils {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/libarydb",
-                    "root", "17102000");
+                    "root", "123456");
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(jdbcUtils.class.getName()).log(Level.SEVERE, null, ex);
         }

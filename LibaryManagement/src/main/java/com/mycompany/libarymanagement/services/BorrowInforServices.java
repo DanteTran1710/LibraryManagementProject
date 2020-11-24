@@ -25,7 +25,7 @@ public class BorrowInforServices {
         connect.setAutoCommit(false);
         
         PreparedStatement stm = connect.prepareCall(query);
-        stm.setString(1, MethodNeeded.createUUID());
+        stm.setString(1, infor.getId());
         stm.setString(2, infor.getObjectName());
         stm.setString(3, infor.getPhoneNum());
         stm.setString(4, infor.getObject());

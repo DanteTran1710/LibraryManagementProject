@@ -24,6 +24,11 @@ public class MemberCard {
         this.object = object;
     }
 
+    @Override
+    public String toString() {
+        return this.object; //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * @return the idMC
      */
