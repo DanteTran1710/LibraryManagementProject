@@ -16,32 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `borrowinfor`
+-- Table structure for table `membercard`
 --
 
-DROP TABLE IF EXISTS `borrowinfor`;
+DROP TABLE IF EXISTS `membercard`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `borrowinfor` (
-  `id` varchar(7) NOT NULL,
-  `ObjectName` varchar(45) NOT NULL,
-  `PhoneNumber` varchar(11) NOT NULL,
-  `Object` varchar(5) NOT NULL,
-  `Book` int NOT NULL,
-  `BorrowDate` varchar(15) NOT NULL,
-  `ReturnDate` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `membercard` (
+  `idMemberCard` varchar(7) NOT NULL,
+  `MemberName` varchar(45) NOT NULL,
+  `DOB` varchar(15) NOT NULL,
+  `Object` varchar(20) NOT NULL,
+  PRIMARY KEY (`idMemberCard`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `borrowinfor`
+-- Dumping data for table `membercard`
 --
 
-LOCK TABLES `borrowinfor` WRITE;
-/*!40000 ALTER TABLE `borrowinfor` DISABLE KEYS */;
-INSERT INTO `borrowinfor` VALUES ('815d6','thanh tan','1','1',1,'1','1'),('97d11','Tan Thanh','0984381617','SV',1,'17','10'),('b7d1d','1','1','1',1,'1','1');
-/*!40000 ALTER TABLE `borrowinfor` ENABLE KEYS */;
+LOCK TABLES `membercard` WRITE;
+/*!40000 ALTER TABLE `membercard` DISABLE KEYS */;
+INSERT INTO `membercard` VALUES ('1','Tan Thanh','2000-10-17','SV'),('2','Anh Thy','2000-11-09','SV'),('3','Quang Tung','2000-03-13','GV');
+/*!40000 ALTER TABLE `membercard` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-24 23:27:59
+-- Dump completed on 2020-11-24 23:28:01

@@ -95,25 +95,43 @@ public class TradeInforsController implements Initializable{
             alert.close();
     }
     
-    @FXML 
     public void noticeCompleteBorrowForm(ActionEvent event){
-        
-        addBorrowInforHandler();
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setContentText("Your borrow-fill informations is done!");
-        alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES)); 
-        if(alert.showAndWait().get() == ButtonType.YES)
-            alert.close();
+        String id = MethodNeeded.createUUID();
+       /** int sl = (int) this.bookCounted.valueFactoryProperty().getValue();
+        String dateb = this.borrowDay.dayCellFactoryProperty().get().toString();
+        String dater = this.borrowDay1.dayCellFactoryProperty().get().toString();
+        **/
+        BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText()
+                ,this.candidate.getSelectionModel().getSelectedItem().getObject(),
+              1, "17","10"); //(int) this.bookCounted.valueFactoryProperty().getValue(), 
+                //this.borrowDay.dayCellFactoryProperty().get().toString(),
+                //this.borrowDay1.dayCellFactoryProperty().get().toString());
+
+        try {
+            BorrowInforServices.addBorrowInfor(bi);
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Your borrow-fill informations is done!");
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES)
+                alert.close();
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(ex.getMessage());
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES)
+                alert.close();
+        }
+
     }
-    @FXML
     public void addBorrowInforHandler(){
         String id = MethodNeeded.createUUID();
         int sl = (int)this.bookCounted.valueFactoryProperty().getValue();
         String dateb = this.borrowDay.dayCellFactoryProperty().get().toString();
         String dater = this.borrowDay1.dayCellFactoryProperty().get().toString();
         
-        BorrowInfor bi = new BorrowInfor(id, this.name.getText(),
-                "1",//this.candidate.getSelectionModel().getSelectedItem().getObject(),
+       /** BorrowInfor bi = new BorrowInfor(id, this.name.getText(),
+                "1",this.candidate.getSelectionModel().getSelectedItem().getObject(),
                 this.phoneNumber.getText(), sl, dateb, dater);
         
         try {
@@ -121,7 +139,7 @@ public class TradeInforsController implements Initializable{
         } catch (SQLException ex) {
             Logger.getLogger(TradeInforsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        **/
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

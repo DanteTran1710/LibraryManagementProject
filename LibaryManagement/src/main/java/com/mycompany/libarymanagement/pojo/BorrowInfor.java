@@ -12,17 +12,17 @@ package com.mycompany.libarymanagement.pojo;
 public class BorrowInfor {
     private String id;
     private String objectName;
-    private String object;
     private String phoneNum;
+    private String object;
     private int book;
     private String borrowDate;
     private String returnDate;
 
-    public BorrowInfor(String id, String objectName, String object, String phoneNum, int book, String borrowDate, String returnDate) {
+    public BorrowInfor(String id, String objectName, String phoneNum, String object, int book, String borrowDate, String returnDate) {
         this.id = id;
         this.objectName = objectName;
-        this.object = object;
         this.phoneNum = phoneNum;
+        this.object = object;
         this.book = book;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;

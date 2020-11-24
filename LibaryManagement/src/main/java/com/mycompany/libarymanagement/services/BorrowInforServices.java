@@ -18,23 +18,24 @@ import java.sql.SQLException;
  */
 public class BorrowInforServices {
         public static void addBorrowInfor(BorrowInfor infor) throws SQLException{
-        Connection connect = jdbcUtils.getConnection();
-        String query = "insert into borrowinfor(id, ObjectName, PhoneNumber,"
-                + " Object, Book, BorrowDate, ReturnDate) values (?, ?, ?, ?, ?, ?, ?)";
-        
-        connect.setAutoCommit(false);
-        
-        PreparedStatement stm = connect.prepareCall(query);
-        stm.setString(1, infor.getId());
-        stm.setString(2, infor.getObjectName());
-        stm.setString(3, infor.getPhoneNum());
-        stm.setString(4, infor.getObject());
-        stm.setInt(5, infor.getBook());
-        stm.setString(6, infor.getBorrowDate());
-        stm.setString(7, infor.getReturnDate());
-        
-        stm.executeUpdate();
-        
-        connect.commit();
+            Connection connect = jdbcUtils.getConnection();
+            String query = "insert into borrowinfor(id, ObjectName, PhoneNumber,"
+                    + " Object, Book, BorrowDate, ReturnDate) values (?, ?, ?, ?, ?, ?, ?)";
+
+            connect.setAutoCommit(false);
+
+            PreparedStatement stm = connect.prepareStatement(query);
+            stm.setString(1, infor.getId());
+            stm.setString(2, infor.getObjectName());
+            stm.setString(3, infor.getPhoneNum());
+            stm.setString(4, infor.getObject());
+            stm.setInt(5, infor.getBook());
+            stm.setString(6, infor.getBorrowDate());
+            stm.setString(7, infor.getReturnDate());
+
+            stm.executeUpdate();
+
+            connect.commit();
     }
+     
 }
