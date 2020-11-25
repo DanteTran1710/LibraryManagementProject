@@ -11,6 +11,7 @@ import com.mycompany.libarymanagement.services.BorrowInforServices;
 import com.mycompany.libarymanagement.services.MemberCardServices;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -97,16 +98,13 @@ public class TradeInforsController implements Initializable{
     
     public void noticeCompleteBorrowForm(ActionEvent event){
         String id = MethodNeeded.createUUID();
-       /** int sl = (int) this.bookCounted.valueFactoryProperty().getValue();
-        String dateb = this.borrowDay.dayCellFactoryProperty().get().toString();
-        String dater = this.borrowDay1.dayCellFactoryProperty().get().toString();
-        **/
+        
         BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText()
                 ,this.candidate.getSelectionModel().getSelectedItem().getObject(),
-              1, "17","10"); //(int) this.bookCounted.valueFactoryProperty().getValue(), 
-                //this.borrowDay.dayCellFactoryProperty().get().toString(),
-                //this.borrowDay1.dayCellFactoryProperty().get().toString());
-
+              1,  //(int) this.bookCounted.valueFactoryProperty().getValue(), 
+                MethodNeeded.editFormmatDate(borrowDay),
+                MethodNeeded.editFormmatDate(returnDay));
+            
         try {
             BorrowInforServices.addBorrowInfor(bi);
             
@@ -123,23 +121,6 @@ public class TradeInforsController implements Initializable{
                 alert.close();
         }
 
-    }
-    public void addBorrowInforHandler(){
-        String id = MethodNeeded.createUUID();
-        int sl = (int)this.bookCounted.valueFactoryProperty().getValue();
-        String dateb = this.borrowDay.dayCellFactoryProperty().get().toString();
-        String dater = this.borrowDay1.dayCellFactoryProperty().get().toString();
-        
-       /** BorrowInfor bi = new BorrowInfor(id, this.name.getText(),
-                "1",this.candidate.getSelectionModel().getSelectedItem().getObject(),
-                this.phoneNumber.getText(), sl, dateb, dater);
-        
-        try {
-            BorrowInforServices.addBorrowInfor(bi);
-        } catch (SQLException ex) {
-            Logger.getLogger(TradeInforsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        **/
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
