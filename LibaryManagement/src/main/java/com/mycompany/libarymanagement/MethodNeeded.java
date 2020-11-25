@@ -3,7 +3,10 @@ package com.mycompany.libarymanagement;
 
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.util.StringConverter;
 import javafx.util.converter.LocalDateStringConverter;
 
@@ -33,4 +36,9 @@ public class MethodNeeded {
        
         return date.getEditor().getText();
     }
+    public static void addSpinnerValue(Spinner s){
+        SpinnerValueFactory<Integer> value = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+        s.setValueFactory(value);
+    }
+    
 }

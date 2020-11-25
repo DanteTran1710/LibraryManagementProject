@@ -6,13 +6,14 @@
 package com.mycompany.libarymanagement;
 
 import com.mycompany.libarymanagement.pojo.BorrowInfor;
-import com.mycompany.libarymanagement.pojo.MemberCard;
+import com.mycompany.libarymanagement.pojo.ReturnInfor;
 import com.mycompany.libarymanagement.services.BorrowInforServices;
-import com.mycompany.libarymanagement.services.MemberCardServices;
+import com.mycompany.libarymanagement.services.ReturnInforServices;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -38,7 +39,7 @@ public class TradeInforsController implements Initializable{
     // Borrow Book
     @FXML TextField name;
     @FXML TextField phoneNumber;
-    @FXML ComboBox<MemberCard> candidate;
+    @FXML ComboBox candidate;
     @FXML Spinner bookCounted;
     @FXML DatePicker returnDay;
     @FXML TextField bookName;
@@ -53,11 +54,8 @@ public class TradeInforsController implements Initializable{
     @FXML ComboBox candidate1;
     @FXML DatePicker borrowDay1;
     @FXML Spinner bookCounted1;
-    @FXML CheckBox tornBookChk;
-    @FXML CheckBox stolenBookChk;
     @FXML Spinner tornBookCounted;
     @FXML Spinner stolenBookCounted;
-    @FXML Text bienlai;
     
     @FXML 
     public void swtichToIndex() throws IOException
@@ -88,20 +86,39 @@ public class TradeInforsController implements Initializable{
     }
     @FXML 
     public void noticeCompleteReturnForm(){
+        String id = MethodNeeded.createUUID();    
         
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setContentText("Your returning-fill informations is done!");
-        alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES)); 
-        if(alert.showAndWait().get() == ButtonType.YES)
+        ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(), 
+                this.candidate1.getSelectionModel().getSelectedItem().toString(), 
+                this.nameCus.getText(), (int) this.bookCounted1.getValue(),
+                MethodNeeded.editFormmatDate(borrowDay1), 
+                (int)this.stolenBookCounted.getValue(), (int)this.tornBookCounted.getValue());
+        
+        try {
+            ReturnInforServices.addReturnInfor(ri);
+            
+            Alert alert = new Alert(Alert.AlertType.NONE);
+            alert.setContentText("Your returning-fill informations is done!");
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES)
             alert.close();
+            
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error completed! Please try again");
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES)
+                alert.close();
+        }
+
     }
     
     public void noticeCompleteBorrowForm(ActionEvent event){
         String id = MethodNeeded.createUUID();
         
         BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText()
-                ,this.candidate.getSelectionModel().getSelectedItem().getObject(),
-              1,  //(int) this.bookCounted.valueFactoryProperty().getValue(), 
+                ,this.candidate.getSelectionModel().getSelectedItem().toString(),
+              (int) this.bookCounted.getValue(), 
                 MethodNeeded.editFormmatDate(borrowDay),
                 MethodNeeded.editFormmatDate(returnDay));
             
@@ -115,8 +132,9 @@ public class TradeInforsController implements Initializable{
                 alert.close();
         } catch (SQLException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(ex.getMessage());
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            alert.setContentText("Error completed! Please try again later");
+            alert.getButtonTypes().setAll(new ButtonType("OK"
+                    ,ButtonBar.ButtonData.YES));
             if (alert.showAndWait().get() == ButtonType.YES)
                 alert.close();
         }
@@ -124,10 +142,16 @@ public class TradeInforsController implements Initializable{
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            candidate.getItems().addAll(MemberCardServices.getMember());
-        } catch (SQLException ex) {
-            Logger.getLogger(TradeInforsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
+        MethodNeeded.addSpinnerValue(bookCounted);
+        MethodNeeded.addSpinnerValue(bookCounted1);
+        MethodNeeded.addSpinnerValue(stolenBookCounted);
+        MethodNeeded.addSpinnerValue(tornBookCounted);
+        
+        List<String> listS = new ArrayList<>();
+        listS.add("SV");
+        listS.add("GV");
+        
+        this.candidate.getItems().addAll(listS);
+        this.candidate1.getItems().addAll(listS);
+    }
 }
