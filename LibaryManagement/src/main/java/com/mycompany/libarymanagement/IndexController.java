@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
@@ -22,7 +23,10 @@ import javafx.scene.control.ButtonType;
  * @author hp
  */
 public class IndexController implements Initializable {
-
+    @FXML 
+        private Button btnSV;
+    @FXML 
+        private Button btnGV;
     @FXML
     public void switchToLogin() throws IOException
     {
@@ -40,7 +44,10 @@ public class IndexController implements Initializable {
             App.setRoot("Login");
         else
             App.setRoot("Index");
+        
+       
     }
+
     /**
      * Initializes the controller class.
      */

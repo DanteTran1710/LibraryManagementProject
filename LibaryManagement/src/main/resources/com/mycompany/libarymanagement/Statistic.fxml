@@ -131,5 +131,6 @@
             <Font size="17.0" />
          </font>
       </Text>
+      <Button layoutX="568.0" layoutY="515.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="82.0" />
    </children>
 </AnchorPane>
