@@ -18,8 +18,10 @@ import javafx.scene.control.TableColumn;
  *
  * @author thinh
  */
+
+
 public class SearchController implements Initializable {
-    @FXML TableColumn<testhv> tc;
+    
 
     /**
      * Initializes the controller class.
