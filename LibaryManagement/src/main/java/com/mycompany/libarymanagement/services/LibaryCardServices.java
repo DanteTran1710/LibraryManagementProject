@@ -6,7 +6,6 @@
 package com.mycompany.libarymanagement.services;
 
 import com.mycompany.libarymanagement.pojo.LibaryCard;
-import com.mycompany.libarymanagement.pojo.jdbcUtils;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

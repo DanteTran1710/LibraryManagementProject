@@ -5,13 +5,10 @@ package com.mycompany.libarymanagement;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.awt;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -57,8 +54,6 @@ public class SignUpController implements Initializable {
         ObservableList<String> doiTuong = 
                 FXCollections.observableArrayList("Sinh Viên", "Giảng Viên");
         cmbDoiTuong.setItems(doiTuong);
-        
-        if(txtSDT.getText().isEmpty() && txtSDT.Character.isLetter() );
     }    
     
 }

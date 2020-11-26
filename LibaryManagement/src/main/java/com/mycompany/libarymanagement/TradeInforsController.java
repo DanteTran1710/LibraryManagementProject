@@ -5,10 +5,11 @@
  */
 package com.mycompany.libarymanagement;
 
+import com.mycompany.libarymanagement.pojo.Book;
+import com.mycompany.libarymanagement.services.MethodNeeded;
 import com.mycompany.libarymanagement.pojo.BorrowInfor;
 import com.mycompany.libarymanagement.pojo.ReturnInfor;
 import com.mycompany.libarymanagement.services.BorrowInforServices;
-import com.mycompany.libarymanagement.services.MemberCardServices;
 import com.mycompany.libarymanagement.services.ReturnInforServices;
 import java.io.IOException;
 import java.net.URL;
@@ -17,18 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -44,10 +43,11 @@ public class TradeInforsController implements Initializable{
     @FXML Spinner bookCounted;
     @FXML DatePicker returnDay;
     @FXML TextField bookName;
-    @FXML TextField stateBook;
+    @FXML Text stateBook;
     @FXML TextField cardName;
-    @FXML TextField stateCard;
+    @FXML Text stateCard;
     @FXML DatePicker borrowDay;
+    @FXML TableView<Book> tbBook;
     
     // Returning Book
     @FXML TextField nameCus;
@@ -159,6 +159,7 @@ public class TradeInforsController implements Initializable{
             alert.setContentText("Your card is not exist");
         }
     }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MethodNeeded.addSpinnerValue(bookCounted);
@@ -172,5 +173,12 @@ public class TradeInforsController implements Initializable{
         
         this.candidate.getItems().addAll(listS);
         this.candidate1.getItems().addAll(listS);
+     
+        try {
+            BorrowInforServices.loadBook(tbBook);
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Cant find any book from database");
+        }
     }
 }

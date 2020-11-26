@@ -6,9 +6,7 @@
 package com.mycompany.libarymanagement.services;
 
 import com.mycompany.libarymanagement.pojo.Book;
-import com.mycompany.libarymanagement.pojo.jdbcUtils;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,21 +18,22 @@ import java.util.List;
  * @author hp
  */
 public class BookServices {
-//     public static List<Book> getBook() throws SQLException{
-//        Connection connect =  jdbcUtils.getConnection();
-//        Statement stm = connect.createStatement();
-//        ResultSet rs = stm.executeQuery("Select * from book");
-//        
-//        List<Book> listBook = new ArrayList<>();
-//        while(rs.next()){
-//           Book b = new Book(rs.getString("idBook"),rs.getString("BookName"),
-//                   rs.getString("AuthorName"), rs.getString("Descriptions"),
-//                   rs.getString("Release"), rs.getString("PlaceRelease"));
-//           
-//           listBook.add(b);
-//        }
-//        return listBook;
-//    }
+     public static List<Book> getBook() throws SQLException{
+         Connection connect =  jdbcUtils.getConnection();
+         Statement stm = connect.createStatement();
+         ResultSet rs = stm.executeQuery("Select * from book");
+         
+         List<Book> list = new ArrayList<>();
+         while(rs.next()){
+             Book b = new Book(rs.getString("idBook"), rs.getString("BookName"),
+                    rs.getString("AuthorName"), rs.getString("Decriptions"),
+                    rs.getString("Release"), rs.getString("PlaceRelease"),
+                    rs.getString("State"));
+           
+             list.add(b);
+         }
+         return list;
+    }
 //     
 //    public static void addBook(Book b) throws SQLException{
 //        Connection connect = jdbcUtils.getConnection();

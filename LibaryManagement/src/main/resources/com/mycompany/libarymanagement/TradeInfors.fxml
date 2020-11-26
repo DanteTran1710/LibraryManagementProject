@@ -9,7 +9,6 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -122,8 +121,6 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="stateBook" layoutX="610.0" layoutY="229.0" prefHeight="26.0" prefWidth="142.0" />
-                                          <TextField fx:id="stateCard" layoutX="609.0" layoutY="388.0" prefHeight="26.0" prefWidth="142.0" />
                                           <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" onAction="#noticeCompleteBorrowForm" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
                                              <font>
                                                 <Font size="20.0" />
@@ -139,6 +136,16 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
+                                          <Text fx:id="stateBook" layoutX="625.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="stateCard" layoutX="625.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -147,16 +154,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="781.0">
                                        <children>
-                                          <TableView layoutY="-2.0" prefHeight="482.0" prefWidth="780.0">
-                                             <columns>
-                                                <TableColumn prefWidth="42.39999544620514" text="STT" />
-                                                <TableColumn prefWidth="153.60002899169922" text="TÊN SÁCH" />
-                                                <TableColumn prefWidth="118.4000244140625" text="THỂ LOẠI" />
-                                                <TableColumn prefWidth="153.60003662109375" text="TÊN TÁC GIẢ" />
-                                                <TableColumn minWidth="4.79998779296875" prefWidth="148.00003051757812" text="NHÀ XUẤT BẢN" />
-                                                <TableColumn prefWidth="164.800048828125" text="NGÀY MƯỢN" />
-                                             </columns>
-                                          </TableView>
+                                          <TableView fx:id="tbBook" layoutY="-2.0" prefHeight="482.0" prefWidth="780.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>

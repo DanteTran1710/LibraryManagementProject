@@ -1,5 +1,6 @@
 package com.mycompany.libarymanagement;
 
+import com.mycompany.libarymanagement.services.jdbcUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,9 +22,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("SignUp"));
+        scene = new Scene(loadFXML("TradeInfors"));
         stage.setOnHiding(et ->{
-            Connection conn = JDBCUtils.getConnection();
+            Connection conn = jdbcUtils.getConnection();
             if(conn != null)
                 try {
                     conn.close();

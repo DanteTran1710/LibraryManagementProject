@@ -11,38 +11,23 @@ package com.mycompany.libarymanagement.pojo;
  * @author hp
  */
 public class Book {
-
-    /**
-     * @return the state
-     */
-    public String getState() {
-        return state;
-    }
-
-    /**
-     * @param state the state to set
-     */
-    public void setState(String state) {
-        this.state = state;
-    }
     private String idB;
     private String nameB;
     private String authorName;
-    private String Descriptions;
+    private String Decriptions;
     private String release;
     private String releasePlace;
     private String state;
 
-    public Book(String idB, String nameB, String authorName, String Descriptions, String release, String releasePlace, String state) {
+    public Book(String idB, String nameB, String authorName, String Decriptions, String release, String releasePlace, String state) {
         this.idB = idB;
         this.nameB = nameB;
         this.authorName = authorName;
-        this.Descriptions = Descriptions;
+        this.Decriptions = Decriptions;
         this.release = release;
         this.releasePlace = releasePlace;
         this.state = state;
     }
-    
 
     /**
      * @return the idB
@@ -89,33 +74,15 @@ public class Book {
     /**
      * @return the Descriptions
      */
-    public String getDescriptions() {
-        return Descriptions;
+    public String getDecriptions() {
+        return Decriptions;
     }
 
     /**
      * @param Descriptions the Descriptions to set
      */
-    public void setDescriptions(String Descriptions) {
-        this.Descriptions = Descriptions;
-    }
-
-    /**
-     * @return the release
-     */
-    
-    /**
-     * @return the releasePlace
-     */
-    public String getReleasePlace() {
-        return releasePlace;
-    }
-
-    /**
-     * @param releasePlace the releasePlace to set
-     */
-    public void setReleasePlace(String releasePlace) {
-        this.releasePlace = releasePlace;
+    public void setDecriptions(String Descriptions) {
+        this.Decriptions = Descriptions;
     }
 
     /**
@@ -131,5 +98,33 @@ public class Book {
     public void setRelease(String release) {
         this.release = release;
     }
-    
+
+    /**
+     * @return the releasePlace
+     */
+    public String getReleasePlace() {
+        return releasePlace;
+    }
+
+    /**
+     * @param releasePlace the releasePlace to set
+     */
+    public void setReleasePlace(String releasePlace) {
+        this.releasePlace = releasePlace;
+    }
+
+    /**
+     * @return the state
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * @param state the state to set
+     */
+    public void setState(String state) {
+        this.state = state;
+    }
+
 }

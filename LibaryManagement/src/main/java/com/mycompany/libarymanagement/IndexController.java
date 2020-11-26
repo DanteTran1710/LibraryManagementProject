@@ -10,10 +10,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
@@ -23,12 +22,8 @@ import javafx.scene.control.ButtonType;
  * @author hp
  */
 public class IndexController implements Initializable {
-    @FXML 
-        private Button btnSV;
-    @FXML 
-        private Button btnGV;
-    @FXML
-    public void switchToLogin() throws IOException
+    
+    public void switchToLogin(ActionEvent event) throws IOException
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Choose to move");
@@ -43,9 +38,7 @@ public class IndexController implements Initializable {
         if(result.get() == btnYes)
             App.setRoot("Login");
         else
-            App.setRoot("Index");
-        
-       
+            App.setRoot("Index"); 
     }
 
     /**
