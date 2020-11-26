@@ -5,29 +5,44 @@
  */
 package com.mycompany.libarymanagement.pojo;
 
-import java.util.Date;
 
 /**
  *
  * @author hp
  */
 public class Book {
+
+    /**
+     * @return the state
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * @param state the state to set
+     */
+    public void setState(String state) {
+        this.state = state;
+    }
     private String idB;
     private String nameB;
     private String authorName;
     private String Descriptions;
     private String release;
     private String releasePlace;
+    private String state;
 
-    public Book(String idB, String nameB, String authorName, String Descriptions, String release, String releasePlace) {
+    public Book(String idB, String nameB, String authorName, String Descriptions, String release, String releasePlace, String state) {
         this.idB = idB;
         this.nameB = nameB;
         this.authorName = authorName;
         this.Descriptions = Descriptions;
         this.release = release;
         this.releasePlace = releasePlace;
+        this.state = state;
     }
-
+    
 
     /**
      * @return the idB

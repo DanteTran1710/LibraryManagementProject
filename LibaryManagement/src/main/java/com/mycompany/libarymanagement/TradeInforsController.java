@@ -8,6 +8,7 @@ package com.mycompany.libarymanagement;
 import com.mycompany.libarymanagement.pojo.BorrowInfor;
 import com.mycompany.libarymanagement.pojo.ReturnInfor;
 import com.mycompany.libarymanagement.services.BorrowInforServices;
+import com.mycompany.libarymanagement.services.MemberCardServices;
 import com.mycompany.libarymanagement.services.ReturnInforServices;
 import java.io.IOException;
 import java.net.URL;
@@ -57,14 +58,12 @@ public class TradeInforsController implements Initializable{
     @FXML Spinner tornBookCounted;
     @FXML Spinner stolenBookCounted;
     
-    @FXML 
-    public void swtichToIndex() throws IOException
+    public void swtichToIndex(ActionEvent event) throws IOException
     {
         App.setRoot("Index");
     }
     
-    @FXML
-    public void switchtoChoice() throws IOException  {
+    public void switchtoChoice(ActionEvent event) throws IOException  {
             
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Choose to choice");
@@ -84,8 +83,8 @@ public class TradeInforsController implements Initializable{
                 App.setRoot("Index");
             }
     }
-    @FXML 
-    public void noticeCompleteReturnForm(){
+    
+    public void noticeCompleteReturnForm(ActionEvent event){
         String id = MethodNeeded.createUUID();    
         
         ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(), 
@@ -139,6 +138,26 @@ public class TradeInforsController implements Initializable{
                 alert.close();
         }
 
+    }
+
+    public void checkoutMC(ActionEvent event){
+        try {
+            this.stateCard.textProperty().set(
+                 BorrowInforServices.checkMemberCard(this.cardName.getText()));
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Your card is not exist");
+        }
+    }
+
+    public void checkoutBook(ActionEvent event) {
+        try {
+            this.stateBook.textProperty().set(
+                    BorrowInforServices.checkBook(this.bookName.getText()));
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Your card is not exist");
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

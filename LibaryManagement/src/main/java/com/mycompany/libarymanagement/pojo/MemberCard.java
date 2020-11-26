@@ -5,30 +5,30 @@
  */
 package com.mycompany.libarymanagement.pojo;
 
-import java.util.Date;
-
 /**
  *
  * @author hp
  */
 public class MemberCard {
+
+    /**
+     * @return the stateCard
+     */
+
     private String idMC;
     private String memberName;
     private String DOB;
     private String object;
+    private String stateCard;
 
-    public MemberCard(String idMC, String memberName, String DOB, String object) {
+    public MemberCard(String idMC, String memberName, String DOB, String object, String stateCard) {
         this.idMC = idMC;
         this.memberName = memberName;
         this.DOB = DOB;
         this.object = object;
+        this.stateCard = stateCard;
     }
-
-    @Override
-    public String toString() {
-        return this.object; //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     /**
      * @return the idMC
      */
@@ -84,5 +84,15 @@ public class MemberCard {
     public void setObject(String object) {
         this.object = object;
     }
-    
+
+    public String getStateCard() {
+        return stateCard;
+    }
+
+    /**
+     * @param stateCard the stateCard to set
+     */
+    public void setStateCard(String stateCard) {
+        this.stateCard = stateCard;
+    }
 }
