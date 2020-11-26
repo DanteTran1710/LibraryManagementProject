@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -65,7 +64,7 @@
                                           </Text>
                                           <TextField fx:id="phoneNumber" layoutX="164.0" layoutY="88.0" prefHeight="6.0" prefWidth="218.0" />
                                           <ComboBox fx:id="candidate" layoutX="200.0" layoutY="146.0" prefWidth="150.0" />
-                                          <Spinner fx:id="bookCounted" layoutX="198.0" layoutY="206.0" nodeOrientation="LEFT_TO_RIGHT">
+                                          <Spinner fx:id="bookCounted" layoutX="198.0" layoutY="206.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="69.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -89,45 +88,55 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="133.0" layoutX="491.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
-                                          <Text layoutX="514.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG SÁCH">
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="155.0" layoutX="491.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
+                                          <Text layoutX="516.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG SÁCH">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="499.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÊN SÁCH">
+                                          <Text layoutX="501.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÊN SÁCH">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="bookName" layoutX="576.0" layoutY="212.0" prefHeight="26.0" prefWidth="184.0" />
-                                          <Text layoutX="499.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                          <TextField fx:id="bookName" layoutX="578.0" layoutY="190.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <Text layoutX="501.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="133.0" layoutX="491.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
-                                          <Text layoutX="514.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG THẺ">
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="153.0" layoutX="491.0" layoutY="304.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
+                                          <Text layoutX="515.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KIỂM TRA TÌNH TRẠNG THẺ">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="501.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ THẺ">
+                                          <Text layoutX="502.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ THẺ">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="cardName" layoutX="578.0" layoutY="371.0" prefHeight="26.0" prefWidth="184.0" />
-                                          <Text layoutX="498.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                          <TextField fx:id="cardName" layoutX="579.0" layoutY="349.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <Text layoutX="499.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="stateBook" layoutX="608.0" layoutY="251.0" prefHeight="26.0" prefWidth="142.0" />
-                                          <TextField fx:id="stateCard" layoutX="608.0" layoutY="410.0" prefHeight="26.0" prefWidth="142.0" />
+                                          <TextField fx:id="stateBook" layoutX="610.0" layoutY="229.0" prefHeight="26.0" prefWidth="142.0" />
+                                          <TextField fx:id="stateCard" layoutX="609.0" layoutY="388.0" prefHeight="26.0" prefWidth="142.0" />
                                           <Button layoutX="131.0" layoutY="386.0" mnemonicParsing="false" onAction="#noticeCompleteBorrowForm" prefHeight="74.0" prefWidth="158.0" text="XÁC NHẬN">
                                              <font>
                                                 <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="591.0" layoutY="261.0" mnemonicParsing="false" onAction="#checkoutBook" text="KIỂM TRA">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="589.0" layoutY="423.0" mnemonicParsing="false" onAction="#checkoutMC" text="KIỂM TRA">
+                                             <font>
+                                                <Font size="15.0" />
                                              </font>
                                           </Button>
                                        </children>
@@ -185,7 +194,7 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Spinner fx:id="bookCounted1" layoutX="174.0" layoutY="234.0" />
+                        <Spinner fx:id="bookCounted1" layoutX="174.0" layoutY="234.0" prefHeight="26.0" prefWidth="82.0" />
                         <DatePicker fx:id="borrowDay1" layoutX="155.0" layoutY="165.0" />
                         <Text layoutX="31.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY MƯỢN">
                            <font>
@@ -198,18 +207,16 @@
                               <Font size="19.0" />
                            </font>
                         </Text>
-                        <Text layoutX="477.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RÁCH, HƯ HỎNG">
+                        <Text layoutX="462.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RÁCH, HƯ HỎNG">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="481.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MẤT">
+                        <Text layoutX="462.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MẤT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <CheckBox fx:id="tornBookChk" layoutX="447.0" layoutY="178.0" mnemonicParsing="false" />
-                        <CheckBox fx:id="stolenBookChk" layoutX="447.0" layoutY="227.0" mnemonicParsing="false" />
                         <Spinner fx:id="stolenBookCounted" layoutX="640.0" layoutY="172.0" prefHeight="0.0" prefWidth="52.0" />
                         <Spinner fx:id="tornBookCounted" layoutX="640.0" layoutY="221.0" prefHeight="26.0" prefWidth="52.0" />
                         <Text layoutX="711.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(SL)">
@@ -228,27 +235,27 @@
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Text fx:id="bienlai" layoutX="157.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIÊN LAI TRẢ SÁCH">
+                        <Text layoutX="157.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIÊN LAI TRẢ SÁCH">
                            <font>
                               <Font size="35.0" />
                            </font>
                         </Text>
-                        <Text fx:id="bienlai" layoutX="47.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
+                        <Text layoutX="47.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="bienlai" layoutX="51.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
+                        <Text layoutX="51.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="bienlai" layoutX="190.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
+                        <Text layoutX="190.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="bienlai" layoutX="199.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
+                        <Text layoutX="199.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LÝ DO">
                            <font>
                               <Font size="18.0" />
                            </font>
