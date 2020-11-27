@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="293.0" prefWidth="472.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.libarymanagement.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #28252e;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.libarymanagement.LoginController">
    <children>
-      <TextField fx:id="txtUserName" layoutX="97.0" layoutY="64.0" prefHeight="41.0" prefWidth="276.0" promptText="User Name" />
-      <PasswordField fx:id="txtPassword" layoutX="97.0" layoutY="130.0" prefHeight="41.0" prefWidth="276.0" promptText="Password" />
-      <Button fx:id="BtnSignIn" layoutX="97.0" layoutY="214.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="89.0" text="Sign In" />
-      <Button fx:id="BtnSignUp" layoutX="284.0" layoutY="214.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="89.0" text="Sign Up" />
+      <HBox layoutY="288.0" prefHeight="61.0" prefWidth="500.0" style="-fx-border-color: #0fea88; -fx-border-width: 3;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="BtnSignIn" mnemonicParsing="false" onAction="#checkUser" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #352c8f;" text="SignIn" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="25.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="BtnSignUp" mnemonicParsing="false" onAction="#checkUser" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #352c8f;" text="SignUp" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="25.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <AnchorPane layoutY="58.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0">
+         <children>
+            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="59.0" prefHeight="41.0" prefWidth="276.0" promptText="User Name" />
+            <PasswordField fx:id="txtPassword" layoutX="112.0" layoutY="114.0" prefHeight="41.0" prefWidth="276.0" promptText="Password" />
+         </children>
+      </AnchorPane>
+      <ButtonBar layoutX="32.0" layoutY="18.0" prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#checkUser" text="Button" />
+        </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

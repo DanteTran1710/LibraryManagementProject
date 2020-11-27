@@ -15,7 +15,7 @@
          <font>
             <Font size="34.0" />
          </font></Label>
-      <Button layoutX="184.0" layoutY="793.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="463.0" style="-fx-background-color: #2196f3; -fx-border-radius: 5px;" text="SIGN UP" textFill="WHITE">
+      <Button layoutX="184.0" layoutY="793.0" mnemonicParsing="false" onAction="#SignUp" prefHeight="60.0" prefWidth="463.0" style="-fx-background-color: #2196f3; -fx-border-radius: 5px;" text="SIGN UP" textFill="WHITE">
          <font>
             <Font size="28.0" />
          </font>
