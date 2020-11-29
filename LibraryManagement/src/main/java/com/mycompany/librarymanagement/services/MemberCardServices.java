@@ -5,10 +5,14 @@
  */
 package com.mycompany.librarymanagement.services;
 
+import com.mycompany.librarymanagement.pojo.MemberCard;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -16,7 +20,20 @@ import java.sql.SQLException;
  * @author hp
  */
 public class MemberCardServices {
-     
+    public static List<MemberCard> getMC() throws SQLException{
+        Connection connect = jdbcUtils.getConnection();
+        Statement stm = connect.createStatement();
+        ResultSet rs = stm.executeQuery("Select * from returninfor");
+
+        List<MemberCard> list = new ArrayList<>();
+        while (rs.next()) {
+            MemberCard mc = new MemberCard(rs.getString("idMemberCard"),
+                    rs.getString("MemberName"), rs.getString("DOB"), 
+                    rs.getString("Object"), rs.getString("StateCard"));
+             list.add(mc);
+         }
+         return list;
+    } 
     public static String checkMemberCard(String id) throws SQLException{
         String query =  "Select StateCard from membercard where idMemberCard=?";
         

@@ -28,6 +28,11 @@ public class BorrowInfor {
         this.returnDate = returnDate;
     }
 
+    @Override
+    public String toString() {
+        return this.phoneNum; //To change body of generated methods, choose Tools | Templates.
+    }
+    
     /**
      * @return the id
      */

@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -39,18 +41,19 @@ public class BorrowInforServices {
         connect.commit();
     }
    
-    public static int getInforBookAmountment(String id) throws SQLException{
-        String query =  "Select Book from borrowinfor where id=?";
-        
+    public static List<BorrowInfor> getBorrowInfor() throws SQLException {
         Connection connect = jdbcUtils.getConnection();
-        PreparedStatement stm = connect.prepareStatement(query);
-        stm.setString(1, id);
-       
-        ResultSet rs = stm.executeQuery();
-        int sl = 0;
-        while(rs.next()){
-            sl = rs.getInt("Book");
-        }
-        return sl;
+        Statement stm = connect.createStatement();
+        ResultSet rs = stm.executeQuery("Select * from borrowinfor");
+
+        List<BorrowInfor> list = new ArrayList<>();
+        while (rs.next()) {
+            BorrowInfor bi = new BorrowInfor(rs.getString("id"), rs.getString("ObjectName"),
+                    rs.getString("PhoneNumber"), rs.getString("Object"), rs.getInt("Book"),
+                    rs.getString("BorrowDate"), rs.getString("ReturnDate"));
+           
+             list.add(bi);
+         }
+         return list;
     }
 }

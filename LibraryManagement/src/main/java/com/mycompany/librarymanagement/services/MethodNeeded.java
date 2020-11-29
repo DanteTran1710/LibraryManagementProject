@@ -46,13 +46,17 @@ public class MethodNeeded {
         s.setValueFactory(value);
     }
     
-    public static long caculateDate(String date){
+    public static long caculateDate(String beginDate, String endDate){
         long result = 0;
                 
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Date borrowDate = dayFormat.parse(date);
-            Date returnDate = new Date();
+            Date borrowDate = dayFormat.parse(beginDate);
+            Date returnDate;
+            if (!endDate.equals("")) 
+                returnDate = dayFormat.parse(endDate);
+            else 
+                returnDate = new Date();
             
             long borrowDay = borrowDate.getTime();
             long returnDay = returnDate.getTime();
@@ -64,4 +68,5 @@ public class MethodNeeded {
         }
         return result;
     }
+    
 }

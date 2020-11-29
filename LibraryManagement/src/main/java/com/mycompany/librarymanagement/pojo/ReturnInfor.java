@@ -27,10 +27,10 @@ public class ReturnInfor {
     private String borrowDate;
     private int stolenBook;
     private int tornBook;
-    private String lateDay;
+    private String lateDate;
     private float fine;
 
-    public ReturnInfor(String id, String idMC, String object, String objectName, int book, String borrowDate, int stolenBook, int tornBook, String lateDay, float fine) {
+    public ReturnInfor(String id, String idMC, String object, String objectName, int book, String borrowDate, int stolenBook, int tornBook, String lateDate, float fine) {
         this.id = id;
         this.idMC = idMC;
         this.object = object;
@@ -39,7 +39,7 @@ public class ReturnInfor {
         this.borrowDate = borrowDate;
         this.stolenBook = stolenBook;
         this.tornBook = tornBook;
-        this.lateDay = lateDay;
+        this.lateDate = lateDate;
         this.fine = fine;
     }
 
@@ -156,17 +156,17 @@ public class ReturnInfor {
     }
 
     /**
-     * @return the lateDay
+     * @return the lateDate
      */
     public String getLateDay() {
-        return lateDay;
+        return lateDate;
     }
 
     /**
-     * @param lateDay the lateDay to set
+     * @param lateDate the lateDate to set
      */
-    public void setLateDay(String lateDay) {
-        this.lateDay = lateDay;
+    public void setLateDay(String lateDate) {
+        this.lateDate = lateDate;
     }
 
     /**

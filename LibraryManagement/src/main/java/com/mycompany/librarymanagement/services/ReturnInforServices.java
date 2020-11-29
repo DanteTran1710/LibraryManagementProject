@@ -8,7 +8,11 @@ package com.mycompany.librarymanagement.services;
 import com.mycompany.librarymanagement.pojo.ReturnInfor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -37,5 +41,22 @@ public class ReturnInforServices {
         stm.executeUpdate();
         
         connect.commit();
+    }
+        
+    public static List<ReturnInfor> getReturnInfor() throws SQLException{
+        Connection connect = jdbcUtils.getConnection();
+        Statement stm = connect.createStatement();
+        ResultSet rs = stm.executeQuery("Select * from returninfor");
+
+        List<ReturnInfor> list = new ArrayList<>();
+        while (rs.next()) {
+            ReturnInfor ri = new ReturnInfor(rs.getString("id"), rs.getString("idMC"),
+                    rs.getString("Object"), rs.getString("ObjectName"), rs.getInt("Book"),
+                    rs.getString("BorrowDate"), rs.getInt("StolenBook"),
+                    rs.getInt("TornBook"), rs.getString("LateDate"), rs.getFloat("Fine"));
+           
+             list.add(ri);
+         }
+         return list;
     }
 }

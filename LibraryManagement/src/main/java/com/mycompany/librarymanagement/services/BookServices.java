@@ -31,7 +31,7 @@ public class BookServices {
          List<Book> list = new ArrayList<>();
          while(rs.next()){
              Book b = new Book(rs.getString("idBook"), rs.getString("BookName"),
-                    rs.getString("AuthorName"), rs.getString("Decriptions"),
+                    rs.getString("AuthorName"), rs.getString("Description"),
                     rs.getString("Release"), rs.getString("PlaceRelease"),
                     rs.getString("State"));
            
@@ -76,23 +76,4 @@ public class BookServices {
         tbv.getColumns().addAll(colSTT);
         tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
      }
-//    public static void addBook(Book b) throws SQLException{
-//        Connection connect = jdbcUtils.getConnection();
-//        String query = "insert into book(idBook, BookName, AuthorName, Descriptions, Release, PlaceRelease)"
-//                + " values (?,?, ?, ?, ?, ?)";
-//        
-//        connect.setAutoCommit(false);
-//        
-//        PreparedStatement stm = connect.prepareCall(query);
-//        stm.setString(1, b.getIdB());
-//        stm.setString(2, b.getNameB());
-//        stm.setString(3, b.getAuthorName());
-//        stm.setString(4, b.getDescriptions());
-//        stm.setString(5, b.getRelease());
-//        stm.setString(6, b.getReleasePlace());
-//        
-//        stm.executeUpdate();
-//        
-//        connect.commit();
-//    }
 }
