@@ -25,21 +25,21 @@ public class ReturnInfor {
     private String objectName;
     private int book;
     private String borrowDate;
+    private String returnDate;
     private int stolenBook;
     private int tornBook;
-    private String lateDate;
     private float fine;
 
-    public ReturnInfor(String id, String idMC, String object, String objectName, int book, String borrowDate, int stolenBook, int tornBook, String lateDate, float fine) {
+    public ReturnInfor(String id, String idMC, String object, String objectName, int book, String borrowDate, String returnDate, int stolenBook, int tornBook, float fine) {
         this.id = id;
         this.idMC = idMC;
         this.object = object;
         this.objectName = objectName;
         this.book = book;
         this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
         this.stolenBook = stolenBook;
         this.tornBook = tornBook;
-        this.lateDate = lateDate;
         this.fine = fine;
     }
 
@@ -128,6 +128,20 @@ public class ReturnInfor {
     }
 
     /**
+     * @return the returnDate
+     */
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    /**
+     * @param returnDate the returnDate to set
+     */
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    /**
      * @return the stolenBook
      */
     public int getStolenBook() {
@@ -156,20 +170,6 @@ public class ReturnInfor {
     }
 
     /**
-     * @return the lateDate
-     */
-    public String getLateDay() {
-        return lateDate;
-    }
-
-    /**
-     * @param lateDate the lateDate to set
-     */
-    public void setLateDay(String lateDate) {
-        this.lateDate = lateDate;
-    }
-
-    /**
      * @return the fine
      */
     public float getFine() {
@@ -183,5 +183,4 @@ public class ReturnInfor {
         this.fine = fine;
     }
 
-   
 }

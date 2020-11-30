@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,8 +33,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 /**
@@ -92,9 +98,8 @@ public class TradeInforsController implements Initializable{
         ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(), 
                 this.candidate1.getSelectionModel().getSelectedItem().toString(), 
                 this.nameCus.getText(), (int) this.bookCounted1.getValue(),
-                MethodNeeded.editFormmatDate(borrowDay1), 
-                (int)this.stolenBookCounted.getValue(), (int)this.tornBookCounted.getValue(),
-                "10 ngay",10000);
+                MethodNeeded.editFormmatDate(borrowDay1), MethodNeeded.getDateNow(),
+                (int)this.stolenBookCounted.getValue(), (int)this.tornBookCounted.getValue(),10000);
         
         try {
             ReturnInforServices.addReturnInfor(ri);
@@ -164,6 +169,30 @@ public class TradeInforsController implements Initializable{
         }
     }
     
+    public static void loadBook(TableView<Book> tbv) throws SQLException{
+         TableColumn colSTT = new TableColumn("Book Code");
+         colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
+         TableColumn colName = new TableColumn("Name");
+         colName.setCellValueFactory(new PropertyValueFactory("nameB"));
+         TableColumn colAuthorName = new TableColumn("Author");
+         colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
+         TableColumn colDescript = new TableColumn("Description");
+         colDescript.setCellValueFactory(new PropertyValueFactory("Description"));
+         TableColumn colRelease = new TableColumn("Release Day");
+         colRelease.setCellValueFactory(new PropertyValueFactory("release"));
+         TableColumn colNXB = new TableColumn("Release Place");
+         colNXB.setCellValueFactory(new PropertyValueFactory("releasePlace"));
+         TableColumn colState = new TableColumn("State");
+         colState.setCellValueFactory(new PropertyValueFactory("state")); 
+         TableColumn colCategory = new TableColumn("Category");
+         colCategory.setCellValueFactory(new PropertyValueFactory("category"));   
+         
+         tbv.getColumns().addAll(colSTT, colName,colAuthorName,colDescript,
+                                 colRelease,colNXB,colState,colCategory);
+         
+        tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
+     }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MethodNeeded.addSpinnerValue(bookCounted);
@@ -174,15 +203,18 @@ public class TradeInforsController implements Initializable{
         List<String> listS = new ArrayList<>();
         listS.add("SV");
         listS.add("GV");
-        
-        this.candidate.getItems().addAll(listS);
+        try {
+            this.candidate.getItems().addAll(BookServices.getBook());
+        } catch (SQLException ex) {
+            Logger.getLogger(TradeInforsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.candidate1.getItems().addAll(listS);
      
-//        try {
-//            BorrowInforServices.loadBook(tbBook);
-//        } catch (SQLException ex) {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setContentText("Cant find any book from database");
-//        }
+        try {
+            loadBook(tbBook);
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Cant find any book from database");
+        }
     }
 }

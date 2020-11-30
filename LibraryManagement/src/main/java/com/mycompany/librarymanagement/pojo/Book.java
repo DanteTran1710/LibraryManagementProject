@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package com.mycompany.librarymanagement.pojo;
-
-
 /**
  *
  * @author hp
@@ -14,19 +12,21 @@ public class Book {
     private String idB;
     private String nameB;
     private String authorName;
-    private String Decriptions;
+    private String Description;
     private String release;
     private String releasePlace;
     private String state;
+    private String category;
 
-    public Book(String idB, String nameB, String authorName, String Decriptions, String release, String releasePlace, String state) {
+    public Book(String idB, String nameB, String authorName, String Description, String release, String releasePlace, String state, String category) {
         this.idB = idB;
         this.nameB = nameB;
         this.authorName = authorName;
-        this.Decriptions = Decriptions;
+        this.Description = Description;
         this.release = release;
         this.releasePlace = releasePlace;
         this.state = state;
+        this.category = category;
     }
 
     /**
@@ -72,17 +72,17 @@ public class Book {
     }
 
     /**
-     * @return the Descriptions
+     * @return the Description
      */
-    public String getDecriptions() {
-        return Decriptions;
+    public String getDescription() {
+        return Description;
     }
 
     /**
-     * @param Descriptions the Descriptions to set
+     * @param Description the Description to set
      */
-    public void setDecriptions(String Descriptions) {
-        this.Decriptions = Descriptions;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     /**
@@ -127,4 +127,18 @@ public class Book {
         this.state = state;
     }
 
+    /**
+     * @return the category
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * @param category the category to set
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
 }

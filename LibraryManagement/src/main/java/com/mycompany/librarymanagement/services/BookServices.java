@@ -23,7 +23,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author hp
  */
 public class BookServices {
-     public static List<Book> getBook() throws SQLException{
+
+    /**
+     *
+     * @return list of book
+     * @throws SQLException
+     */
+    public static List<Book> getBook() throws SQLException{
          Connection connect =  jdbcUtils.getConnection();
          Statement stm = connect.createStatement();
          ResultSet rs = stm.executeQuery("Select * from book");
@@ -33,7 +39,7 @@ public class BookServices {
              Book b = new Book(rs.getString("idBook"), rs.getString("BookName"),
                     rs.getString("AuthorName"), rs.getString("Description"),
                     rs.getString("Release"), rs.getString("PlaceRelease"),
-                    rs.getString("State"));
+                    rs.getString("State"), rs.getString("Category"));
            
              list.add(b);
          }
@@ -55,25 +61,4 @@ public class BookServices {
         return state;
     }
      
-     public static void loadBook(TableView tbv) throws SQLException{
-         TableColumn colSTT = new TableColumn("STT");
-         colSTT.setCellValueFactory(new PropertyValueFactory("nameB"));
-//         TableColumn colName = new TableColumn("Name");
-//         colName.setCellValueFactory(new PropertyValueFactory("nameB"));
-//         TableColumn colAuthorName = new TableColumn("Author");
-//         colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
-//         TableColumn colDescript = new TableColumn("Description");
-//         colDescript.setCellValueFactory(new PropertyValueFactory("Description"));
-//         TableColumn colRelease = new TableColumn("Release Day");
-//         colRelease.setCellValueFactory(new PropertyValueFactory("release"));
-//         TableColumn colNXB = new TableColumn("Release Place");
-//         colNXB.setCellValueFactory(new PropertyValueFactory("releasePlace"));
-//         TableColumn colState = new TableColumn("State");
-//         colState.setCellValueFactory(new PropertyValueFactory("state"));   
-         
-//         tbv.getColumns().addAll(colName,colAuthorName,colDescript,
-//                                 colRelease,colNXB,colState);
-        tbv.getColumns().addAll(colSTT);
-        tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
-     }
 }
