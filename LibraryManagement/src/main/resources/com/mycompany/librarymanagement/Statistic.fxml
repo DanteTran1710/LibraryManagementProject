@@ -66,62 +66,32 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <Text fx:id="amountBorrowBook" layoutX="296.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SL">
+      <Text fx:id="amountBorrowBook" layoutX="444.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="450.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+      <Text fx:id="punctualityBorrowBook" layoutX="444.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text fx:id="punctualityBorrowBook" layoutX="296.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SL">
+      <Text layoutX="438.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="450.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+      <Text fx:id="lateBorrowBook" layoutX="444.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="296.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SL">
+      <Text fx:id="blockMC" layoutX="444.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SL">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="450.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
-      <Text fx:id="lateBorrowBook" layoutX="296.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SL">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
-      <Text layoutX="450.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
-      <Text fx:id="blockMC" layoutX="296.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SL">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
-      <Text layoutX="450.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
-      <Text fx:id="disrepairBook" layoutX="296.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SL">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
-      <Text layoutX="450.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+      <Text fx:id="disrepairBook" layoutX="444.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="17.0" />
          </font>

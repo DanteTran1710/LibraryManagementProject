@@ -5,21 +5,17 @@
  */
 package com.mycompany.librarymanagement;
 
-import com.mycompany.librarymanagement.pojo.MemberCard;
 import com.mycompany.librarymanagement.pojo.ReturnInfor;
-import com.mycompany.librarymanagement.services.MemberCardServices;
 import com.mycompany.librarymanagement.services.MethodNeeded;
 import com.mycompany.librarymanagement.services.ReturnInforServices;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.text.Text;
 
@@ -46,31 +42,29 @@ public class StatisticController implements Initializable{
         App.setRoot("Index");
     }
     
-    public void checkStatistic(ActionEvent event) throws SQLException{
+    public void checkStatistic(ActionEvent event) throws SQLException {
+        
         checkedChangingTime();
         String kq = loadStatisticByCourse(minDay, maxDay);
-        
-//        List<ReturnInfor> listRI = ReturnInforServices.getReturnInfor();
-//        Alert alert = new Alert(Alert.AlertType.ERROR);
-//        alert.setContentText("SL : " + MethodNeeded.countDay(listRI.get(0).getReturnDate()));
-//        alert.showAndWait();
+        String[] sub = kq.split("/");
 
-          this.amountBorrowBook.textProperty().set("SL : " + kq.substring(0,kq.indexOf("/")));
-//        this.disrepairBook.textProperty().set("SL : " + slsh);
-//        this.punctualityBorrowBook.textProperty().set("SL : " + sldh);
-//        this.lateBorrowBook.textProperty().set("SL : " + slth);
+        this.amountBorrowBook.textProperty().set("SL : " + sub[0]);
+        this.punctualityBorrowBook.textProperty().set("SL : " + sub[1]);
+        this.lateBorrowBook.textProperty().set("SL : " + sub[3]);
 //        this.blockMC.textProperty().set("SL : " + sltk);
+        this.disrepairBook.textProperty().set("SL : " + sub[2]);
     }
-    
+
     public String loadStatisticByCourse(int minDay, int maxDay) throws SQLException {
         String s;
+
         List<ReturnInfor> listRI = ReturnInforServices.getReturnInfor();
         int ssm, sldh, slth, slsh, sltk;
         ssm = sldh = slth = slsh = sltk = 0;
 
         for (int i = 0; i < listRI.size(); i++) {
-            if (MethodNeeded.countDay(listRI.get(i).getBorrowDate()) >= minDay &&
-                   MethodNeeded.countDay(listRI.get(i).getBorrowDate()) <= maxDay ) {
+            if (MethodNeeded.caculateDate(listRI.get(i).getReturnDate(), "") >= minDay
+                    && MethodNeeded.caculateDate(listRI.get(i).getReturnDate(), "") <= maxDay) {
                 ssm += listRI.get(i).getBook();
 
                 if (listRI.get(i).getStolenBook() >= 1 || listRI.get(i).getTornBook() >= 1) {

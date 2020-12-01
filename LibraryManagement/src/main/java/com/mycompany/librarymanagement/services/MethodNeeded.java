@@ -46,32 +46,18 @@ public class MethodNeeded {
         s.setValueFactory(value);
     }
     
-    public static long countDay(String date){
-        long result = 0;
-        
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        
-        try {
-            Date dayNow = format.parse(date);
-            Date dayBegin = format.parse("01/01/2020");
-            
-            long dayCredited = dayNow.getTime();
-            long dayBeginCredited = dayBegin.getTime();
-            
-            result = Math.abs(dayCredited-dayBeginCredited)/(24*60*60*1000);
-        } catch (ParseException ex) {
-            Logger.getLogger(MethodNeeded.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
-    
     public static long caculateDate(String beginDate, String endDate){
         long result = 0;
                 
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date borrowDate = dayFormat.parse(beginDate);
-            Date returnDate = dayFormat.parse(endDate);
+            Date returnDate;
+            
+            if(endDate.equals(""))
+                returnDate = dayFormat.parse("01/01/2020");
+            else 
+                 returnDate = dayFormat.parse(endDate);
             
             long borrowDay = borrowDate.getTime();
             long returnDay = returnDate.getTime();
