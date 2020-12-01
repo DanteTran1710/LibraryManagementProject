@@ -73,11 +73,10 @@ public class TradeInforsController implements Initializable{
     
     public void switchtoChoice(ActionEvent event) throws IOException  {
             
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Choose to choice");
             alert.setContentText("Do you want to see your bill ?");
 
-            
             ButtonType btnYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
             ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
 
@@ -92,60 +91,50 @@ public class TradeInforsController implements Initializable{
             }
     }
     
-    public void noticeCompleteReturnForm(ActionEvent event){
-        String id = MethodNeeded.createUUID();    
-        
-        ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(), 
-                this.candidate1.getSelectionModel().getSelectedItem().toString(), 
-                this.nameCus.getText(), (int) this.bookCounted1.getValue(),
-                MethodNeeded.editFormmatDate(borrowDay1), MethodNeeded.getDateNow(),
-                (int)this.stolenBookCounted.getValue(), (int)this.tornBookCounted.getValue(),10000);
-        
-        try {
-            ReturnInforServices.addReturnInfor(ri);
-            
-            Alert alert = new Alert(Alert.AlertType.NONE);
-            alert.setContentText("Your returning-fill informations is done!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES)
-            alert.close();
-            
-        } catch (SQLException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Error completed! Please try again");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES)
-                alert.close();
-        }
+    public void completeReturnForm(ActionEvent event) throws IOException {
+        if (!this.nameCus.getText().equals("")
+                && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
+                && !this.idCus.getText().equals("") && this.borrowDay1.getEditor().getText().equals("")) {
+            String id = MethodNeeded.createUUID();
 
+            ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(),
+                    this.candidate1.getSelectionModel().getSelectedItem().toString(),
+                    this.nameCus.getText(), (int) this.bookCounted1.getValue(),
+                    MethodNeeded.editFormmatDate(borrowDay1), MethodNeeded.getDateNow(),
+                    (int) this.stolenBookCounted.getValue(), (int) this.tornBookCounted.getValue());
+
+            try {
+                ReturnInforServices.addReturnInfor(ri);
+
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                alert.setContentText("Your returning-fill informations is done!");
+                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+                if (alert.showAndWait().get() == ButtonType.YES) {
+                    alert.close();
+                }
+
+            } catch (SQLException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Error completed! Please try again");
+                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+                if (alert.showAndWait().get() == ButtonType.YES) {
+                    alert.close();
+                }
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please complete your form before submit!");
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES) {
+                alert.close();
+            }
+        }
     }
     
-    public void noticeCompleteBorrowForm(ActionEvent event){
-        String id = MethodNeeded.createUUID();
-        
-        BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText()
-                ,this.candidate.getSelectionModel().getSelectedItem().toString(),
-              (int) this.bookCounted.getValue(), 
-                MethodNeeded.editFormmatDate(borrowDay),
-                MethodNeeded.editFormmatDate(returnDay));
-            
-        try {
-            BorrowInforServices.addBorrowInfor(bi);
-            
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Your borrow-fill informations is done!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES)
-                alert.close();
-        } catch (SQLException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Error completed! Please try again later");
-            alert.getButtonTypes().setAll(new ButtonType("OK"
-                    ,ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES)
-                alert.close();
-        }
-
+    public void noticeCompleteBorrowForm(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Completed! Move to choose book!");
     }
 
     public void checkoutMC(ActionEvent event){
@@ -166,6 +155,44 @@ public class TradeInforsController implements Initializable{
         } catch (SQLException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Your card is not exist");
+        }
+    }
+    
+    public void loadB(ActionEvent event){
+        try {
+            loadBook(tbBook);
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Load Book incompleted! Please try again later");
+        }
+    }
+    
+    public void completedBorrowBook(ActionEvent event) {
+        String id = MethodNeeded.createUUID();
+
+        BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
+                 this.candidate.getSelectionModel().getSelectedItem().toString(),
+                (int) this.bookCounted.getValue(),
+                MethodNeeded.editFormmatDate(borrowDay),
+                MethodNeeded.editFormmatDate(returnDay));
+
+        try {
+            BorrowInforServices.addBorrowInfor(bi);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Your borrow-fill informations is done!");
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES) {
+                alert.close();
+            }
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error completed! Please try again later");
+            alert.getButtonTypes().setAll(new ButtonType("OK",
+                     ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES) {
+                alert.close();
+            }
         }
     }
     
@@ -210,11 +237,5 @@ public class TradeInforsController implements Initializable{
         }
         this.candidate1.getItems().addAll(listS);
      
-        try {
-            loadBook(tbBook);
-        } catch (SQLException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Cant find any book from database");
-        }
     }
 }
