@@ -17,8 +17,9 @@ public class BorrowInfor {
     private int book;
     private String borrowDate;
     private String returnDate;
+    private String idB;
 
-    public BorrowInfor(String id, String objectName, String phoneNum, String object, int book, String borrowDate, String returnDate) {
+    public BorrowInfor(String id, String objectName, String phoneNum, String object, int book, String borrowDate, String returnDate, String idB) {
         this.id = id;
         this.objectName = objectName;
         this.phoneNum = phoneNum;
@@ -26,13 +27,9 @@ public class BorrowInfor {
         this.book = book;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
+        this.idB = idB;
     }
 
-    @Override
-    public String toString() {
-        return this.phoneNum; //To change body of generated methods, choose Tools | Templates.
-    }
-    
     /**
      * @return the id
      */
@@ -73,6 +70,20 @@ public class BorrowInfor {
      */
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+    /**
+     * @return the object
+     */
+    public String getObject() {
+        return object;
+    }
+
+    /**
+     * @param object the object to set
+     */
+    public void setObject(String object) {
+        this.object = object;
     }
 
     /**
@@ -118,16 +129,17 @@ public class BorrowInfor {
     }
 
     /**
-     * @return the object
+     * @return the idB
      */
-    public String getObject() {
-        return object;
+    public String getIdB() {
+        return idB;
     }
 
     /**
-     * @param object the object to set
+     * @param idB the idB to set
      */
-    public void setObject(String object) {
-        this.object = object;
+    public void setIdB(String idB) {
+        this.idB = idB;
     }
+
 }

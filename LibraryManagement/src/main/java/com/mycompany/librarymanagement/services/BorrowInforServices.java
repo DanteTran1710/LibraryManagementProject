@@ -23,7 +23,7 @@ public class BorrowInforServices {
     public static void addBorrowInfor(BorrowInfor infor) throws SQLException {
         Connection connect = jdbcUtils.getConnection();
         String query = "insert into borrowinfor(id, ObjectName, PhoneNumber,"
-                + " Object, Book, BorrowDate, ReturnDate) values (?, ?, ?, ?, ?, ?, ?)";
+                + " Object, Book, BorrowDate, ReturnDate, idBs) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
         connect.setAutoCommit(false);
 
@@ -35,6 +35,7 @@ public class BorrowInforServices {
         stm.setInt(5, infor.getBook());
         stm.setString(6, infor.getBorrowDate());
         stm.setString(7, infor.getReturnDate());
+        stm.setString(8, infor.getIdB());
 
         stm.executeUpdate();
 
@@ -50,7 +51,7 @@ public class BorrowInforServices {
         while (rs.next()) {
             BorrowInfor bi = new BorrowInfor(rs.getString("id"), rs.getString("ObjectName"),
                     rs.getString("PhoneNumber"), rs.getString("Object"), rs.getInt("Book"),
-                    rs.getString("BorrowDate"), rs.getString("ReturnDate"));
+                    rs.getString("BorrowDate"), rs.getString("ReturnDate"), rs.getString("idBs"));
            
              list.add(bi);
          }

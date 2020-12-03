@@ -155,15 +155,15 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="781.0">
                                        <children>
                                           <TableView fx:id="tbBook" layoutY="-2.0" prefHeight="418.0" prefWidth="780.0" />
-                                          <Button layoutX="490.0" layoutY="425.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="82.0" text="THÊM" />
                                           <Button layoutX="591.0" layoutY="425.0" mnemonicParsing="false" onAction="#loadB" prefHeight="41.0" prefWidth="82.0" text="CẬP NHẬT" />
-                                          <Text layoutX="20.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NHẬP MÃ SÁCH ĐỂ MƯỢN">
+                                          <Text layoutX="14.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NHẬP MÃ SÁCH ĐỂ MƯỢN">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <TextField layoutX="249.0" layoutY="433.0" prefHeight="26.0" prefWidth="230.0" />
+                                          <TextField fx:id="idBs" layoutX="227.0" layoutY="432.0" prefHeight="26.0" prefWidth="230.0" />
                                           <Button layoutX="688.0" layoutY="425.0" mnemonicParsing="false" onAction="#completedBorrowBook" prefHeight="41.0" prefWidth="82.0" text="XÁC NHẬN" />
+                                          <Text layoutX="474.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="( Các mã sách cách nhau bởi dấu  &quot;,&quot; )" wrappingWidth="82.40000000000009" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -283,6 +283,6 @@
          </font>
       </Label>
       <Label layoutX="640.0" layoutY="29.0" />
-      <Button layoutX="683.0" layoutY="17.0" mnemonicParsing="false" onAction="#swtichToIndex" prefHeight="41.0" prefWidth="82.0" text="TRỞ LẠI" />
+      <Button layoutX="683.0" layoutY="17.0" mnemonicParsing="false" onAction="#swtichToIndex" prefHeight="41.0" prefWidth="82.0" text="TRANG CHỦ" />
    </children>
 </AnchorPane>

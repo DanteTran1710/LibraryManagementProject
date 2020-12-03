@@ -56,6 +56,7 @@ public class TradeInforsController implements Initializable{
     @FXML Text stateCard;
     @FXML DatePicker borrowDay;
     @FXML TableView<Book> tbBook;
+    @FXML TextField idBs;
     
     // Returning Book
     @FXML TextField nameCus;
@@ -66,8 +67,8 @@ public class TradeInforsController implements Initializable{
     @FXML Spinner tornBookCounted;
     @FXML Spinner stolenBookCounted;
     
-    public void swtichToIndex(ActionEvent event) throws IOException
-    {
+    
+    public void swtichToIndex(ActionEvent event) throws IOException {
         App.setRoot("Index");
     }
     
@@ -135,6 +136,7 @@ public class TradeInforsController implements Initializable{
     public void noticeCompleteBorrowForm(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("Completed! Move to choose book!");
+        alert.showAndWait();
     }
 
     public void checkoutMC(ActionEvent event){
@@ -145,6 +147,7 @@ public class TradeInforsController implements Initializable{
         } catch (SQLException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Your card is not exist");
+            alert.showAndWait();
         }
     }
 
@@ -154,7 +157,8 @@ public class TradeInforsController implements Initializable{
                     BookServices.checkBook(this.bookName.getText()));
         } catch (SQLException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Your card is not exist");
+            alert.setContentText("Your book is not exist");
+            alert.showAndWait();
         }
     }
     
@@ -168,34 +172,46 @@ public class TradeInforsController implements Initializable{
     }
     
     public void completedBorrowBook(ActionEvent event) {
-        String id = MethodNeeded.createUUID();
+        if (!this.name.getText().equals("") && !this.phoneNumber.getText().equals("")
+                && !this.idBs.getText().equals("") && !this.borrowDay.getEditor().getText().equals("")
+                && !this.returnDay.getEditor().getText().equals("")
+                && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("")) {
+            String id = MethodNeeded.createUUID();
 
-        BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
-                 this.candidate.getSelectionModel().getSelectedItem().toString(),
-                (int) this.bookCounted.getValue(),
-                MethodNeeded.editFormmatDate(borrowDay),
-                MethodNeeded.editFormmatDate(returnDay));
+            BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
+                    this.candidate.getSelectionModel().getSelectedItem().toString(),
+                    (int) this.bookCounted.getValue(),
+                    MethodNeeded.editFormmatDate(borrowDay),
+                    MethodNeeded.editFormmatDate(returnDay), this.idBs.getText());
 
-        try {
-            BorrowInforServices.addBorrowInfor(bi);
+            try {
+                BorrowInforServices.addBorrowInfor(bi);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Your borrow-fill informations is done!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
-                alert.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Your borrow-fill informations is done!");
+                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+                if (alert.showAndWait().get() == ButtonType.YES) {
+                    alert.close();
+                }
+            } catch (SQLException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Error completed! Please try again later");
+                alert.getButtonTypes().setAll(new ButtonType("OK",
+                        ButtonBar.ButtonData.YES));
+                if (alert.showAndWait().get() == ButtonType.YES) {
+                    alert.close();
+                }
             }
-        } catch (SQLException ex) {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Error completed! Please try again later");
-            alert.getButtonTypes().setAll(new ButtonType("OK",
-                     ButtonBar.ButtonData.YES));
+            alert.setContentText("Please complete your form before submit!");
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
             if (alert.showAndWait().get() == ButtonType.YES) {
                 alert.close();
             }
         }
     }
-    
+
     public static void loadBook(TableView<Book> tbv) throws SQLException{
          TableColumn colSTT = new TableColumn("Book Code");
          colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
@@ -230,11 +246,7 @@ public class TradeInforsController implements Initializable{
         List<String> listS = new ArrayList<>();
         listS.add("SV");
         listS.add("GV");
-        try {
-            this.candidate.getItems().addAll(BookServices.getBook());
-        } catch (SQLException ex) {
-            Logger.getLogger(TradeInforsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.candidate.getItems().addAll(listS);
         this.candidate1.getItems().addAll(listS);
      
     }

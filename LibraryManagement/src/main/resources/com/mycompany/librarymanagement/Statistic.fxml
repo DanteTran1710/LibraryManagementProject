@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="587.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.StatisticController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="380.0" layoutX="4.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="662.0" />
-      <Text fontSmoothingType="LCD" layoutX="166.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE STATISTIC REPORT BY YEAR" wrappingWidth="426.9932861328125">
+      <Text fontSmoothingType="LCD" layoutX="122.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THỐNG KÊ SÁCH TRONG NĂM" wrappingWidth="426.9932861328125">
          <font>
             <Font size="25.0" />
          </font>
@@ -97,7 +97,7 @@
          </font>
       </Text>
       <Button layoutX="568.0" layoutY="515.0" mnemonicParsing="false" onAction="#checkStatistic" prefHeight="41.0" prefWidth="82.0" text="KIỂM TRA" />
-      <Text layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course">
+      <Text layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUÝ">
          <font>
             <Font size="20.0" />
          </font>
