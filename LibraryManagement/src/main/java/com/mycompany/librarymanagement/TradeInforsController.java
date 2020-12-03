@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 
 import javafx.event.ActionEvent;
@@ -53,6 +51,7 @@ public class TradeInforsController implements Initializable{
     @FXML TextField bookName;
     @FXML Text stateBook;
     @FXML TextField cardName;
+    @FXML TextField cardID;
     @FXML Text stateCard;
     @FXML DatePicker borrowDay;
     @FXML TableView<Book> tbBook;
@@ -95,7 +94,7 @@ public class TradeInforsController implements Initializable{
     public void completeReturnForm(ActionEvent event) throws IOException {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
-                && !this.idCus.getText().equals("") && this.borrowDay1.getEditor().getText().equals("")) {
+                && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")) {
             String id = MethodNeeded.createUUID();
 
             ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(),
@@ -106,8 +105,12 @@ public class TradeInforsController implements Initializable{
 
             try {
                 ReturnInforServices.addReturnInfor(ri);
+                String[] sub = BorrowInforServices.getIdBsFromBI(this.idCus.getText()).split(",");
+                for (int i = 0; i < sub.length; i++) {
+                    BookServices.updateStateBook(sub[i], "Available");
+                }
 
-                Alert alert = new Alert(Alert.AlertType.NONE);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Your returning-fill informations is done!");
                 alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
                 if (alert.showAndWait().get() == ButtonType.YES) {
@@ -175,17 +178,21 @@ public class TradeInforsController implements Initializable{
         if (!this.name.getText().equals("") && !this.phoneNumber.getText().equals("")
                 && !this.idBs.getText().equals("") && !this.borrowDay.getEditor().getText().equals("")
                 && !this.returnDay.getEditor().getText().equals("")
-                && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("")) {
+                && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("") 
+                && !this.cardID.getText().equals("")) {
             String id = MethodNeeded.createUUID();
 
             BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
                     this.candidate.getSelectionModel().getSelectedItem().toString(),
                     (int) this.bookCounted.getValue(),
                     MethodNeeded.editFormmatDate(borrowDay),
-                    MethodNeeded.editFormmatDate(returnDay), this.idBs.getText());
+                    MethodNeeded.editFormmatDate(returnDay), this.idBs.getText(), this.cardID.getText());
 
             try {
                 BorrowInforServices.addBorrowInfor(bi);
+                String[] sub = this.idBs.getText().split(",");
+                for(int i=0; i < sub.length; i++)
+                    BookServices.updateStateBook(sub[i],"Borrowed");
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Your borrow-fill informations is done!");

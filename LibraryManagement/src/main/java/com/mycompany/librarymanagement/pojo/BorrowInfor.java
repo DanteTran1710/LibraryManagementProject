@@ -18,8 +18,9 @@ public class BorrowInfor {
     private String borrowDate;
     private String returnDate;
     private String idB;
+    private String idMC;
 
-    public BorrowInfor(String id, String objectName, String phoneNum, String object, int book, String borrowDate, String returnDate, String idB) {
+    public BorrowInfor(String id, String objectName, String phoneNum, String object, int book, String borrowDate, String returnDate, String idB, String idMC) {
         this.id = id;
         this.objectName = objectName;
         this.phoneNum = phoneNum;
@@ -28,6 +29,7 @@ public class BorrowInfor {
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.idB = idB;
+        this.idMC = idMC;
     }
 
     /**
@@ -142,4 +144,18 @@ public class BorrowInfor {
         this.idB = idB;
     }
 
+    /**
+     * @return the idMC
+     */
+    public String getIdMC() {
+        return idMC;
+    }
+
+    /**
+     * @param idMC the idMC to set
+     */
+    public void setIdMC(String idMC) {
+        this.idMC = idMC;
+    }
+    
 }

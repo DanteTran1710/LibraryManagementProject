@@ -5,8 +5,7 @@ module com.mycompany.librarymanagement {
     requires javafx.base;
     requires javafx.graphics;
     requires java.sql;
-//    requires com.mycompany.librarymanagement;
-
+    
     opens com.mycompany.librarymanagement to javafx.fxml;
     exports com.mycompany.librarymanagement;
     exports com.mycompany.librarymanagement.pojo;

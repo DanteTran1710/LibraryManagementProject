@@ -55,5 +55,20 @@ public class BookServices {
         }
         return state;
     }
-     
+    
+     public static void updateStateBook(String id, String state) throws SQLException {
+        String query = "Update book set State=? where idBook=?";
+
+        Connection connect = jdbcUtils.getConnection();
+        
+        connect.setAutoCommit(false);
+        
+        PreparedStatement stm = connect.prepareStatement(query);
+        stm.setString(1, state);
+        stm.setString(2, id);
+
+        stm.executeUpdate();
+        
+        connect.commit();
+    }
 }

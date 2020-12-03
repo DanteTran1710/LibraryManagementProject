@@ -21,20 +21,21 @@ import java.util.List;
 public class ReturnInforServices {
         public static void addReturnInfor(ReturnInfor infor) throws SQLException{
         Connection connect = jdbcUtils.getConnection();
-        String query = "insert into returninfor(id, Object, Book, BorrowDate, "
-                + "StolenBook, TornBook, ObjectName, idMC) values (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into returninfor(id, idMC, Object, ObjectName, Book, BorrowDate, "
+                + "ReturnDate, StolenBook, TornBook) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         connect.setAutoCommit(false);
         
         PreparedStatement stm = connect.prepareCall(query);
         stm.setString(1, infor.getId());
-        stm.setString(2, infor.getObject());
-        stm.setInt(3, infor.getBook());
-        stm.setString(4, infor.getBorrowDate());
-        stm.setInt(5, infor.getStolenBook());
-        stm.setInt(5, infor.getTornBook());
-        stm.setString(7, infor.getObjectName());
-        stm.setString(8, infor.getIdMC());
+        stm.setString(2, infor.getIdMC());
+        stm.setString(3, infor.getObject());
+        stm.setString(4, infor.getObjectName());
+        stm.setInt(5, infor.getBook());
+        stm.setString(6, infor.getBorrowDate());
+        stm.setString(7, infor.getReturnDate());
+        stm.setInt(8, infor.getStolenBook());
+        stm.setInt(9, infor.getTornBook());
         
         stm.executeUpdate();
         

@@ -23,7 +23,7 @@ public class BorrowInforServices {
     public static void addBorrowInfor(BorrowInfor infor) throws SQLException {
         Connection connect = jdbcUtils.getConnection();
         String query = "insert into borrowinfor(id, ObjectName, PhoneNumber,"
-                + " Object, Book, BorrowDate, ReturnDate, idBs) values (?, ?, ?, ?, ?, ?, ?, ?)";
+                + " Object, Book, BorrowDate, ReturnDate, idBs, idMC) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         connect.setAutoCommit(false);
 
@@ -36,6 +36,7 @@ public class BorrowInforServices {
         stm.setString(6, infor.getBorrowDate());
         stm.setString(7, infor.getReturnDate());
         stm.setString(8, infor.getIdB());
+        stm.setString(9, infor.getIdMC());
 
         stm.executeUpdate();
 
@@ -51,10 +52,25 @@ public class BorrowInforServices {
         while (rs.next()) {
             BorrowInfor bi = new BorrowInfor(rs.getString("id"), rs.getString("ObjectName"),
                     rs.getString("PhoneNumber"), rs.getString("Object"), rs.getInt("Book"),
-                    rs.getString("BorrowDate"), rs.getString("ReturnDate"), rs.getString("idBs"));
-           
-             list.add(bi);
-         }
-         return list;
+                    rs.getString("BorrowDate"), rs.getString("ReturnDate"), rs.getString("idBs"), rs.getString("idMC"));
+
+            list.add(bi);
+        }
+        return list;
+    }
+
+    public static String getIdBsFromBI(String id) throws SQLException {
+        String query = "Select idBs from borrowinfor where idMC=?";
+
+        Connection connect = jdbcUtils.getConnection();
+        PreparedStatement stm = connect.prepareStatement(query);
+        stm.setString(1, id);
+
+        ResultSet rs = stm.executeQuery();
+        String state = "";
+        while (rs.next()) {
+            state = rs.getString("idBs");
+        }
+        return state;
     }
 }
