@@ -24,15 +24,14 @@ DROP TABLE IF EXISTS `returninfor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `returninfor` (
   `id` varchar(7) NOT NULL,
+  `idMC` varchar(7) NOT NULL,
   `Object` varchar(5) NOT NULL,
+  `ObjectName` varchar(45) NOT NULL,
   `Book` int NOT NULL,
   `BorrowDate` varchar(15) NOT NULL,
-  `StolenBook` int NOT NULL,
-  `TornBook` int NOT NULL,
-  `ObjectName` varchar(45) NOT NULL,
-  `idMC` varchar(7) NOT NULL,
-  `LateDate` varchar(15) DEFAULT NULL,
-  `Fine` float DEFAULT NULL,
+  `ReturnDate` varchar(15) NOT NULL,
+  `StolenBook` int DEFAULT NULL,
+  `TornBook` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_returninfor_membercard_idx` (`idMC`),
   CONSTRAINT `fk_returninfor_membercard` FOREIGN KEY (`idMC`) REFERENCES `membercard` (`idMemberCard`)
@@ -45,6 +44,7 @@ CREATE TABLE `returninfor` (
 
 LOCK TABLES `returninfor` WRITE;
 /*!40000 ALTER TABLE `returninfor` DISABLE KEYS */;
+INSERT INTO `returninfor` VALUES ('123','1','GV','Thanh',1,'20/11/2020','11/6/2020',3,2),('456','2','SV','Trang',2,'29/11/2020','30/11/2020',4,2);
 /*!40000 ALTER TABLE `returninfor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-29 16:29:02
+-- Dump completed on 2020-12-03 19:38:03

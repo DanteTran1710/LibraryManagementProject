@@ -26,10 +26,11 @@ CREATE TABLE `book` (
   `idBook` varchar(7) NOT NULL,
   `BookName` varchar(45) NOT NULL,
   `AuthorName` varchar(45) NOT NULL,
-  `Decriptions` varchar(45) NOT NULL,
+  `Description` varchar(1000) NOT NULL,
   `Release` varchar(15) NOT NULL,
   `PlaceRelease` varchar(45) NOT NULL,
   `State` varchar(10) NOT NULL,
+  `Category` varchar(20) NOT NULL,
   PRIMARY KEY (`idBook`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +41,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES ('123','Mắt Biếc','Nguyễn Ngọc Ngạn','Câu chuyện tình cảm','17/09/2015','NXB Kim Đồng','Borrowed');
+INSERT INTO `book` VALUES ('123','Mắt Biếc','Nguyễn Ngọc Ngạn','Câu chuyện tình cảm','17/09/2015','NXB Kim Đồng','Borrowed',''),('456','Dế mèn phiêu lưu ký','Tô Hoài','Câu chuyện ngụ ngôn','20/8/2010','NXB Kim Đồng','Availabled','');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-29 16:29:02
+-- Dump completed on 2020-12-03 19:38:02
