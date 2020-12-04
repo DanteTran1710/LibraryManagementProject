@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class BorrowInforServices {
 
-    public static void addBorrowInfor(BorrowInfor infor) throws SQLException {
+    public static boolean addBorrowInfor(BorrowInfor infor) throws SQLException {
         Connection connect = jdbcUtils.getConnection();
         String query = "insert into borrowinfor(id, ObjectName, PhoneNumber,"
                 + " Object, Book, BorrowDate, ReturnDate, idBs, idMC) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -41,6 +41,8 @@ public class BorrowInforServices {
         stm.executeUpdate();
 
         connect.commit();
+        
+        return true;
     }
    
     public static List<BorrowInfor> getBorrowInfor() throws SQLException {
