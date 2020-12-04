@@ -19,7 +19,7 @@ import java.util.List;
  * @author hp
  */
 public class ReturnInforServices {
-        public static void addReturnInfor(ReturnInfor infor) throws SQLException{
+        public static boolean addReturnInfor(ReturnInfor infor) throws SQLException{
         Connection connect = jdbcUtils.getConnection();
         String query = "insert into returninfor(id, idMC, Object, ObjectName, Book, BorrowDate, "
                 + "ReturnDate, StolenBook, TornBook) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -40,6 +40,8 @@ public class ReturnInforServices {
         stm.executeUpdate();
         
         connect.commit();
+        
+        return true;
     }
         
     public static List<ReturnInfor> getReturnInfor() throws SQLException{

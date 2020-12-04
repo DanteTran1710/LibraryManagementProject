@@ -5,11 +5,16 @@
  */
 package com.mycompany.librarymanagement.test;
 
+import com.mycompany.librarymanagement.pojo.ReturnInfor;
+import com.mycompany.librarymanagement.services.ReturnInforServices;
 import com.mycompany.librarymanagement.services.jdbcUtils;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.junit.Test;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -33,5 +38,34 @@ public class ReturnInforTester {
         } catch (SQLException ex) {
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @Test
+    public void testAddRI(){
+        ReturnInfor ri = new ReturnInfor("123456", "2", "SV", "Tan Thanh", 2, "20/10/2020", "22/11/2020", 1, 2);
+        
+        try {
+            boolean kq = ReturnInforServices.addReturnInfor(ri);
+            
+            Assert.assertTrue(kq);
+            System.err.println("Add return form successfully!");
+        } catch (SQLException ex) {
+            
+            System.err.println("Add return form successfully!");
+            Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @Test
+    public void testGetListReturnInfor(){
+        try {
+            List<ReturnInfor> list = ReturnInforServices.getReturnInfor();
+            
+            Assert.assertEquals(7, list.size());
+            System.err.println("Test get list return-infor successfully!");
+        } catch (SQLException ex) {
+            System.err.println("Test get list return-infor unsuccessfully!");
+            Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }
