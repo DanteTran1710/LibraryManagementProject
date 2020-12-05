@@ -44,7 +44,7 @@ CREATE TABLE `returninfor` (
 
 LOCK TABLES `returninfor` WRITE;
 /*!40000 ALTER TABLE `returninfor` DISABLE KEYS */;
-INSERT INTO `returninfor` VALUES ('123','1','GV','Thanh',1,'20/11/2020','11/6/2020',3,2),('456','2','SV','Trang',2,'29/11/2020','30/11/2020',4,2);
+INSERT INTO `returninfor` VALUES ('10ff9','1','GV','tran tan thanh',2,'08/12/2020','03/12/2020',2,2),('123','1','GV','Thanh',1,'20/11/2020','11/6/2020',3,2),('123456','2','SV','Tan Thanh',2,'20/10/2020','22/11/2020',1,2),('456','2','SV','Trang',2,'29/11/2020','30/11/2020',4,2),('79ab2','1','SV','tan thanh',2,'15/12/2020','03/12/2020',2,2),('8b58c','1','GV','tran tan thanh',2,'08/12/2020','03/12/2020',2,2),('f7856','1','GV','Tuyet Vi',2,'18/12/2020','03/12/2020',2,2);
 /*!40000 ALTER TABLE `returninfor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-03 19:38:03
+-- Dump completed on 2020-12-04 22:31:34

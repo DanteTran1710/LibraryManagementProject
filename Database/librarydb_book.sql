@@ -41,7 +41,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES ('123','Mắt Biếc','Nguyễn Ngọc Ngạn','Câu chuyện tình cảm','17/09/2015','NXB Kim Đồng','Borrowed',''),('456','Dế mèn phiêu lưu ký','Tô Hoài','Câu chuyện ngụ ngôn','20/8/2010','NXB Kim Đồng','Availabled','');
+INSERT INTO `book` VALUES ('123','Mắt Biếc','Nguyễn Ngọc Ngạn','Câu chuyện tình cảm','17/09/2015','NXB Kim Đồng','Borrowed',''),('456','Dế mèn phiêu lưu ký','Tô Hoài','Câu chuyện ngụ ngôn','20/8/2010','NXB Kim Đồng','Available','');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-03 19:38:02
+-- Dump completed on 2020-12-04 22:31:33
