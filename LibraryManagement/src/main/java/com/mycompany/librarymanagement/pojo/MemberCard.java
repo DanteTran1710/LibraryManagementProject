@@ -20,15 +20,25 @@ public class MemberCard {
     private String DOB;
     private String object;
     private String stateCard;
+    private String userName;
+    private String gmail;
+    private String sex;
+    private String phoneNum;
+    private String major;
 
-    public MemberCard(String idMC, String memberName, String DOB, String object, String stateCard) {
+    public MemberCard(String idMC, String memberName, String DOB, String object, String stateCard, String userName, String gmail, String sex, String phoneNum, String major) {
         this.idMC = idMC;
         this.memberName = memberName;
         this.DOB = DOB;
         this.object = object;
         this.stateCard = stateCard;
+        this.userName = userName;
+        this.gmail = gmail;
+        this.sex = sex;
+        this.phoneNum = phoneNum;
+        this.major = major;
     }
-    
+
     /**
      * @return the idMC
      */
@@ -85,6 +95,9 @@ public class MemberCard {
         this.object = object;
     }
 
+    /**
+     * @return the stateCard
+     */
     public String getStateCard() {
         return stateCard;
     }
@@ -94,5 +107,75 @@ public class MemberCard {
      */
     public void setStateCard(String stateCard) {
         this.stateCard = stateCard;
+    }
+
+    /**
+     * @return the userName
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * @param userName the userName to set
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    /**
+     * @return the gmail
+     */
+    public String getGmail() {
+        return gmail;
+    }
+
+    /**
+     * @param gmail the gmail to set
+     */
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
+    }
+
+    /**
+     * @return the sex
+     */
+    public String getSex() {
+        return sex;
+    }
+
+    /**
+     * @param sex the sex to set
+     */
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    /**
+     * @return the phoneNum
+     */
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    /**
+     * @param phoneNum the phoneNum to set
+     */
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    /**
+     * @return the major
+     */
+    public String getMajor() {
+        return major;
+    }
+
+    /**
+     * @param major the major to set
+     */
+    public void setMajor(String major) {
+        this.major = major;
     }
 }

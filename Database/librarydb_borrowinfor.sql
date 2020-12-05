@@ -31,7 +31,9 @@ CREATE TABLE `borrowinfor` (
   `BorrowDate` varchar(15) NOT NULL,
   `ReturnDate` varchar(15) NOT NULL,
   `idBs` varchar(70) NOT NULL,
-  PRIMARY KEY (`id`)
+  `idMC` varchar(7) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_borrowinfor_membercard_idx` (`idMC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -41,7 +43,7 @@ CREATE TABLE `borrowinfor` (
 
 LOCK TABLES `borrowinfor` WRITE;
 /*!40000 ALTER TABLE `borrowinfor` DISABLE KEYS */;
-INSERT INTO `borrowinfor` VALUES ('0c882','Thuy Trang','123456789','SV',5,'23/12/2020','30/12/2020','123,456'),('99e6e','Tan Thanh','0984381617','SV',2,'11/11/2020','04/11/2020',''),('b7935','Tan Thanh','0987313189','SV',1,'11/11/2020','19/11/2020',''),('e73f4','Thuy Trang','0792677007','SV',2,'18/11/2020','26/11/2020','');
+INSERT INTO `borrowinfor` VALUES ('123','Tan Thanh','0984381617','SV',2,'17/10/2020','27/10/2020','123','1'),('569871','Truc Lam','0321456987','SV',2,'11/11/2020','18/11/2020','123','1');
 /*!40000 ALTER TABLE `borrowinfor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-03 19:38:01
+-- Dump completed on 2020-12-04 22:31:32

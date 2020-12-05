@@ -28,6 +28,11 @@ CREATE TABLE `membercard` (
   `DOB` varchar(15) NOT NULL,
   `Object` varchar(20) NOT NULL,
   `StateCard` varchar(10) NOT NULL,
+  `UserName` varchar(20) NOT NULL,
+  `Gmail` varchar(50) NOT NULL,
+  `Sex` varchar(10) NOT NULL,
+  `PhoneNumber` varchar(11) NOT NULL,
+  `Major` varchar(50) NOT NULL,
   PRIMARY KEY (`idMemberCard`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +43,7 @@ CREATE TABLE `membercard` (
 
 LOCK TABLES `membercard` WRITE;
 /*!40000 ALTER TABLE `membercard` DISABLE KEYS */;
-INSERT INTO `membercard` VALUES ('1','Tan Thanh','2000-10-17','SV','Enable'),('2','Anh Thy','2000-11-09','SV','Disable'),('3','Quang Tung','2000-03-13','GV','Enable');
+INSERT INTO `membercard` VALUES ('1','Tan Thanh','2000-10-17','SV','Enable','thanh','thanh@gmail.com','Male','0987635421','IT'),('2','Anh Thy','2000-11-09','SV','Disable','','','','',''),('3','Quang Tung','2000-03-13','GV','Enable','','','','','');
 /*!40000 ALTER TABLE `membercard` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-03 19:38:02
+-- Dump completed on 2020-12-04 22:31:33
