@@ -23,26 +23,18 @@ public class LoginController {
 
     public void Login(ActionEvent event) throws Exception {
         if (MemberCardServices.checkLogin(this.txtUserName.getText(), this.txtPassword.getText())) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Log in successfully!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
+            alert.showAndWait();
+            if (MemberCardServices.checkObject(this.txtUserName.getText()).equals("Admin"))
+                App.setRoot("Statistic");
+            else
                 App.setRoot("TradeInfors");
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Log in unsuccessfully! Please try again!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
-                App.setRoot("Login");
-            }
         }
     }
-    
     public void switchtoSignUp(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Choose to move");
-        alert.setContentText("Choose the option");
+        alert.setContentText("Do you want to create an account?");
 
         ButtonType btnYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
         ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);

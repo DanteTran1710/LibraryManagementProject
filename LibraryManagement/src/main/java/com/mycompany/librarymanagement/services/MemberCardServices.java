@@ -73,12 +73,28 @@ public class MemberCardServices {
         stm.setString(2, pass);
         ResultSet rs = stm.executeQuery();
 
-        if(rs.next())
+        if (rs.next()) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
+    public static String checkObject(String nameUser) throws SQLException {
+        String query = "Select Object from membercard where UserName=?";
+
+        Connection connect = jdbcUtils.getConnection();
+        PreparedStatement stm = connect.prepareStatement(query);
+        stm.setString(1, nameUser);
+
+        ResultSet rs = stm.executeQuery();
+        String object = "";
+        while (rs.next()) {
+            object = rs.getString("Object");
+        }
+        return object;
+    }
+    
     public static String checkMemberCard(String id) throws SQLException {
         String query = "Select StateCard from membercard where idMemberCard=?";
 

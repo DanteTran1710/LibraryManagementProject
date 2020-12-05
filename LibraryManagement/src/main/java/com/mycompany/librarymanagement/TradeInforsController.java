@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 
 import javafx.event.ActionEvent;
@@ -94,7 +96,8 @@ public class TradeInforsController implements Initializable{
     public void completeReturnForm(ActionEvent event) throws IOException {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
-                && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")) {
+                && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
+                && verifyCharacter(this.nameCus) && verifyID(this.idCus)) {
             String id = MethodNeeded.createUUID();
 
             ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(),
@@ -137,31 +140,37 @@ public class TradeInforsController implements Initializable{
     }
     
     public void noticeCompleteBorrowForm(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Completed! Move to choose book!");
-        alert.showAndWait();
-    }
-
-    public void checkoutMC(ActionEvent event){
-        try {
-            this.stateCard.textProperty().set(
-                    MemberCardServices.checkMemberCard(this.cardName.getText()));
-
-        } catch (SQLException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Your card is not exist");
+        if(verifyNumText() && verifyCharacter(name) && verifyID(cardID)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Completed! Move to choose book!");
             alert.showAndWait();
         }
     }
 
+    public void checkoutMC(ActionEvent event) {
+        if (verifyID(this.cardName)) {
+            try {
+                this.stateCard.textProperty().set(
+                        MemberCardServices.checkMemberCard(this.cardName.getText()));
+
+            } catch (SQLException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Your card is not exist");
+                alert.showAndWait();
+            }
+        }
+    }
+
     public void checkoutBook(ActionEvent event) {
-        try {
-            this.stateBook.textProperty().set(
-                    BookServices.checkBook(this.bookName.getText()));
-        } catch (SQLException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Your book is not exist");
-            alert.showAndWait();
+        if (verifyCharacter(this.bookName)) {
+            try {
+                this.stateBook.textProperty().set(
+                        BookServices.checkBook(this.bookName.getText()));
+            } catch (SQLException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Your book is not exist");
+                alert.showAndWait();
+            }
         }
     }
     
@@ -243,8 +252,56 @@ public class TradeInforsController implements Initializable{
         tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
      }
     
+    public boolean verifyNumText(){
+        Pattern p = Pattern.compile("(0)?[0-9]{9}");
+        Matcher m = p.matcher(this.phoneNumber.getText());
+        
+        if(m.find() && m.group().equals(this.phoneNumber.getText())){
+            return true;
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please enter valid number!");
+            alert.showAndWait();
+            this.phoneNumber.clear();
+            return false;
+        }
+    }
+    
+    public boolean verifyCharacter(TextField txt) {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txt.getText());
+
+        if (m.find() && m.group().equals(txt.getText())) {
+            return true;
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please enter valid character!");
+            alert.showAndWait();
+            txt.clear();
+            return false;
+        }
+    }
+
+    public boolean verifyID(TextField txt) {
+        Pattern p = Pattern.compile("[a-zA-Z0-9]{5}+");
+        Matcher m = p.matcher(txt.getText());
+
+        if (m.find() && m.group().equals(txt.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please enter valid id!");
+            alert.showAndWait();
+            txt.clear();
+            return false;
+        }
+    }
+        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         MethodNeeded.addSpinnerValue(bookCounted);
         MethodNeeded.addSpinnerValue(bookCounted1);
         MethodNeeded.addSpinnerValue(stolenBookCounted);
