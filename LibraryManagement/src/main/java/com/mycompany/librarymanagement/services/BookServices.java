@@ -14,6 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  *
  * @author hp
@@ -41,27 +45,20 @@ public class BookServices {
          }
          return list;
     }
-    
-        public static List<Book> getBook2(String keyWord) throws SQLException{
-            String sql =("Select * from book");         
-            if(!keyWord.isEmpty())
-               sql += "Where idBook like ?";
-            
-            Connection connect =  jdbcUtils.getConnection();
-            PreparedStatement stm = connect.prepareStatement(sql);
-            
-            if(!keyWord.isEmpty())
-                stm.setString(1, String.format("%s", keyWord));
-            ResultSet rs = stm.executeQuery();
-         
-            List<Book> list = new ArrayList<>();
-            while(rs.next()){
-                Book b2 = new Book(rs.getString("idBook"), rs.getString("BookName"),
-                    rs.getString("AuthorName"));
-           
-                list.add(b2);
+   
+        public static  ObservableList<Book> getBook2(){
+            Connection connect =  jdbcUtils.getConnection();  
+            ObservableList<Book> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = connect.prepareStatement("Select idBook, BookName, AuthorName  from book");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                 list.add(new Book((rs.getString("idBook")),rs.getString("BookName")
+                         ,rs.getString("AuthorName")));  
             }
-         return list;
+        } catch (Exception ex) {            
+        }
+        return list;
     }
 //     
      public static String checkBook(String name) throws SQLException{

@@ -32,8 +32,11 @@ public class Book {
     public Book(String idB, String nameB, String authorName){
         this.idB = idB;
         this.nameB = nameB;
-        this.authorName = authorName;
-        
+        this.authorName = authorName;        
+    }
+    
+    public Book(String idB){
+        this.idB = idB;
     }
 
     /**
