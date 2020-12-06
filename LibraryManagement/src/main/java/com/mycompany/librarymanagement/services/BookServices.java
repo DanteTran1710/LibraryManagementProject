@@ -5,6 +5,7 @@
  */
 package com.mycompany.librarymanagement.services;
 
+
 import com.mycompany.librarymanagement.pojo.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,6 +39,28 @@ public class BookServices {
            
              list.add(b);
          }
+         return list;
+    }
+    
+        public static List<Book> getBook2(String keyWord) throws SQLException{
+            String sql =("Select * from book");         
+            if(!keyWord.isEmpty())
+               sql += "Where idBook like ?";
+            
+            Connection connect =  jdbcUtils.getConnection();
+            PreparedStatement stm = connect.prepareStatement(sql);
+            
+            if(!keyWord.isEmpty())
+                stm.setString(1, String.format("%s", keyWord));
+            ResultSet rs = stm.executeQuery();
+         
+            List<Book> list = new ArrayList<>();
+            while(rs.next()){
+                Book b2 = new Book(rs.getString("idBook"), rs.getString("BookName"),
+                    rs.getString("AuthorName"));
+           
+                list.add(b2);
+            }
          return list;
     }
 //     
