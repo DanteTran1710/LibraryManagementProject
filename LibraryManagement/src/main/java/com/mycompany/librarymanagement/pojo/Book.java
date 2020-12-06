@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.librarymanagement.pojo;
-/**
- *
- * @author hp
- */
+
 public class Book {
     private String idB;
     private String nameB;
