@@ -29,6 +29,7 @@ public class StatisticController implements Initializable{
     @FXML CheckBox ckCourse2;
     @FXML CheckBox ckCourse3;
     @FXML CheckBox ckCourse4;  
+    @FXML CheckBox ckCourseYear;
     @FXML Text amountBorrowBook;
     @FXML Text punctualityBorrowBook;
     @FXML Text lateBorrowBook;
@@ -62,15 +63,30 @@ public class StatisticController implements Initializable{
         int ssm, sldh, slth, slsh, sltk;
         ssm = sldh = slth = slsh = sltk = 0;
 
-        for (int i = 0; i < listRI.size(); i++) {
-            if (MethodNeeded.caculateDate(listRI.get(i).getReturnDate(), "") >= minDay
-                    && MethodNeeded.caculateDate(listRI.get(i).getReturnDate(), "") <= maxDay) {
-                ssm += listRI.get(i).getBook();
-                slsh += (listRI.get(i).getTornBook() + listRI.get(i).getStolenBook());
-                sltk += listRI.get(i).getFine();
-                if (MethodNeeded.caculateDate(listRI.get(i).getBorrowDate(),
-                        listRI.get(i).getReturnDate()) <= 30) {
-                    sldh += listRI.get(i).getBook();
+        if (minDay == 1 && maxDay == 365) {
+            for (int i = 0; i < listRI.size(); i++) {
+                if (MethodNeeded.caculateDate("", "") >= minDay
+                        && MethodNeeded.caculateDate("", "") <= maxDay) {
+                    ssm += listRI.get(i).getBook();
+                    slsh += (listRI.get(i).getTornBook() + listRI.get(i).getStolenBook());
+                    sltk += listRI.get(i).getFine();
+                    if (MethodNeeded.caculateDate(listRI.get(i).getBorrowDate(),
+                            listRI.get(i).getReturnDate()) <= 30) {
+                        sldh += listRI.get(i).getBook();
+                    }
+                }
+            }
+        } else{
+            for (int i = 0; i < listRI.size(); i++) {
+                if (MethodNeeded.caculateDate(listRI.get(i).getReturnDate(),"") >= minDay
+                        && MethodNeeded.caculateDate(listRI.get(i).getReturnDate(), "") <= maxDay) {
+                    ssm += listRI.get(i).getBook();
+                    slsh += (listRI.get(i).getTornBook() + listRI.get(i).getStolenBook());
+                    sltk += listRI.get(i).getFine();
+                    if (MethodNeeded.caculateDate(listRI.get(i).getBorrowDate(),
+                            listRI.get(i).getReturnDate()) <= 30) {
+                        sldh += listRI.get(i).getBook();
+                    }
                 }
             }
         }
@@ -99,6 +115,10 @@ public class StatisticController implements Initializable{
             minDay = 274;
             maxDay = 365;
             this.time.textProperty().set("October - December");
+        }
+        else if(this.ckCourseYear.isSelected()){
+            minDay = 1;
+            maxDay = 365;
         }
         else
             this.time.textProperty().set("");

@@ -46,24 +46,31 @@ public class MethodNeeded {
         s.setValueFactory(value);
     }
     
-    public static long caculateDate(String beginDate, String endDate){
+    public static long caculateDate(String beginDate, String endDate) {
         long result = 0;
-                
+
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Date borrowDate = dayFormat.parse(beginDate);
+            Date borrowDate;
             Date returnDate;
-            
-            if(endDate.equals(""))
+
+            if (beginDate.equals("")) {
+                borrowDate = dayFormat.parse("31/12/2020");
+            } else {
+                borrowDate = dayFormat.parse(beginDate);
+            }
+
+            if (endDate.equals("")) {
                 returnDate = dayFormat.parse("01/01/2020");
-            else 
-                 returnDate = dayFormat.parse(endDate);
-            
+            } else {
+                returnDate = dayFormat.parse(endDate);
+            }
+
             long borrowDay = borrowDate.getTime();
             long returnDay = returnDate.getTime();
-            
-            result = Math.abs(returnDay - borrowDay)/(24*60*60*1000);
-            
+
+            result = Math.abs(returnDay - borrowDay) / (24 * 60 * 60 * 1000);
+
         } catch (ParseException ex) {
             Logger.getLogger(MethodNeeded.class.getName()).log(Level.SEVERE, null, ex);
         }
