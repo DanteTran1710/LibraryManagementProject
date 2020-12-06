@@ -33,7 +33,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class SearchController implements Initializable {
 
-    
     ObservableList<Book> dataList;   
     int index = -1;
     Connection conn = null;
