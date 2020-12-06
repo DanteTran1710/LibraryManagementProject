@@ -28,8 +28,9 @@ public class ReturnInfor {
     private String returnDate;
     private int stolenBook;
     private int tornBook;
+    private double fine;
 
-    public ReturnInfor(String id, String idMC, String object, String objectName, int book, String borrowDate, String returnDate, int stolenBook, int tornBook) {
+    public ReturnInfor(String id, String idMC, String object, String objectName, int book, String borrowDate, String returnDate, int stolenBook, int tornBook, double fine) {
         this.id = id;
         this.idMC = idMC;
         this.object = object;
@@ -39,6 +40,7 @@ public class ReturnInfor {
         this.returnDate = returnDate;
         this.stolenBook = stolenBook;
         this.tornBook = tornBook;
+        this.fine = fine;
     }
 
     /**
@@ -170,4 +172,17 @@ public class ReturnInfor {
     /**
      * @return the fine
      */
+    public double getFine() {
+        return fine;
+    }
+
+    /**
+     * @param fine the fine to set
+     */
+    public void setFine(double fine) {
+        this.fine = fine;
+    }
+    
+
+            
 }

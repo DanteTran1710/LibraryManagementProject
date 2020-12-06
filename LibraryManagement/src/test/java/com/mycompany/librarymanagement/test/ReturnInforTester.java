@@ -42,7 +42,8 @@ public class ReturnInforTester {
     
     @Test
     public void testAddRI(){
-        ReturnInfor ri = new ReturnInfor("123456", "2", "SV", "Tan Thanh", 2, "20/10/2020", "22/11/2020", 1, 2);
+        ReturnInfor ri = new ReturnInfor("123456", "2", "SV", "Tan Thanh", 2, 
+                "20/10/2020", "22/11/2020", 1, 2, 20000);
         
         try {
             boolean kq = ReturnInforServices.addReturnInfor(ri);

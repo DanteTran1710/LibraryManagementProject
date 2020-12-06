@@ -22,7 +22,7 @@ public class ReturnInforServices {
         public static boolean addReturnInfor(ReturnInfor infor) throws SQLException{
         Connection connect = jdbcUtils.getConnection();
         String query = "insert into returninfor(id, idMC, Object, ObjectName, Book, BorrowDate, "
-                + "ReturnDate, StolenBook, TornBook) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "ReturnDate, StolenBook, TornBook, Fine) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         connect.setAutoCommit(false);
         
@@ -36,6 +36,7 @@ public class ReturnInforServices {
         stm.setString(7, infor.getReturnDate());
         stm.setInt(8, infor.getStolenBook());
         stm.setInt(9, infor.getTornBook());
+        stm.setDouble(10, infor.getFine());
         
         stm.executeUpdate();
         
@@ -54,7 +55,7 @@ public class ReturnInforServices {
             ReturnInfor ri = new ReturnInfor(rs.getString("id"), rs.getString("idMC"),
                     rs.getString("Object"), rs.getString("ObjectName"), rs.getInt("Book"),
                     rs.getString("BorrowDate"),rs.getString("ReturnDate"),
-                    rs.getInt("StolenBook"),rs.getInt("TornBook"));
+                    rs.getInt("StolenBook"),rs.getInt("TornBook"), rs.getDouble("Fine"));
            
              list.add(ri);
          }

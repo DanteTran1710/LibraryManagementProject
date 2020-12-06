@@ -32,7 +32,7 @@ public class StatisticController implements Initializable{
     @FXML Text amountBorrowBook;
     @FXML Text punctualityBorrowBook;
     @FXML Text lateBorrowBook;
-    @FXML Text blockMC;
+    @FXML Text fine;
     @FXML Text disrepairBook;
     @FXML Text time;
     private int minDay = 0;
@@ -48,11 +48,11 @@ public class StatisticController implements Initializable{
         String kq = loadStatisticByCourse(minDay, maxDay);
         String[] sub = kq.split("/");
 
-        this.amountBorrowBook.textProperty().set("SL : " + sub[0]);
-        this.punctualityBorrowBook.textProperty().set("SL : " + sub[1]);
-        this.lateBorrowBook.textProperty().set("SL : " + sub[3]);
-//        this.blockMC.textProperty().set("SL : " + sltk);
-        this.disrepairBook.textProperty().set("SL : " + sub[2]);
+        this.amountBorrowBook.textProperty().set(sub[0]);
+        this.punctualityBorrowBook.textProperty().set(sub[1]);
+        this.lateBorrowBook.textProperty().set(sub[2]);
+        this.fine.textProperty().set(sub[4] + " Đ");
+        this.disrepairBook.textProperty().set(sub[3]);
     }
 
     public String loadStatisticByCourse(int minDay, int maxDay) throws SQLException {
@@ -66,22 +66,16 @@ public class StatisticController implements Initializable{
             if (MethodNeeded.caculateDate(listRI.get(i).getReturnDate(), "") >= minDay
                     && MethodNeeded.caculateDate(listRI.get(i).getReturnDate(), "") <= maxDay) {
                 ssm += listRI.get(i).getBook();
-
-                if (listRI.get(i).getStolenBook() >= 1 || listRI.get(i).getTornBook() >= 1) {
-                    slsh += (listRI.get(i).getTornBook() + listRI.get(i).getStolenBook());
-                }
-
+                slsh += (listRI.get(i).getTornBook() + listRI.get(i).getStolenBook());
+                sltk += listRI.get(i).getFine();
                 if (MethodNeeded.caculateDate(listRI.get(i).getBorrowDate(),
                         listRI.get(i).getReturnDate()) <= 30) {
                     sldh += listRI.get(i).getBook();
-                } else {
-                    slth += listRI.get(i).getBook();
                 }
             }
         }
-
-        s = ssm + "/" + sldh + "/" + slth + "/" + slsh;// + "/" + sltk;
-
+        slth = ssm - sldh;
+        s = ssm + "/" + sldh + "/" + slth + "/" + slsh + "/" + sltk;
         return s;
     }
             

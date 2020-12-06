@@ -109,4 +109,20 @@ public class MemberCardServices {
         }
         return state;
     }
+
+    public static void updateStateMC(String id, String state) throws SQLException {
+        String query = "Update membercard set StateCard=? where idMemberCard=?";
+
+        Connection connect = jdbcUtils.getConnection();
+
+        connect.setAutoCommit(false);
+
+        PreparedStatement stm = connect.prepareStatement(query);
+        stm.setString(1, state);
+        stm.setString(2, id);
+
+        stm.executeUpdate();
+
+        connect.commit();
+    }
 }

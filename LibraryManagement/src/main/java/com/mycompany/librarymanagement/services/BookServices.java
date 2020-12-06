@@ -41,16 +41,31 @@ public class BookServices {
          return list;
     }
 //     
-     public static String checkBook(String name) throws SQLException{
-        String query =  "Select State from book where BookName=?";
-        
+     public static String checkBookByName(String name) throws SQLException {
+        String query = "Select State from book where BookName=?";
+
         Connection connect = jdbcUtils.getConnection();
         PreparedStatement stm = connect.prepareStatement(query);
         stm.setString(1, name);
-       
+
         ResultSet rs = stm.executeQuery();
         String state = "";
-        while(rs.next()){
+        while (rs.next()) {
+            state = rs.getString("State");
+        }
+        return state;
+    }
+
+    public static String checkBookByID(String id) throws SQLException {
+        String query = "Select State from book where idBook=?";
+
+        Connection connect = jdbcUtils.getConnection();
+        PreparedStatement stm = connect.prepareStatement(query);
+        stm.setString(1, id);
+
+        ResultSet rs = stm.executeQuery();
+        String state = "";
+        while (rs.next()) {
             state = rs.getString("State");
         }
         return state;

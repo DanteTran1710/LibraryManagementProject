@@ -57,7 +57,7 @@ public class BookTester {
     @Test
     public void testCheckBookByName() {
         try {
-            String name = BookServices.checkBook("Mắt Biếc");
+            String name = BookServices.checkBookByName("Mắt Biếc");
             Assert.assertNotEquals("", name);
             Assert.assertNotNull(name);
             

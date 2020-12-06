@@ -42,7 +42,7 @@ public class MethodNeeded {
         return date.getEditor().getText();
     }
     public static void addSpinnerValue(Spinner s){
-        SpinnerValueFactory<Integer> value = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+        SpinnerValueFactory<Integer> value = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
         s.setValueFactory(value);
     }
     

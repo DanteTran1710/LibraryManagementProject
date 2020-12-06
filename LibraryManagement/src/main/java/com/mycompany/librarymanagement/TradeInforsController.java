@@ -67,9 +67,18 @@ public class TradeInforsController implements Initializable{
     @FXML Spinner bookCounted1;
     @FXML Spinner tornBookCounted;
     @FXML Spinner stolenBookCounted;
+    @FXML TextField cardName1;
+    @FXML Text stateCard1;
+    @FXML Text nameBill;
+    @FXML Text idMCBill;
+    @FXML Text stateCardBill;
+    @FXML Text feeBorrowBill;
     
     
     public void swtichToIndex(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Do you want return to main?");
+        alert.showAndWait();
         App.setRoot("Index");
     }
     
@@ -93,7 +102,7 @@ public class TradeInforsController implements Initializable{
             }
     }
     
-    public void completeReturnForm(ActionEvent event) throws IOException {
+    public void completeReturnForm(ActionEvent event) throws IOException, SQLException {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
@@ -104,7 +113,7 @@ public class TradeInforsController implements Initializable{
                     this.candidate1.getSelectionModel().getSelectedItem().toString(),
                     this.nameCus.getText(), (int) this.bookCounted1.getValue(),
                     MethodNeeded.editFormmatDate(borrowDay1), MethodNeeded.getDateNow(),
-                    (int) this.stolenBookCounted.getValue(), (int) this.tornBookCounted.getValue());
+                    (int) this.stolenBookCounted.getValue(), (int) this.tornBookCounted.getValue(),caculateFine());
 
             try {
                 ReturnInforServices.addReturnInfor(ri);
@@ -112,42 +121,27 @@ public class TradeInforsController implements Initializable{
                 for (int i = 0; i < sub.length; i++) {
                     BookServices.updateStateBook(sub[i], "Available");
                 }
-
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Your returning-fill informations is done!");
-                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-                if (alert.showAndWait().get() == ButtonType.YES) {
-                    alert.close();
-                }
+                alert.showAndWait();
 
             } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Error completed! Please try again");
-                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-                if (alert.showAndWait().get() == ButtonType.YES) {
-                    alert.close();
-                }
+                alert.showAndWait();
             }
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please complete your form before submit!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
-                alert.close();
-            }
-        }
-    }
-    
-    public void noticeCompleteBorrowForm(ActionEvent event) {
-        if(verifyNumText() && verifyCharacter(name) && verifyID(cardID)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Completed! Move to choose book!");
             alert.showAndWait();
         }
+        if(MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+                    MethodNeeded.getDateNow()) > 30)
+            MemberCardServices.updateStateMC(this.idCus.getText(), "Disable");
     }
 
-    public void checkoutMC(ActionEvent event) {
+    public void checkoutMCBorrow(ActionEvent event) {
         if (verifyID(this.cardName)) {
             try {
                 this.stateCard.textProperty().set(
@@ -161,34 +155,42 @@ public class TradeInforsController implements Initializable{
         }
     }
 
-    public void checkoutBook(ActionEvent event) {
-        if (verifyCharacter(this.bookName)) {
+    public void checkoutMCReturn(ActionEvent event) {
+        if (verifyID(this.cardName1)) {
             try {
-                this.stateBook.textProperty().set(
-                        BookServices.checkBook(this.bookName.getText()));
+                this.stateCard1.textProperty().set(
+                        MemberCardServices.checkMemberCard(this.cardName1.getText()));
             } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Your book is not exist");
+                alert.setContentText("Your card is not exist");
                 alert.showAndWait();
             }
         }
     }
-    
-    public void loadB(ActionEvent event){
+
+    public void checkoutBook(ActionEvent event) {
         try {
-            loadBook(tbBook);
+            this.stateBook.textProperty().set(
+                    BookServices.checkBookByName(this.bookName.getText()));
         } catch (SQLException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Load Book incompleted! Please try again later");
+            alert.setContentText("Your book is not exist");
+            alert.showAndWait();
         }
     }
     
-    public void completedBorrowBook(ActionEvent event) {
+    public void loadB(ActionEvent event) throws SQLException{
+        tbBook.getColumns().clear();
+        loadBook(tbBook);
+    }
+    
+    public void completedBorrowBook(ActionEvent event) throws SQLException {
         if (!this.name.getText().equals("") && !this.phoneNumber.getText().equals("")
                 && !this.idBs.getText().equals("") && !this.borrowDay.getEditor().getText().equals("")
                 && !this.returnDay.getEditor().getText().equals("")
                 && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("") 
-                && !this.cardID.getText().equals("")) {
+                && !this.cardID.getText().equals("") && verifyNumText() 
+                && verifyCharacter(name) && verifyID(cardID) && checkoutBookText()) {
             String id = MethodNeeded.createUUID();
 
             BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
@@ -227,7 +229,56 @@ public class TradeInforsController implements Initializable{
             }
         }
     }
-
+    
+    public void returnBill(ActionEvent event) throws SQLException {
+        if (!this.nameCus.getText().equals("")
+                && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
+                && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
+                && verifyCharacter(this.nameCus) && verifyID(this.idCus)) {
+            this.nameBill.setText(this.nameCus.getText());
+            this.idMCBill.setText(this.idCus.getText());
+            this.stateCardBill.setText(MemberCardServices.checkMemberCard(this.idCus.getText()));
+            this.feeBorrowBill.setText(caculateFine() + " Đ");
+        }
+    }
+    
+    public double caculateFine() {
+        double fee = 0;
+        double feeTorn = 100000;
+        double feeStolen = 200000;
+        double feeLate = 5000;
+        if (MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+                MethodNeeded.getDateNow()) <= 30) {
+            if ((int) this.stolenBookCounted.getValue() >= 1) {
+                if ((int) this.tornBookCounted.getValue() >= 1) {
+                    fee += feeTorn * (int) this.tornBookCounted.getValue();
+                } else {
+                    fee += 0;
+                }
+                fee += feeStolen * (int) this.stolenBookCounted.getValue();
+            } else {
+                fee += 0;
+            }
+        } else if (MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+                MethodNeeded.getDateNow()) > 30) {
+            if ((int) this.stolenBookCounted.getValue() >= 1) {
+                if ((int) this.tornBookCounted.getValue() >= 1) {
+                    fee += feeTorn * (int) this.tornBookCounted.getValue();
+                } else {
+                    fee += 0;
+                }
+                fee += feeStolen * (int) this.stolenBookCounted.getValue();
+            } else {
+                fee += 0;
+            }
+            fee += feeLate * MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+                    MethodNeeded.getDateNow());
+        } else {
+            fee += 0;
+        }
+        return fee;
+    }
+    
     public static void loadBook(TableView<Book> tbv) throws SQLException{
          TableColumn colSTT = new TableColumn("Book Code");
          colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
@@ -235,8 +286,6 @@ public class TradeInforsController implements Initializable{
          colName.setCellValueFactory(new PropertyValueFactory("nameB"));
          TableColumn colAuthorName = new TableColumn("Author");
          colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
-         TableColumn colDescript = new TableColumn("Description");
-         colDescript.setCellValueFactory(new PropertyValueFactory("Description"));
          TableColumn colRelease = new TableColumn("Release Day");
          colRelease.setCellValueFactory(new PropertyValueFactory("release"));
          TableColumn colNXB = new TableColumn("Release Place");
@@ -246,7 +295,7 @@ public class TradeInforsController implements Initializable{
          TableColumn colCategory = new TableColumn("Category");
          colCategory.setCellValueFactory(new PropertyValueFactory("category"));   
          
-         tbv.getColumns().addAll(colSTT, colName,colAuthorName,colDescript,
+         tbv.getColumns().addAll(colSTT, colName,colAuthorName,
                                  colRelease,colNXB,colState,colCategory);
          
         tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
@@ -298,20 +347,51 @@ public class TradeInforsController implements Initializable{
             return false;
         }
     }
+    
+    public boolean checkoutBookText() throws SQLException {
+        boolean flat = true;
+        if (this.idBs.getText().length() == 3 &&
+                BookServices.checkBookByID(this.idBs.getText()).equals("Available")) {
+                return true;
+        } else if (this.idBs.getText().length() > 3) {
+            if (this.idBs.getText().contains(",")) {
+                String[] sub = this.idBs.getText().split(",");
+                for (int i = 0; i < sub.length; i++) {
+                    if (BookServices.checkBookByID(sub[i]).equals("Borrowed")) {
+                        flat = false;
+                    }
+                }
+                if (flat) {
+                    return true;
+                }
+            }
+        }
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText("Please enter valid id book!");
+        alert.showAndWait();
+        this.idBs.clear();
+        return false;
+    }
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         MethodNeeded.addSpinnerValue(bookCounted);
         MethodNeeded.addSpinnerValue(bookCounted1);
         MethodNeeded.addSpinnerValue(stolenBookCounted);
         MethodNeeded.addSpinnerValue(tornBookCounted);
-        
+
         List<String> listS = new ArrayList<>();
         listS.add("SV");
         listS.add("GV");
         this.candidate.getItems().addAll(listS);
         this.candidate1.getItems().addAll(listS);
-     
+        
+        try {
+            loadBook(tbBook);
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Cannot load book from database!");
+            alert.showAndWait();
+        }
     }
 }
