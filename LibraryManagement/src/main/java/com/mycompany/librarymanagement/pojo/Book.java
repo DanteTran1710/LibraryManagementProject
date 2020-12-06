@@ -29,6 +29,12 @@ public class Book {
         this.category = category;
     }
 
+    public Book(String idB, String nameB, String authorName) {
+        this.idB = idB;
+        this.nameB = nameB;
+        this.authorName = authorName;
+    }
+
     /**
      * @return the idB
      */

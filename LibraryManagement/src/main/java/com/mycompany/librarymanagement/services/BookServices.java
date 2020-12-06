@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  *
  * @author hp
@@ -85,5 +87,21 @@ public class BookServices {
         stm.executeUpdate();
         
         connect.commit();
+    }
+     
+     
+        public static  ObservableList<Book> getid_Name_AuthorofBook(){
+            Connection connect =  jdbcUtils.getConnection();  
+            ObservableList<Book> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = connect.prepareStatement("Select idBook, BookName, AuthorName  from book");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                 list.add(new Book((rs.getString("idBook")),rs.getString("BookName")
+                         ,rs.getString("AuthorName")));  
+            }
+        } catch (Exception ex) {            
+        }
+        return list;
     }
 }
