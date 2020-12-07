@@ -64,16 +64,16 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="phoneNumber" layoutX="164.0" layoutY="150.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <TextField fx:id="phoneNumber" layoutX="164.0" layoutY="150.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập số điện thoại" />
                                           <ComboBox fx:id="candidate" layoutX="200.0" layoutY="215.0" prefWidth="150.0" />
                                           <Spinner fx:id="bookCounted" layoutX="198.0" layoutY="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="69.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
                                           </Spinner>
-                                          <DatePicker fx:id="borrowDay" layoutX="186.0" layoutY="344.0" />
-                                          <DatePicker fx:id="returnDay" layoutX="211.0" layoutY="407.0" />
-                                          <TextField fx:id="name" layoutX="165.0" layoutY="33.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <DatePicker fx:id="borrowDay" layoutX="186.0" layoutY="344.0" promptText="nhập ngày mượn" />
+                                          <DatePicker fx:id="returnDay" layoutX="211.0" layoutY="407.0" promptText="nhập ngày trả" />
+                                          <TextField fx:id="name" layoutX="165.0" layoutY="33.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập họ tên" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="134.0" layoutX="491.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
                                           <Text layoutX="527.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUY ĐỊNH MƯỢN SÁCH">
                                              <font>
@@ -101,7 +101,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="bookName" layoutX="578.0" layoutY="190.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <TextField fx:id="bookName" layoutX="578.0" layoutY="190.0" prefHeight="26.0" prefWidth="184.0" promptText="nhập tên sách" />
                                           <Text layoutX="501.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
@@ -118,7 +118,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="cardName" layoutX="579.0" layoutY="349.0" prefHeight="26.0" prefWidth="184.0" />
+                                          <TextField fx:id="cardName" layoutX="579.0" layoutY="349.0" prefHeight="26.0" prefWidth="184.0" promptText="nhập mã thẻ thành viên" />
                                           <Text layoutX="499.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
                                              <font>
                                                 <Font size="15.0" />
@@ -149,7 +149,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="cardID" layoutX="166.0" layoutY="91.0" prefHeight="6.0" prefWidth="218.0" />
+                                          <TextField fx:id="cardID" layoutX="166.0" layoutY="91.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập mã thẻ thành viên" />
                                        </children>
                                     </AnchorPane>
                                  </content>

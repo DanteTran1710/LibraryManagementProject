@@ -49,7 +49,7 @@ public class ReturnInforTester {
             boolean kq = ReturnInforServices.addReturnInfor(ri);
             
             Assert.assertTrue(kq);
-            System.err.println("Add return form successfully!");
+            System.out.println("Add return form successfully!");
         } catch (SQLException ex) {
             
             System.err.println("Add return form successfully!");
@@ -62,7 +62,7 @@ public class ReturnInforTester {
             List<ReturnInfor> list = ReturnInforServices.getReturnInfor();
             
             Assert.assertEquals(7, list.size());
-            System.err.println("Test get list return-infor successfully!");
+            System.out.println("Test get list return-infor successfully!");
         } catch (SQLException ex) {
             System.err.println("Test get list return-infor unsuccessfully!");
             Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);

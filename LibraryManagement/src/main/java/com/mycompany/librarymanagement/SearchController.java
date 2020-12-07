@@ -1,4 +1,5 @@
-//SearchControoler
+package com.mycompany.librarymanagement;
+
 
 import com.mycompany.librarymanagement.pojo.Book;
 import com.mycompany.librarymanagement.services.BookServices;
@@ -19,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 /**
  * FXML Controller class
  *
@@ -26,8 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class SearchController implements Initializable {
 
-    
-    ObservableList<Book> dataList;   
+    ObservableList<Book> dataList;
     int index = -1;
     Connection conn = null;
     ResultSet rs = null;
@@ -36,45 +37,47 @@ public class SearchController implements Initializable {
     private TextField txtSearch;
     @FXML
     private TableView<Book> View;
-    @FXML
-                void FindCX() throws SQLException {
-            dataList = BookServices.getid_Name_AuthorofBook();
-            View.setItems(dataList);
-            FilteredList<Book> filteredData = new FilteredList<>(dataList, b -> true);
-            txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(book -> {
-                                        if (newValue == null || newValue.isEmpty()){
-                                            return true;
-                                        }
-                                        String lowerCaSeFilter = newValue.toLowerCase();
 
-                                        if (book.getIdB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
-                                            return true;
-                                        } else if (book.getNameB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
-                                            return true;
-                                        }else if (book.getAuthorName().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
-                                                return true;
-                                        }  
-                                               else
-                                                    return false;
-                });                                                                             
+    @FXML
+    void FindCX() throws SQLException {
+        dataList = BookServices.getid_Name_AuthorofBook();
+        View.setItems(dataList);
+        FilteredList<Book> filteredData = new FilteredList<>(dataList, b -> true);
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(book -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaSeFilter = newValue.toLowerCase();
+
+                if (book.getIdB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getNameB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getAuthorName().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
             });
-            SortedList<Book> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(View.comparatorProperty());
-            View.setItems(sortedData);
-        }
-    public void loadB() throws SQLException{
+        });
+        SortedList<Book> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(View.comparatorProperty());
+        View.setItems(sortedData);
+    }
+
+    public void loadB() throws SQLException {
         TableColumn colSTT = new TableColumn("Book Code");
         colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
         TableColumn colName = new TableColumn("Name");
         colName.setCellValueFactory(new PropertyValueFactory("nameB"));
         TableColumn colAuthorName = new TableColumn("Author");
-        colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));          
-        View.getColumns().addAll(colSTT, colName,colAuthorName);  
+        colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
+        View.getColumns().addAll(colSTT, colName, colAuthorName);
         //View.getColumns().addAll(colSTT);
         View.setItems(FXCollections.observableArrayList(BookServices.getid_Name_AuthorofBook()));
     }
-  
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -85,7 +88,7 @@ public class SearchController implements Initializable {
             FindCX();
         } catch (SQLException ex) {
         }
-        
-    }   
-    
+
+    }
+
 }

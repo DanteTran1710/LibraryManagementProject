@@ -16,6 +16,7 @@ import com.mycompany.librarymanagement.services.ReturnInforServices;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -102,7 +103,7 @@ public class TradeInforsController implements Initializable{
             }
     }
     
-    public void completeReturnForm(ActionEvent event) throws IOException, SQLException {
+    public void completeReturnForm(ActionEvent event) throws IOException, SQLException, ParseException {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
@@ -112,7 +113,7 @@ public class TradeInforsController implements Initializable{
             ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(),
                     this.candidate1.getSelectionModel().getSelectedItem().toString(),
                     this.nameCus.getText(), (int) this.bookCounted1.getValue(),
-                    MethodNeeded.editFormmatDate(borrowDay1), MethodNeeded.getDateNow(),
+                    borrowDay1.getEditor().getText(), MethodNeeded.getDateNow(),
                     (int) this.stolenBookCounted.getValue(), (int) this.tornBookCounted.getValue(),caculateFine());
 
             try {
@@ -124,7 +125,7 @@ public class TradeInforsController implements Initializable{
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Your returning-fill informations is done!");
                 alert.showAndWait();
-
+                clear();
             } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Error completed! Please try again");
@@ -136,7 +137,7 @@ public class TradeInforsController implements Initializable{
             alert.setContentText("Please complete your form before submit!");
             alert.showAndWait();
         }
-        if(MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+        if(MethodNeeded.caculateDate(borrowDay1.getEditor().getText(),
                     MethodNeeded.getDateNow()) > 30)
             MemberCardServices.updateStateMC(this.idCus.getText(), "Disable");
     }
@@ -184,7 +185,7 @@ public class TradeInforsController implements Initializable{
         loadBook(tbBook);
     }
     
-    public void completedBorrowBook(ActionEvent event) throws SQLException {
+    public void completedBorrowBook(ActionEvent event) throws SQLException, ParseException {
         if (!this.name.getText().equals("") && !this.phoneNumber.getText().equals("")
                 && !this.idBs.getText().equals("") && !this.borrowDay.getEditor().getText().equals("")
                 && !this.returnDay.getEditor().getText().equals("")
@@ -196,8 +197,8 @@ public class TradeInforsController implements Initializable{
             BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
                     this.candidate.getSelectionModel().getSelectedItem().toString(),
                     (int) this.bookCounted.getValue(),
-                    MethodNeeded.editFormmatDate(borrowDay),
-                    MethodNeeded.editFormmatDate(returnDay), this.idBs.getText(), this.cardID.getText());
+                    borrowDay.getEditor().getText(),
+                    returnDay.getEditor().getText(), this.idBs.getText(), this.cardID.getText());
 
             try {
                 BorrowInforServices.addBorrowInfor(bi);
@@ -207,30 +208,21 @@ public class TradeInforsController implements Initializable{
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Your borrow-fill informations is done!");
-                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-                if (alert.showAndWait().get() == ButtonType.YES) {
-                    alert.close();
-                }
+                alert.showAndWait();
+                clear();
             } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Error completed! Please try again later");
-                alert.getButtonTypes().setAll(new ButtonType("OK",
-                        ButtonBar.ButtonData.YES));
-                if (alert.showAndWait().get() == ButtonType.YES) {
-                    alert.close();
-                }
+                alert.showAndWait();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please complete your form before submit!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
-                alert.close();
-            }
+            alert.showAndWait();
         }
     }
     
-    public void returnBill(ActionEvent event) throws SQLException {
+    public void returnBill(ActionEvent event) throws SQLException, ParseException {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
@@ -242,12 +234,12 @@ public class TradeInforsController implements Initializable{
         }
     }
     
-    public double caculateFine() {
+    public double caculateFine() throws ParseException {
         double fee = 0;
         double feeTorn = 100000;
         double feeStolen = 200000;
         double feeLate = 5000;
-        if (MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+        if (MethodNeeded.caculateDate(borrowDay1.getEditor().getText(),
                 MethodNeeded.getDateNow()) <= 30) {
             if ((int) this.stolenBookCounted.getValue() >= 1) {
                 if ((int) this.tornBookCounted.getValue() >= 1) {
@@ -259,7 +251,7 @@ public class TradeInforsController implements Initializable{
             } else {
                 fee += 0;
             }
-        } else if (MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+        } else if (MethodNeeded.caculateDate(borrowDay1.getEditor().getText(),
                 MethodNeeded.getDateNow()) > 30) {
             if ((int) this.stolenBookCounted.getValue() >= 1) {
                 if ((int) this.tornBookCounted.getValue() >= 1) {
@@ -271,7 +263,7 @@ public class TradeInforsController implements Initializable{
             } else {
                 fee += 0;
             }
-            fee += feeLate * MethodNeeded.caculateDate(MethodNeeded.editFormmatDate(borrowDay1),
+            fee += feeLate * MethodNeeded.caculateDate(borrowDay1.getEditor().getText(),
                     MethodNeeded.getDateNow());
         } else {
             fee += 0;
@@ -301,6 +293,17 @@ public class TradeInforsController implements Initializable{
         tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
      }
     
+    public void clear(){
+        this.bookName.clear();
+        this.cardID.clear();;
+        this.cardName.clear();
+        this.cardName1.clear();
+        this.idBs.clear();
+        this.idCus.clear();
+        this.name.clear();
+        this.nameCus.clear();
+    }
+    
     public boolean verifyNumText(){
         Pattern p = Pattern.compile("(0)?[0-9]{9}");
         Matcher m = p.matcher(this.phoneNumber.getText());
@@ -318,7 +321,7 @@ public class TradeInforsController implements Initializable{
     }
     
     public boolean verifyCharacter(TextField txt) {
-        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Pattern p = Pattern.compile("[a-zA-Z\\s]+");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
@@ -385,6 +388,10 @@ public class TradeInforsController implements Initializable{
         listS.add("GV");
         this.candidate.getItems().addAll(listS);
         this.candidate1.getItems().addAll(listS);
+        
+        MethodNeeded.editFormmatDate(borrowDay);
+        MethodNeeded.editFormmatDate(borrowDay1);
+        MethodNeeded.editFormmatDate(returnDay);
         
         try {
             loadBook(tbBook);

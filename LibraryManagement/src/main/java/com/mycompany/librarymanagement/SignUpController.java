@@ -11,6 +11,7 @@ import com.mycompany.librarymanagement.services.MethodNeeded;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,10 +50,10 @@ public class SignUpController implements Initializable {
     
 // han the
 // ngay sinh
-    public void SignUp(ActionEvent evt) throws IOException {
+    public void SignUp(ActionEvent evt) throws IOException, ParseException {
         String id = MethodNeeded.createUUID();
         MemberCard mc = new MemberCard(id, this.txtTenDocGia.getText(),
-                MethodNeeded.editFormmatDate(dtpNgaySinh),
+                dtpNgaySinh.getEditor().getText(),
                 this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),
                 "Enable", this.txtMaDocGia.getText(), this.txtGmail.getText(),
                 this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString(),
@@ -84,6 +85,7 @@ public class SignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        MethodNeeded.editFormmatDate(dtpNgaySinh);
         
         ObservableList<String> gioiTinh = 
                 FXCollections.observableArrayList("Nam","Nữ");

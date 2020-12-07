@@ -46,7 +46,7 @@ public class BookTester {
             List<Book> list = BookServices.getBook();
             
             Assert.assertEquals(2, list.size());
-            System.err.println("Test get list book successfully!");
+            System.out.println("Test get list book successfully!");
             
         } catch (SQLException ex) {
             System.err.println("Test get list book unsuccessfully!");
@@ -60,12 +60,26 @@ public class BookTester {
             String name = BookServices.checkBookByName("Mắt Biếc");
             Assert.assertNotEquals("", name);
             Assert.assertNotNull(name);
-            
+
             System.err.println("Check book by name successfully!");
         } catch (SQLException ex) {
             System.err.println("Check book by name unsuccessfully!");
             Logger.getLogger(BookTester.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
+    }
+
+    @Test
+    public void testCheckBookByID() {
+        try {
+            String id = BookServices.checkBookByID("123");
+            Assert.assertNotEquals("", id);
+            Assert.assertNotNull(id);
+
+            System.err.println("Check book by name successfully!");
+        } catch (SQLException ex) {
+            System.err.println("Check book by name unsuccessfully!");
+            Logger.getLogger(BookTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Test    
