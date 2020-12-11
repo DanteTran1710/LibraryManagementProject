@@ -107,7 +107,7 @@ public class TradeInforsController implements Initializable{
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
-                && verifyCharacter(this.nameCus) && verifyID(this.idCus)) {
+                && verifyCharacter(this.nameCus) && verifyUserName(this.idCus)) {
             String id = MethodNeeded.createUUID();
 
             ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(),
@@ -125,7 +125,6 @@ public class TradeInforsController implements Initializable{
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Your returning-fill informations is done!");
                 alert.showAndWait();
-                clear();
             } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Error completed! Please try again");
@@ -143,7 +142,7 @@ public class TradeInforsController implements Initializable{
     }
 
     public void checkoutMCBorrow(ActionEvent event) {
-        if (verifyID(this.cardName)) {
+        if (verifyUserName(this.cardName)) {
             try {
                 this.stateCard.textProperty().set(
                         MemberCardServices.checkMemberCard(this.cardName.getText()));
@@ -157,7 +156,7 @@ public class TradeInforsController implements Initializable{
     }
 
     public void checkoutMCReturn(ActionEvent event) {
-        if (verifyID(this.cardName1)) {
+        if (verifyUserName(this.cardName1)) {
             try {
                 this.stateCard1.textProperty().set(
                         MemberCardServices.checkMemberCard(this.cardName1.getText()));
@@ -191,7 +190,7 @@ public class TradeInforsController implements Initializable{
                 && !this.returnDay.getEditor().getText().equals("")
                 && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("") 
                 && !this.cardID.getText().equals("") && verifyNumText() 
-                && verifyCharacter(name) && verifyID(cardID) && checkoutBookText()) {
+                && verifyCharacter(name) && verifyUserName(cardID) && checkoutBookText()) {
             String id = MethodNeeded.createUUID();
 
             BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
@@ -209,7 +208,6 @@ public class TradeInforsController implements Initializable{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Your borrow-fill informations is done!");
                 alert.showAndWait();
-                clear();
             } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Error completed! Please try again later");
@@ -227,7 +225,7 @@ public class TradeInforsController implements Initializable{
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
-                && verifyCharacter(this.nameCus) && verifyID(this.idCus)) {
+                && verifyCharacter(this.nameCus) && verifyUserName(this.idCus)) {
             this.nameBill.setText(this.nameCus.getText());
             this.idMCBill.setText(this.idCus.getText());
             this.stateCardBill.setText(MemberCardServices.checkMemberCard(this.idCus.getText()));
@@ -287,23 +285,13 @@ public class TradeInforsController implements Initializable{
          colState.setCellValueFactory(new PropertyValueFactory("state")); 
          TableColumn colCategory = new TableColumn("Category");
          colCategory.setCellValueFactory(new PropertyValueFactory("category"));   
-         
+         TableColumn colPlace = new TableColumn("Place");
+         colPlace.setCellValueFactory(new PropertyValueFactory("place"));            
          tbv.getColumns().addAll(colSTT, colName,colAuthorName,
-                                 colRelease,colNXB,colState,colCategory);
+                                 colRelease,colNXB,colState,colCategory,colPlace);
          
         tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
      }
-    
-    public void clear(){
-        this.bookName.clear();
-        this.cardID.clear();;
-        this.cardName.clear();
-        this.cardName1.clear();
-        this.idBs.clear();
-        this.idCus.clear();
-        this.name.clear();
-        this.nameCus.clear();
-    }
     
     public boolean verifyNumText(){
         Pattern p = Pattern.compile("(0)?[0-9]{9}");
@@ -337,8 +325,8 @@ public class TradeInforsController implements Initializable{
         }
     }
 
-    public boolean verifyID(TextField txt) {
-        Pattern p = Pattern.compile("[a-zA-Z0-9]{5}+");
+    public boolean verifyUserName(TextField txt) {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {

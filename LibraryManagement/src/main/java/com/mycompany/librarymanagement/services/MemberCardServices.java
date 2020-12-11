@@ -95,7 +95,7 @@ public class MemberCardServices {
     }
     
     public static String checkMemberCard(String id) throws SQLException {
-        String query = "Select StateCard from membercard where idMemberCard=?";
+        String query = "Select StateCard from membercard where UserName=?";
 
         Connection connect = jdbcUtils.getConnection();
         PreparedStatement stm = connect.prepareStatement(query);

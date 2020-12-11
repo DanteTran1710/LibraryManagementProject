@@ -23,17 +23,17 @@ DROP TABLE IF EXISTS `membercard`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `membercard` (
-  `idMemberCard` varchar(7) NOT NULL,
+  `UserName` varchar(20) NOT NULL,
+  `PassWord` varchar(7) NOT NULL,
   `MemberName` varchar(45) NOT NULL,
   `DOB` varchar(15) NOT NULL,
   `Object` varchar(20) NOT NULL,
   `StateCard` varchar(10) NOT NULL,
-  `UserName` varchar(20) NOT NULL,
   `Gmail` varchar(50) NOT NULL,
   `Sex` varchar(10) NOT NULL,
   `PhoneNumber` varchar(11) NOT NULL,
   `Major` varchar(50) NOT NULL,
-  PRIMARY KEY (`idMemberCard`)
+  PRIMARY KEY (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,7 +43,7 @@ CREATE TABLE `membercard` (
 
 LOCK TABLES `membercard` WRITE;
 /*!40000 ALTER TABLE `membercard` DISABLE KEYS */;
-INSERT INTO `membercard` VALUES ('1','Tan Thanh','2000-10-17','SV','Enable','thanh','thanh@gmail.com','Male','0987635421','IT'),('2','Anh Thy','2000-11-09','SV','Disable','','','','',''),('3','Quang Tung','2000-03-13','GV','Enable','','','','','');
+INSERT INTO `membercard` VALUES ('nhinhi','21bb2','nhi','26/12/2013','SV','Enable','nhi@gmail.com','Female','0879564123','IT'),('tantan','12a21','tt','17/10/2000','SV','Disable','thah@gmail.com','Male','0987313125','CS'),('tanth','12a2b','tt','17/10/2000','SV','Disable','thah@gmail.com','Male','0987313125','CS');
 /*!40000 ALTER TABLE `membercard` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-04 22:31:33
+-- Dump completed on 2020-12-12  1:13:55

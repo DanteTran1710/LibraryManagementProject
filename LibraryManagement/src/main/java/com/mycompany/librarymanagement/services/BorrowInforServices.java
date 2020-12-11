@@ -23,12 +23,12 @@ public class BorrowInforServices {
     public static boolean addBorrowInfor(BorrowInfor infor) throws SQLException {
        if(infor.getBook() != 0 && !infor.getBorrowDate().trim().equals("")
             && !infor.getId().trim().equals("") && !infor.getIdB().trim().equals("")
-            && !infor.getIdMC().trim().equals("") && !infor.getObject().trim().equals("")
+            && !infor.getUserName().trim().equals("") && !infor.getObject().trim().equals("")
             && !infor.getObjectName().trim().equals("") && !infor.getPhoneNum().trim().equals("")
             && !infor.getReturnDate().trim().equals("")){
             Connection connect = jdbcUtils.getConnection();
         String query = "insert into borrowinfor(id, ObjectName, PhoneNumber,"
-                + " Object, Book, BorrowDate, ReturnDate, idBs, idMC) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + " Object, Book, BorrowDate, ReturnDate, idBs, UserName) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         connect.setAutoCommit(false);
 
@@ -41,7 +41,7 @@ public class BorrowInforServices {
         stm.setString(6, infor.getBorrowDate());
         stm.setString(7, infor.getReturnDate());
         stm.setString(8, infor.getIdB());
-        stm.setString(9, infor.getIdMC());
+        stm.setString(9, infor.getUserName());
 
         stm.executeUpdate();
 
@@ -61,7 +61,7 @@ public class BorrowInforServices {
         while (rs.next()) {
             BorrowInfor bi = new BorrowInfor(rs.getString("id"), rs.getString("ObjectName"),
                     rs.getString("PhoneNumber"), rs.getString("Object"), rs.getInt("Book"),
-                    rs.getString("BorrowDate"), rs.getString("ReturnDate"), rs.getString("idBs"), rs.getString("idMC"));
+                    rs.getString("BorrowDate"), rs.getString("ReturnDate"), rs.getString("idBs"), rs.getString("userName"));
 
             list.add(bi);
         }
@@ -69,7 +69,7 @@ public class BorrowInforServices {
     }
 
     public static String getIdBsFromBI(String id) throws SQLException {
-        String query = "Select idBs from borrowinfor where idMC=?";
+        String query = "Select idBs from borrowinfor where userName=?";
 
         Connection connect = jdbcUtils.getConnection();
         PreparedStatement stm = connect.prepareStatement(query);

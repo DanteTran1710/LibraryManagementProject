@@ -42,7 +42,7 @@ public class ReturnInforTester {
     
     @Test
     public void testAddRI(){
-        ReturnInfor ri = new ReturnInfor("123456", "12a2b", "SV", "Tan Thanh", 2, 
+        ReturnInfor ri = new ReturnInfor("123456", "aa", "SV", "Tan Thanh", 2, 
                 "20/10/2020", "22/11/2020", 1, 2, 20000);
         
         try {
@@ -59,7 +59,7 @@ public class ReturnInforTester {
     
     @Test
     public void testAddDeficientInfors(){
-        ReturnInfor ri = new ReturnInfor(" ", "2", " ", "Tan Thanh", 2, 
+        ReturnInfor ri = new ReturnInfor(" ", " ", " ", "Tan Thanh", 2, 
                 "20/10/2020", "22/11/2020", 1, 2, 20000);
         
         try {

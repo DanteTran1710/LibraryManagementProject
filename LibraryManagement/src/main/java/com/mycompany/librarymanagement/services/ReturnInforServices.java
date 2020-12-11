@@ -23,17 +23,17 @@ public class ReturnInforServices {
     public static boolean addReturnInfor(ReturnInfor infor) throws SQLException {
         if (infor.getBook() != 0 && !infor.getBorrowDate().trim().equals("")
             && infor.getFine() != 0 && !infor.getId().trim().equals("") 
-            && !infor.getIdMC().trim().equals("") && !infor.getObject().trim().equals("")
+            && !infor.getUserName().trim().equals("") && !infor.getObject().trim().equals("")
             && !infor.getObjectName().trim().equals("") && !infor.getReturnDate().trim().equals("")) {
             Connection connect = jdbcUtils.getConnection();
-            String query = "insert into returninfor(id, idMC, Object, ObjectName, Book, BorrowDate, "
+            String query = "insert into returninfor(id, UserName, Object, ObjectName, Book, BorrowDate, "
                     + "ReturnDate, StolenBook, TornBook, Fine) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             connect.setAutoCommit(false);
 
             PreparedStatement stm = connect.prepareCall(query);
             stm.setString(1, infor.getId());
-            stm.setString(2, infor.getIdMC());
+            stm.setString(2, infor.getUserName());
             stm.setString(3, infor.getObject());
             stm.setString(4, infor.getObjectName());
             stm.setInt(5, infor.getBook());
@@ -59,7 +59,7 @@ public class ReturnInforServices {
 
         List<ReturnInfor> list = new ArrayList<>();
         while (rs.next()) {
-            ReturnInfor ri = new ReturnInfor(rs.getString("id"), rs.getString("idMC"),
+            ReturnInfor ri = new ReturnInfor(rs.getString("id"), rs.getString("userName"),
                     rs.getString("Object"), rs.getString("ObjectName"), rs.getInt("Book"),
                     rs.getString("BorrowDate"), rs.getString("ReturnDate"),
                     rs.getInt("StolenBook"), rs.getInt("TornBook"), rs.getDouble("Fine"));

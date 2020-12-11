@@ -31,9 +31,10 @@ CREATE TABLE `borrowinfor` (
   `BorrowDate` varchar(15) NOT NULL,
   `ReturnDate` varchar(15) NOT NULL,
   `idBs` varchar(70) NOT NULL,
-  `idMC` varchar(7) NOT NULL,
+  `UserName` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_borrowinfor_membercard_idx` (`idMC`)
+  KEY `fk_borrowinfor_membercard_idx` (`UserName`),
+  CONSTRAINT `fk_borrowInfor_membercard` FOREIGN KEY (`UserName`) REFERENCES `membercard` (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,7 +44,7 @@ CREATE TABLE `borrowinfor` (
 
 LOCK TABLES `borrowinfor` WRITE;
 /*!40000 ALTER TABLE `borrowinfor` DISABLE KEYS */;
-INSERT INTO `borrowinfor` VALUES ('123','Tan Thanh','0984381617','SV',2,'17/10/2020','27/10/2020','123','1'),('569871','Truc Lam','0321456987','SV',2,'11/11/2020','18/11/2020','123','1');
+INSERT INTO `borrowinfor` VALUES ('1345','Truc Lam','0321456987','SV',2,'11/11/2020','18/11/2020','123','tantan'),('5b5f7','Tan Thanh','0984381617','SV',1,'08/12/2020','16/12/2020','123','tantan'),('772b3','Dante','0125463987','GV',2,'30/11/2020','10/12/2020','456','nhinhi'),('e0f44','Trang Kem','0987456321','SV',1,'02/12/2020','24/12/2020','123','tantan');
 /*!40000 ALTER TABLE `borrowinfor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-04 22:31:32
+-- Dump completed on 2020-12-12  1:13:55

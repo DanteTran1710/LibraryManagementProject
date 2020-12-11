@@ -17,8 +17,9 @@ public class Book {
     private String releasePlace;
     private String state;
     private String category;
+    private String place;
 
-    public Book(String idB, String nameB, String authorName, String Description, String release, String releasePlace, String state, String category) {
+    public Book(String idB, String nameB, String authorName, String Description, String release, String releasePlace, String state, String category, String place) {
         this.idB = idB;
         this.nameB = nameB;
         this.authorName = authorName;
@@ -27,11 +28,12 @@ public class Book {
         this.releasePlace = releasePlace;
         this.state = state;
         this.category = category;
+        this.place = place;
     }
 
-    public Book(String idB, String nameB, String authorName) {
-        this.idB = idB;
-        this.nameB = nameB;
+    public Book(String idBook, String bookName, String authorName) {
+        this.idB = idBook;
+        this.nameB = bookName;
         this.authorName = authorName;
     }
 
@@ -145,6 +147,20 @@ public class Book {
      */
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    /**
+     * @return the place
+     */
+    public String getPlace() {
+        return place;
+    }
+
+    /**
+     * @param place the place to set
+     */
+    public void setPlace(String place) {
+        this.place = place;
     }
     
 }

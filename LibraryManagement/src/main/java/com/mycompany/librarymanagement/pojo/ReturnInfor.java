@@ -20,7 +20,7 @@ package com.mycompany.librarymanagement.pojo;
  */
 public class ReturnInfor {
     private String id;
-    private String idMC;
+    private String userName;
     private String object;
     private String objectName;
     private int book;
@@ -30,9 +30,9 @@ public class ReturnInfor {
     private int tornBook;
     private double fine;
 
-    public ReturnInfor(String id, String idMC, String object, String objectName, int book, String borrowDate, String returnDate, int stolenBook, int tornBook, double fine) {
+    public ReturnInfor(String id, String userName, String object, String objectName, int book, String borrowDate, String returnDate, int stolenBook, int tornBook, double fine) {
         this.id = id;
-        this.idMC = idMC;
+        this.userName = userName;
         this.object = object;
         this.objectName = objectName;
         this.book = book;
@@ -58,17 +58,17 @@ public class ReturnInfor {
     }
 
     /**
-     * @return the idMC
+     * @return the userName
      */
-    public String getIdMC() {
-        return idMC;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * @param idMC the idMC to set
+     * @param userName the userName to set
      */
-    public void setIdMC(String idMC) {
-        this.idMC = idMC;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**

@@ -31,6 +31,7 @@ CREATE TABLE `book` (
   `PlaceRelease` varchar(45) NOT NULL,
   `State` varchar(10) NOT NULL,
   `Category` varchar(20) NOT NULL,
+  `Places` varchar(5) NOT NULL,
   PRIMARY KEY (`idBook`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,7 +42,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES ('123','Mắt Biếc','Nguyễn Ngọc Ngạn','Câu chuyện tình cảm','17/09/2015','NXB Kim Đồng','Borrowed',''),('456','Dế mèn phiêu lưu ký','Tô Hoài','Câu chuyện ngụ ngôn','20/8/2010','NXB Kim Đồng','Available','');
+INSERT INTO `book` VALUES ('123','Mắt Biếc','Nguyễn Ngọc Ngạn','Câu chuyện tình yêu của Hà Lan và Ngạn','17/09/2015','NXB Kim Đồng','Borrowed','Tình Cảm','A15'),('456','Dế mèn phiêu lưu ký','Tô Hoài','Chuyến đi tìm vùng đất mới đầy khó khăn của dế mèn','20/8/2010','NXB Kim Đồng','Available','Ngụ Ngôn','B19');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-04 22:31:33
+-- Dump completed on 2020-12-12  1:13:56

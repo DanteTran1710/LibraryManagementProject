@@ -37,7 +37,8 @@ public class BookServices {
             Book b = new Book(rs.getString("idBook"), rs.getString("BookName"),
                     rs.getString("AuthorName"), rs.getString("Description"),
                     rs.getString("Release"), rs.getString("PlaceRelease"),
-                    rs.getString("State"), rs.getString("Category"));
+                    rs.getString("State"), rs.getString("Category"),
+                    rs.getString("Places"));
 
             list.add(b);
         }

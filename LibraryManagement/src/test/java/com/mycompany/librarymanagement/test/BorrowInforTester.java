@@ -43,7 +43,7 @@ public class BorrowInforTester {
     @Test
     public void testAddBorrowInfor() {
         BorrowInfor bi = new BorrowInfor("1345", "Truc Lam", "0321456987",
-                "SV", 2, "11/11/2020", "18/11/2020", "123", "1");
+                "SV", 2, "11/11/2020", "18/11/2020", "123", "tn");
 
         try {
             boolean kq = BorrowInforServices.addBorrowInfor(bi);
@@ -60,7 +60,7 @@ public class BorrowInforTester {
     @Test
     public void testAddDeficientInfor(){
         BorrowInfor bi = new BorrowInfor(" ", "Truc Lam", "0321456987",
-                "SV", 2, "11/11/2020", "18/11/2020", " ", "1");
+                "SV", 2, "11/11/2020", "18/11/2020", " ", " ");
 
         try {
             boolean kq = BorrowInforServices.addBorrowInfor(bi);
@@ -81,8 +81,8 @@ public class BorrowInforTester {
             List<BorrowInfor> listBI = BorrowInforServices.getBorrowInfor();
 
             for (BorrowInfor bi : listBI) {
-                Assert.assertNotNull(bi.getIdMC());
-                Assert.assertNotEquals("", bi.getIdMC().trim());
+                Assert.assertNotNull(bi.getUserName());
+                Assert.assertNotEquals("", bi.getUserName().trim());
             }
             System.out.println("Check id member card in list is not null");
         } catch (SQLException ex) {
