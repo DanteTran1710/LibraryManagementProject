@@ -221,6 +221,7 @@ public class TradeInforsController implements Initializable{
             alert.showAndWait();
         }
     }
+
     
     public void returnBill(ActionEvent event) throws SQLException, ParseException {
         if (!this.nameCus.getText().equals("")

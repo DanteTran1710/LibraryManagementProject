@@ -67,7 +67,6 @@ public class MemberCardServices {
         String sql = "Select UserName,idMemberCard From membercard where UserName = ? and idMemberCard  = ?";
 
         Connection connect = jdbcUtils.getConnection();
-
         PreparedStatement stm = connect.prepareStatement(sql);
         stm.setString(1, name);
         stm.setString(2, pass);

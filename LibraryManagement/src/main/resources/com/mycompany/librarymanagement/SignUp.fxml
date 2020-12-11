@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="917.0" prefWidth="824.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.SignUpController">
+<AnchorPane id="AnchorPane" prefHeight="917.0" prefWidth="824.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.SignUpController">
    <children>
       <Label layoutX="353.0" layoutY="27.0" prefHeight="90.0" prefWidth="148.0" text="SIGN UP" textFill="#9589d2">
          <font>
             <Font size="34.0" />
          </font></Label>
-      <Button layoutX="184.0" layoutY="793.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="463.0" style="-fx-background-color: #2196f3; -fx-border-radius: 5px;" text="SIGN UP" textFill="WHITE">
+      <Button layoutX="184.0" layoutY="793.0" mnemonicParsing="false" onAction="#SignUp" prefHeight="60.0" prefWidth="463.0" style="-fx-background-color: #2196f3; -fx-border-radius: 5px;" text="SIGN UP" textFill="WHITE">
          <font>
             <Font size="28.0" />
          </font>
@@ -85,7 +85,7 @@
                   <Insets top="8.0" />
                </HBox.margin>
             </Label>
-            <DatePicker fx:id="dtpNgaySinh" prefHeight="26.0" prefWidth="245.0" />
+            <DatePicker fx:id="dtpNgaySinh" editable="false" prefHeight="26.0" prefWidth="245.0" />
          </children>
       </HBox>
       <HBox layoutX="117.0" layoutY="380.0" prefHeight="40.0" prefWidth="600.0">
@@ -122,23 +122,6 @@
             </ComboBox>
          </children>
       </HBox>
-      <HBox layoutX="117.0" layoutY="510.0" prefHeight="40.0" prefWidth="600.0">
-         <children>
-            <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="76.0" text="Hạn Thẻ:" textFill="#eee2e2">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets top="8.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="txtHanThe" prefHeight="40.0" prefWidth="425.0">
-               <HBox.margin>
-                  <Insets left="90.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-      </HBox>
       <HBox layoutX="117.0" layoutY="575.0" prefHeight="40.0" prefWidth="600.0">
          <children>
             <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="76.0" text="Email:" textFill="#eee2e2">
@@ -156,24 +139,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox layoutX="117.0" layoutY="640.0" prefHeight="40.0" prefWidth="600.0">
-         <children>
-            <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="76.0" text="Địa Chỉ:" textFill="#eee2e2">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets top="8.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="txtDiaChi" prefHeight="40.0" prefWidth="425.0" promptText="Địa Chỉ">
-               <HBox.margin>
-                  <Insets left="90.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-      </HBox>
-      <HBox layoutX="115.0" layoutY="705.0" prefHeight="40.0" prefWidth="600.0">
+      <HBox layoutX="112.0" layoutY="506.0" prefHeight="40.0" prefWidth="600.0">
          <children>
             <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="76.0" text="Điện Thoại:" textFill="#eee2e2">
                <font>
