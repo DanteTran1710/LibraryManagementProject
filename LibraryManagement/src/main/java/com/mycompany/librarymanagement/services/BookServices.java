@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 /**
  *
  * @author hp
@@ -26,24 +27,25 @@ public class BookServices {
      * @return list of book
      * @throws SQLException
      */
-    public static List<Book> getBook() throws SQLException{
-         Connection connect =  jdbcUtils.getConnection();
-         Statement stm = connect.createStatement();
-         ResultSet rs = stm.executeQuery("Select * from book");
-         
-         List<Book> list = new ArrayList<>();
-         while(rs.next()){
-             Book b = new Book(rs.getString("idBook"), rs.getString("BookName"),
+    public static List<Book> getBook() throws SQLException {
+        Connection connect = jdbcUtils.getConnection();
+        Statement stm = connect.createStatement();
+        ResultSet rs = stm.executeQuery("Select * from book");
+
+        List<Book> list = new ArrayList<>();
+        while (rs.next()) {
+            Book b = new Book(rs.getString("idBook"), rs.getString("BookName"),
                     rs.getString("AuthorName"), rs.getString("Description"),
                     rs.getString("Release"), rs.getString("PlaceRelease"),
                     rs.getString("State"), rs.getString("Category"));
-           
-             list.add(b);
-         }
-         return list;
+
+            list.add(b);
+        }
+        return list;
     }
 //     
-     public static String checkBookByName(String name) throws SQLException {
+
+    public static String checkBookByName(String name) throws SQLException {
         String query = "Select State from book where BookName=?";
 
         Connection connect = jdbcUtils.getConnection();
@@ -72,35 +74,34 @@ public class BookServices {
         }
         return state;
     }
-    
-     public static void updateStateBook(String id, String state) throws SQLException {
+
+    public static void updateStateBook(String id, String state) throws SQLException {
         String query = "Update book set State=? where idBook=?";
 
         Connection connect = jdbcUtils.getConnection();
-        
+
         connect.setAutoCommit(false);
-        
+
         PreparedStatement stm = connect.prepareStatement(query);
         stm.setString(1, state);
         stm.setString(2, id);
 
         stm.executeUpdate();
-        
+
         connect.commit();
     }
-     
-     
-        public static  ObservableList<Book> getid_Name_AuthorofBook(){
-            Connection connect =  jdbcUtils.getConnection();  
-            ObservableList<Book> list = FXCollections.observableArrayList();
+
+    public static ObservableList<Book> getid_Name_AuthorofBook() {
+        Connection connect = jdbcUtils.getConnection();
+        ObservableList<Book> list = FXCollections.observableArrayList();
         try {
             PreparedStatement ps = connect.prepareStatement("Select idBook, BookName, AuthorName  from book");
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                 list.add(new Book((rs.getString("idBook")),rs.getString("BookName")
-                         ,rs.getString("AuthorName")));  
+            while (rs.next()) {
+                list.add(new Book((rs.getString("idBook")), rs.getString("BookName"),
+                         rs.getString("AuthorName")));
             }
-        } catch (Exception ex) {            
+        } catch (Exception ex) {
         }
         return list;
     }

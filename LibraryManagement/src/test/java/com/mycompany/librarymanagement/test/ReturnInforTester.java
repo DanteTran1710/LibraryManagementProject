@@ -42,7 +42,7 @@ public class ReturnInforTester {
     
     @Test
     public void testAddRI(){
-        ReturnInfor ri = new ReturnInfor("123456", "2", "SV", "Tan Thanh", 2, 
+        ReturnInfor ri = new ReturnInfor("123456", "12a2b", "SV", "Tan Thanh", 2, 
                 "20/10/2020", "22/11/2020", 1, 2, 20000);
         
         try {
@@ -56,12 +56,30 @@ public class ReturnInforTester {
             Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @Test
+    public void testAddDeficientInfors(){
+        ReturnInfor ri = new ReturnInfor(" ", "2", " ", "Tan Thanh", 2, 
+                "20/10/2020", "22/11/2020", 1, 2, 20000);
+        
+        try {
+            boolean kq = ReturnInforServices.addReturnInfor(ri);
+            
+            Assert.assertFalse(kq);
+            System.out.println("Add deficient infors successfully!");
+        } catch (SQLException ex) {
+            
+            System.err.println("Add deficient infors unsuccessfully!");
+            Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @Test
     public void testGetListReturnInfor(){
         try {
             List<ReturnInfor> list = ReturnInforServices.getReturnInfor();
             
-            Assert.assertEquals(7, list.size());
+            Assert.assertEquals(3, list.size());
             System.out.println("Test get list return-infor successfully!");
         } catch (SQLException ex) {
             System.err.println("Test get list return-infor unsuccessfully!");

@@ -41,9 +41,8 @@ public class BorrowInforTester {
     }
 
     @Test
-    public void addBI() {
-
-        BorrowInfor bi = new BorrowInfor("569871", "Truc Lam", "0321456987",
+    public void testAddBorrowInfor() {
+        BorrowInfor bi = new BorrowInfor("1345", "Truc Lam", "0321456987",
                 "SV", 2, "11/11/2020", "18/11/2020", "123", "1");
 
         try {
@@ -57,21 +56,20 @@ public class BorrowInforTester {
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @Test
-    public void testidBookInBIListNotNull() {
+    public void testAddDeficientInfor(){
+        BorrowInfor bi = new BorrowInfor(" ", "Truc Lam", "0321456987",
+                "SV", 2, "11/11/2020", "18/11/2020", " ", "1");
+
         try {
-            List<BorrowInfor> listBI = BorrowInforServices.getBorrowInfor();
+            boolean kq = BorrowInforServices.addBorrowInfor(bi);
+            Assert.assertFalse(kq);
 
-            for (BorrowInfor bi : listBI) {
-                Assert.assertNotNull(bi.getIdB());
-                Assert.assertNotEquals("", bi.getIdB().trim());
-
-                System.out.println("Check id-book in list is not null");
-            }
+            System.out.println("Add adding deficient infors successfully!");
         } catch (SQLException ex) {
-            System.err.println("Check id-Book in list is null");
 
+            System.err.println("Add adding deficient infors unsuccessfully!");
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -85,8 +83,8 @@ public class BorrowInforTester {
             for (BorrowInfor bi : listBI) {
                 Assert.assertNotNull(bi.getIdMC());
                 Assert.assertNotEquals("", bi.getIdMC().trim());
-                System.out.println("Check id member card in list is not null");
             }
+            System.out.println("Check id member card in list is not null");
         } catch (SQLException ex) {
             System.err.println("Check id member card in list is null");
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,7 +94,7 @@ public class BorrowInforTester {
     @Test
     public void testGetidBFromList(){
         try {
-            String kq = BorrowInforServices.getIdBsFromBI("1");
+            String kq = BorrowInforServices.getIdBsFromBI("12a2b");
             
             Assert.assertEquals("123", kq);
             System.out.println("Get id successfully!");
@@ -111,7 +109,7 @@ public class BorrowInforTester {
         try {
             List<BorrowInfor> list = BorrowInforServices.getBorrowInfor();
 
-            Assert.assertEquals(2, list.size());
+            Assert.assertEquals(4, list.size());
             System.out.println("Test get list borrow-infors successfully!");
         } catch (SQLException ex) {
             System.err.println("Test get list borrow-infors unsuccessfully!");
