@@ -184,7 +184,7 @@ public class TradeInforsController implements Initializable{
         loadBook(tbBook);
     }
     
-    public void completedBorrowBook(ActionEvent event) throws SQLException {
+        public void completedBorrowBook(ActionEvent event) throws SQLException {
         if (!this.name.getText().equals("") && !this.phoneNumber.getText().equals("")
                 && !this.idBs.getText().equals("") && !this.borrowDay.getEditor().getText().equals("")
                 && !this.returnDay.getEditor().getText().equals("")
@@ -229,6 +229,7 @@ public class TradeInforsController implements Initializable{
             }
         }
     }
+
     
     public void returnBill(ActionEvent event) throws SQLException {
         if (!this.nameCus.getText().equals("")

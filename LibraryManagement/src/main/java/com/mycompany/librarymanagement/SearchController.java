@@ -1,5 +1,5 @@
 //SearchControoler
-
+package com.mycompany.librarymanagement;
 import com.mycompany.librarymanagement.pojo.Book;
 import com.mycompany.librarymanagement.services.BookServices;
 import java.net.URL;
@@ -37,26 +37,26 @@ public class SearchController implements Initializable {
     @FXML
     private TableView<Book> View;
     @FXML
-                void FindCX() throws SQLException {
+        void FindCX() throws SQLException {
             dataList = BookServices.getid_Name_AuthorofBook();
             View.setItems(dataList);
             FilteredList<Book> filteredData = new FilteredList<>(dataList, b -> true);
             txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(book -> {
-                                        if (newValue == null || newValue.isEmpty()){
-                                            return true;
-                                        }
-                                        String lowerCaSeFilter = newValue.toLowerCase();
+                if (newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaSeFilter = newValue.toLowerCase().trim();
 
-                                        if (book.getIdB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
-                                            return true;
-                                        } else if (book.getNameB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
-                                            return true;
-                                        }else if (book.getAuthorName().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
-                                                return true;
-                                        }  
-                                               else
-                                                    return false;
+                if (book.getIdB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getNameB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                }else if (book.getAuthorName().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                        return true;
+                }  
+                       else
+                            return false;
                 });                                                                             
             });
             SortedList<Book> sortedData = new SortedList<>(filteredData);
