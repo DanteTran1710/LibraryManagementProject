@@ -11,6 +11,7 @@ import com.mycompany.librarymanagement.services.MethodNeeded;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,38 +34,54 @@ import javafx.scene.control.TextField;
  *
  * @author thinh
  */
-
-
-
 public class SignUpController implements Initializable {
-    @FXML private TextField txtMaDocGia;
-    @FXML private TextField txtTenDocGia;
-    @FXML private TextField txtGmail;
-    @FXML private DatePicker dtpNgaySinh;
-    @FXML private TextField txtSDT;
-    @FXML private ComboBox cmbGioiTinh;
-    @FXML private ComboBox cmbBoPhan;
-    @FXML private ComboBox cmbDoiTuong;
-    
-    public void SignUp(ActionEvent evt) throws IOException {
-        if (!this.txtMaDocGia.getText().equals("") && !this.txtSDT.getText().equals("")
-                && !this.txtTenDocGia.getText().equals("") && !this.cmbBoPhan.getSelectionModel().getSelectedItem().toString().equals("Khoa")
-                && !this.dtpNgaySinh.getEditor().getText().equals("") && !this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString().equals("Đối Tượng")
-                && !this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString().equals("Giới Tính") 
-                && !this.txtGmail.getText().equals("") && verifyNumText()&&verifyGmail(txtGmail)
-                && verifyCharacter(txtTenDocGia) && verifyID(txtMaDocGia)){
-        String passWord = MethodNeeded.createUUID();
-        MemberCard mc = new MemberCard(passWord, this.txtTenDocGia.getText(),
-                MethodNeeded.editFormmatDate(dtpNgaySinh),
-                this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),"Enable",
-                     this.txtMaDocGia.getText(), this.txtGmail.getText(),
+
+    @FXML
+    private TextField txtMaDocGia;
+    @FXML
+    private TextField txtTenDocGia;
+    @FXML
+    private TextField txtGmail;
+    @FXML
+    private DatePicker dtpNgaySinh;
+    @FXML
+    private TextField txtSDT;
+    @FXML
+    private ComboBox cmbGioiTinh;
+    @FXML
+    private ComboBox cmbBoPhan;
+    @FXML
+    private ComboBox cmbDoiTuong;
+
+//    public void SignUp(ActionEvent evt) throws IOException {
+//        if (!this.txtMaDocGia.getText().equals("") && !this.txtSDT.getText().equals("")
+//                && !this.txtTenDocGia.getText().equals("") && !this.cmbBoPhan.getSelectionModel().getSelectedItem().toString().equals("Khoa")
+//                && !this.dtpNgaySinh.getEditor().getText().equals("") && !this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString().equals("Đối Tượng")
+//                && !this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString().equals("Giới Tính")
+//                && !this.txtGmail.getText().equals("") && verifyNumText() && verifyGmail(txtGmail)
+//                && verifyCharacter(txtTenDocGia) && verifyID(txtMaDocGia)) {
+//            String passWord = MethodNeeded.createUUID();
+//            MemberCard mc = new MemberCard(passWord, this.txtTenDocGia.getText(),
+//                    MethodNeeded.editFormmatDate(dtpNgaySinh),
+//                    this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(), "Enable",
+//                    this.txtMaDocGia.getText(), this.txtGmail.getText(),
+//        }
+//    }
+// han the
+// ngay sinh
+    public void SignUp(ActionEvent evt) throws IOException, ParseException {
+        String id = MethodNeeded.createUUID();
+        MemberCard mc = new MemberCard(id, this.txtTenDocGia.getText(),
+                dtpNgaySinh.getEditor().getText(),
+                this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),
+                "Enable", this.txtMaDocGia.getText(), this.txtGmail.getText(),
                 this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString(),
                 this.txtSDT.getText(), this.cmbBoPhan.getSelectionModel().getSelectedItem().toString());
 
         try {
             MemberCardServices.addMC(mc);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sign up succesfully! Your account password is :" + passWord);
+            alert.setContentText("Sign up succesfully! Your account password is :" + id);
             alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
             if (alert.showAndWait().get() == ButtonType.YES) {
                 alert.close();
@@ -76,31 +93,23 @@ public class SignUpController implements Initializable {
             if (alert.showAndWait().get() == ButtonType.YES) {
                 alert.close();
                 Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+            } else {
+                alert.setContentText("Please complete your form before submit!");
+                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+                if (alert.showAndWait().get() == ButtonType.YES) {
+                    alert.close();
                 }
-            }   
-        }
-        
-        else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Please complete your form before submit!");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
-                alert.close();
             }
         }
-
     }
-    
 
-    
-    public boolean verifyNumText(){
+    public boolean verifyNumText() {
         Pattern p = Pattern.compile("(0)?[0-9]{9}");
         Matcher m = p.matcher(this.txtSDT.getText());
 
-        if(m.find() && m.group().equals(this.txtSDT.getText())){
+        if (m.find() && m.group().equals(this.txtSDT.getText())) {
             return true;
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter valid number!");
             alert.showAndWait();
@@ -108,14 +117,14 @@ public class SignUpController implements Initializable {
             return false;
         }
     }
+
     public boolean verifyCharacter(TextField txt) {
-        Pattern p = Pattern.compile(new String ("^[A-Z\\s]*$"));
+        Pattern p = Pattern.compile(new String("^[A-Z\\s]*$"));
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
             return true;
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Name must be uppercase!");
             alert.showAndWait();
@@ -123,15 +132,14 @@ public class SignUpController implements Initializable {
             return false;
         }
     }
-    
+
     public boolean verifyID(TextField txt) {
         Pattern p = Pattern.compile("[a-zA-Z0-9]{5}+");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
             return true;
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter valid character!");
             alert.showAndWait();
@@ -139,15 +147,14 @@ public class SignUpController implements Initializable {
             return false;
         }
     }
-    
+
     public boolean verifyGmail(TextField txt) {
         Pattern p = Pattern.compile("[a-zA-Z0-9]+@ou.edu.vn");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
             return true;
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Gmail must be @ou.edu.vn");
             alert.showAndWait();
@@ -161,18 +168,18 @@ public class SignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        ObservableList<String> gioiTinh = 
-                FXCollections.observableArrayList("Nam","Nữ");
+        MethodNeeded.editFormmatDate(dtpNgaySinh);
+
+        ObservableList<String> gioiTinh
+                = FXCollections.observableArrayList("Nam", "Nữ");
         cmbGioiTinh.setItems(gioiTinh);
-        
-        ObservableList<String> boPhan = 
-                FXCollections.observableArrayList("Công Nghệ Thông Tin","Đào Tạo Đặc Biệt","Quản Trị Kinh Doanh","Kế Toán Kiểm Toán");
+
+        ObservableList<String> boPhan
+                = FXCollections.observableArrayList("Công Nghệ Thông Tin", "Đào Tạo Đặc Biệt", "Quản Trị Kinh Doanh", "Kế Toán Kiểm Toán");
         cmbBoPhan.setItems(boPhan);
-        
-        ObservableList<String> doiTuong = 
-                FXCollections.observableArrayList("Sinh Viên", "Giảng Viên");
+
+        ObservableList<String> doiTuong
+                = FXCollections.observableArrayList("Sinh Viên", "Giảng Viên");
         cmbDoiTuong.setItems(doiTuong);
-    }    
-    
+    }
 }

@@ -32,17 +32,15 @@ public class MethodNeeded {
         return id;
     }
     
-    public static String editFormmatDate(DatePicker date){
+    public static void editFormmatDate(DatePicker date){
         String format = "dd/MM/yyyy";
         date.setPromptText(format);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
         StringConverter converter = new LocalDateStringConverter(dtf, null);
         date.setConverter(converter);
-       
-        return date.getEditor().getText();
     }
     public static void addSpinnerValue(Spinner s){
-        SpinnerValueFactory<Integer> value = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
+        SpinnerValueFactory<Integer> value = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 5);
         s.setValueFactory(value);
     }
     
