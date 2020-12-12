@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 12, 2020, 3:06:29 PM
+    Author     : hp
+*/
+#logo{
+    -fx-font-family : Forte;
+    -fx-fill : #8B4726;
+    -fx-font-size : 38;
+}
+#title{
+    -fx-font-family : Forte;
+    -fx-fill : #8B4726;
+    -fx-font-size : 18;
+}
+#background{
+    -fx-background-color: #F5DEB3;
+}
+*{
+    -fx-font-family: Cambria; 
+    -fx-fill : #8B4C39;
+    -fx-font-size : 13.5;
+    -fx-font-weight : bold;
+}
+TextField, DatePicker, Spinner{
+   -fx-background-color: white;
+}
+Rectangle{
+    -fx-fill : #F5DEB3;
+}
+Button:hover{
+    -fx-background-color : #8B7B8B;
+}
+Button{
+    -fx-background-color : white;
+}
