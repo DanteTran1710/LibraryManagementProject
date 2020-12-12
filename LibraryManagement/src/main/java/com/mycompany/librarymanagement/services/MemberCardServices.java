@@ -110,7 +110,7 @@ public class MemberCardServices {
     }
 
     public static void updateStateMC(String id, String state) throws SQLException {
-        String query = "Update membercard set StateCard=? where idMemberCard=?";
+        String query = "Update membercard set StateCard=? where UserName=?";
 
         Connection connect = jdbcUtils.getConnection();
 

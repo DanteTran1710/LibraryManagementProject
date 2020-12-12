@@ -42,16 +42,9 @@ public class BookTester {
     
     @Test
     public void testGetListBook(){
-        try {
-            List<Book> list = BookServices.getBook();
-            
-            Assert.assertEquals(2, list.size());
-            System.out.println("Test get list book successfully!");
-            
-        } catch (SQLException ex) {
-            System.err.println("Test get list book unsuccessfully!");
-            Logger.getLogger(BookTester.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        List<Book> list = BookServices.getBook();
+        Assert.assertEquals(2, list.size());
+        System.out.println("Test get list book successfully!");
     }
     
     @Test

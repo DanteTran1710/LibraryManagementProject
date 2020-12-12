@@ -19,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.text.Text;
 
-
 /**
  *
  * @author hp

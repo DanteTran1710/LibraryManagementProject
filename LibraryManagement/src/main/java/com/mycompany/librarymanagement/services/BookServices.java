@@ -10,9 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -26,25 +23,7 @@ public class BookServices {
      *
      * @return list of book
      * @throws SQLException
-     */
-    public static List<Book> getBook() throws SQLException {
-        Connection connect = jdbcUtils.getConnection();
-        Statement stm = connect.createStatement();
-        ResultSet rs = stm.executeQuery("Select * from book");
-
-        List<Book> list = new ArrayList<>();
-        while (rs.next()) {
-            Book b = new Book(rs.getString("idBook"), rs.getString("BookName"),
-                    rs.getString("AuthorName"), rs.getString("Description"),
-                    rs.getString("Release"), rs.getString("PlaceRelease"),
-                    rs.getString("State"), rs.getString("Category"),
-                    rs.getString("Places"));
-
-            list.add(b);
-        }
-        return list;
-    }
-//     
+     */  
 
     public static String checkBookByName(String name) throws SQLException {
         String query = "Select State from book where BookName=?";
@@ -92,17 +71,21 @@ public class BookServices {
         connect.commit();
     }
 
-    public static ObservableList<Book> getid_Name_AuthorofBook() {
+    public static ObservableList<Book> getBook() {
         Connection connect = jdbcUtils.getConnection();
         ObservableList<Book> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement ps = connect.prepareStatement("Select idBook, BookName, AuthorName  from book");
+            PreparedStatement ps = connect.prepareStatement("Select * from book");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Book((rs.getString("idBook")), rs.getString("BookName"),
-                         rs.getString("AuthorName")));
+                list.add(new Book(rs.getString("idBook"), rs.getString("BookName"),
+                    rs.getString("AuthorName"), rs.getString("Description"),
+                    rs.getString("Release"), rs.getString("PlaceRelease"),
+                    rs.getString("State"), rs.getString("Category"),
+                    rs.getString("Places")));
             }
         } catch (Exception ex) {
+            
         }
         return list;
     }

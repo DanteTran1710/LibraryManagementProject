@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="638.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.TradeInforsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.TradeInforsController">
    <children>
       <TabPane layoutY="75.0" prefHeight="562.0" prefWidth="780.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -158,7 +158,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="781.0">
                                        <children>
-                                          <TableView fx:id="tbBook" layoutY="-2.0" prefHeight="418.0" prefWidth="780.0" />
+                                          <TableView fx:id="tbBook" layoutY="50.0" prefHeight="366.0" prefWidth="780.0" />
                                           <Button layoutX="591.0" layoutY="425.0" mnemonicParsing="false" onAction="#loadB" prefHeight="41.0" prefWidth="82.0" text="CẬP NHẬT" />
                                           <Text layoutX="14.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NHẬP MÃ SÁCH ĐỂ MƯỢN">
                                              <font>
@@ -168,6 +168,12 @@
                                           <TextField fx:id="idBs" layoutX="227.0" layoutY="432.0" prefHeight="26.0" prefWidth="230.0" />
                                           <Button layoutX="688.0" layoutY="425.0" mnemonicParsing="false" onAction="#completedBorrowBook" prefHeight="41.0" prefWidth="82.0" text="XÁC NHẬN" />
                                           <Text layoutX="474.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="( Các mã sách cách nhau bởi dấu  &quot;,&quot; )" wrappingWidth="82.40000000000009" />
+                                          <Text layoutX="28.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌM KIẾM SÁCH">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="txtSearch" layoutX="227.0" layoutY="12.0" onAction="#FindCX" prefHeight="26.0" prefWidth="276.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>

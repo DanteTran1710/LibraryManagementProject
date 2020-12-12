@@ -5,7 +5,6 @@ package com.mycompany.librarymanagement;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,10 +21,11 @@ import javafx.scene.control.ComboBox;
  * @author hp
  */
 public class IndexController implements Initializable {
-    @FXML private ComboBox cbObject;
-    
-    public void switchToLogin(ActionEvent event) throws IOException
-    {
+
+    @FXML
+    private ComboBox cbObject;
+
+    public void switchToLogin(ActionEvent event) throws IOException {
         App.setRoot("Login");
     }
 
@@ -35,12 +35,12 @@ public class IndexController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         List<String> listObject = new ArrayList<>();
-        
+
         listObject.add("SINH VIÊN");
         listObject.add("GIẢNG VIÊN");
-        listObject.add("THỦ THƯ"); 
-        
+        listObject.add("THỦ THƯ");
+
         this.cbObject.getItems().addAll(listObject);
-    }    
-    
+    }
+
 }

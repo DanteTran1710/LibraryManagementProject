@@ -53,51 +53,45 @@ public class SignUpController implements Initializable {
     @FXML
     private ComboBox cmbDoiTuong;
 
-//    public void SignUp(ActionEvent evt) throws IOException {
-//        if (!this.txtMaDocGia.getText().equals("") && !this.txtSDT.getText().equals("")
-//                && !this.txtTenDocGia.getText().equals("") && !this.cmbBoPhan.getSelectionModel().getSelectedItem().toString().equals("Khoa")
-//                && !this.dtpNgaySinh.getEditor().getText().equals("") && !this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString().equals("Đối Tượng")
-//                && !this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString().equals("Giới Tính")
-//                && !this.txtGmail.getText().equals("") && verifyNumText() && verifyGmail(txtGmail)
-//                && verifyCharacter(txtTenDocGia) && verifyID(txtMaDocGia)) {
-//            String passWord = MethodNeeded.createUUID();
-//            MemberCard mc = new MemberCard(passWord, this.txtTenDocGia.getText(),
-//                    MethodNeeded.editFormmatDate(dtpNgaySinh),
-//                    this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(), "Enable",
-//                    this.txtMaDocGia.getText(), this.txtGmail.getText(),
-//        }
-//    }
 // han the
 // ngay sinh
     public void SignUp(ActionEvent evt) throws IOException, ParseException {
-        String id = MethodNeeded.createUUID();
-        MemberCard mc = new MemberCard(id, this.txtTenDocGia.getText(),
-                dtpNgaySinh.getEditor().getText(),
-                this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),
-                "Enable", this.txtMaDocGia.getText(), this.txtGmail.getText(),
-                this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString(),
-                this.txtSDT.getText(), this.cmbBoPhan.getSelectionModel().getSelectedItem().toString());
+        if (!this.txtMaDocGia.getText().equals("") && !this.txtSDT.getText().equals("")
+                && !this.txtTenDocGia.getText().equals("") && !this.cmbBoPhan.getSelectionModel().getSelectedItem().toString().equals("Khoa")
+                && !this.dtpNgaySinh.getEditor().getText().equals("") && !this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString().equals("Đối Tượng")
+                && !this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString().equals("Giới Tính")
+                && !this.txtGmail.getText().equals("") && verifyNumText() && verifyGmail(txtGmail)
+                && verifyCharacter(txtTenDocGia) && verifyID(txtMaDocGia)) {
 
-        try {
-            MemberCardServices.addMC(mc);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sign up succesfully! Your account password is :" + id);
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
-                alert.close();
-            }
-        } catch (SQLException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Sign up unsuccesfully! Please try again later");
-            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-            if (alert.showAndWait().get() == ButtonType.YES) {
-                alert.close();
-                Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
-            } else {
-                alert.setContentText("Please complete your form before submit!");
+            String id = MethodNeeded.createUUID();
+            MemberCard mc = new MemberCard(id, this.txtTenDocGia.getText(),
+                    dtpNgaySinh.getEditor().getText(),
+                    this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),
+                    "Enable", this.txtMaDocGia.getText(), this.txtGmail.getText(),
+                    this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString(),
+                    this.txtSDT.getText(), this.cmbBoPhan.getSelectionModel().getSelectedItem().toString());
+
+            try {
+                MemberCardServices.addMC(mc);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Sign up succesfully! Your account password is :" + id);
                 alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
                 if (alert.showAndWait().get() == ButtonType.YES) {
                     alert.close();
+                }
+            } catch (SQLException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Sign up unsuccesfully! Please try again later");
+                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+                if (alert.showAndWait().get() == ButtonType.YES) {
+                    alert.close();
+                    Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+                } else {
+                    alert.setContentText("Please complete your form before submit!");
+                    alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+                    if (alert.showAndWait().get() == ButtonType.YES) {
+                        alert.close();
+                    }
                 }
             }
         }
@@ -119,7 +113,7 @@ public class SignUpController implements Initializable {
     }
 
     public boolean verifyCharacter(TextField txt) {
-        Pattern p = Pattern.compile(new String("^[A-Z\\s]*$"));
+        Pattern p = Pattern.compile("^[A-Z\\s]*$");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {

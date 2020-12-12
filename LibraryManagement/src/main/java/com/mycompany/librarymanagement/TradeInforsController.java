@@ -24,6 +24,9 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,6 +62,7 @@ public class TradeInforsController implements Initializable{
     @FXML DatePicker borrowDay;
     @FXML TableView<Book> tbBook;
     @FXML TextField idBs;
+    @FXML TextField txtSearch;
     
     // Returning Book
     @FXML TextField nameCus;
@@ -75,6 +79,7 @@ public class TradeInforsController implements Initializable{
     @FXML Text stateCardBill;
     @FXML Text feeBorrowBill;
     
+    ObservableList<Book> dataList;   
     
     public void swtichToIndex(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -220,6 +225,65 @@ public class TradeInforsController implements Initializable{
         }
     }
 
+    public void FindCX(ActionEvent event) throws SQLException {
+        dataList = BookServices.getBook();
+        tbBook.setItems(dataList);
+        FilteredList<Book> filteredData = new FilteredList<>(dataList, b -> true);
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(book -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaSeFilter = newValue.toLowerCase().trim();
+
+                if (book.getIdB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getNameB().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getAuthorName().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getRelease().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getReleasePlace().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getState().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getCategory().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else if (book.getPlace().toLowerCase().indexOf(lowerCaSeFilter) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+        SortedList<Book> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tbBook.comparatorProperty());
+        tbBook.setItems(sortedData);
+    }
+    
+    public static void loadBook(TableView<Book> tbv) throws SQLException{
+         TableColumn colSTT = new TableColumn("Book Code");
+         colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
+         TableColumn colName = new TableColumn("Name");
+         colName.setCellValueFactory(new PropertyValueFactory("nameB"));
+         TableColumn colAuthorName = new TableColumn("Author");
+         colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
+         TableColumn colRelease = new TableColumn("Release Day");
+         colRelease.setCellValueFactory(new PropertyValueFactory("release"));
+         TableColumn colNXB = new TableColumn("Release Place");
+         colNXB.setCellValueFactory(new PropertyValueFactory("releasePlace"));
+         TableColumn colState = new TableColumn("State");
+         colState.setCellValueFactory(new PropertyValueFactory("state")); 
+         TableColumn colCategory = new TableColumn("Category");
+         colCategory.setCellValueFactory(new PropertyValueFactory("category"));   
+         TableColumn colPlace = new TableColumn("Place");
+         colPlace.setCellValueFactory(new PropertyValueFactory("place"));            
+         tbv.getColumns().addAll(colSTT, colName,colAuthorName,
+                                 colRelease,colNXB,colState,colCategory,colPlace);
+         
+        tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
+     }
     
     public void returnBill(ActionEvent event) throws SQLException, ParseException {
         if (!this.nameCus.getText().equals("")
@@ -269,29 +333,6 @@ public class TradeInforsController implements Initializable{
         }
         return fee;
     }
-    
-    public static void loadBook(TableView<Book> tbv) throws SQLException{
-         TableColumn colSTT = new TableColumn("Book Code");
-         colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
-         TableColumn colName = new TableColumn("Name");
-         colName.setCellValueFactory(new PropertyValueFactory("nameB"));
-         TableColumn colAuthorName = new TableColumn("Author");
-         colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
-         TableColumn colRelease = new TableColumn("Release Day");
-         colRelease.setCellValueFactory(new PropertyValueFactory("release"));
-         TableColumn colNXB = new TableColumn("Release Place");
-         colNXB.setCellValueFactory(new PropertyValueFactory("releasePlace"));
-         TableColumn colState = new TableColumn("State");
-         colState.setCellValueFactory(new PropertyValueFactory("state")); 
-         TableColumn colCategory = new TableColumn("Category");
-         colCategory.setCellValueFactory(new PropertyValueFactory("category"));   
-         TableColumn colPlace = new TableColumn("Place");
-         colPlace.setCellValueFactory(new PropertyValueFactory("place"));            
-         tbv.getColumns().addAll(colSTT, colName,colAuthorName,
-                                 colRelease,colNXB,colState,colCategory,colPlace);
-         
-        tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
-     }
     
     public boolean verifyNumText(){
         Pattern p = Pattern.compile("(0)?[0-9]{9}");
