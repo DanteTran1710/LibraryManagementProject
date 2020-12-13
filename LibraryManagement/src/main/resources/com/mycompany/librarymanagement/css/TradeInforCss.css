@@ -23,7 +23,7 @@ and open the template in the editor.
 *{
     -fx-font-family: Cambria; 
     -fx-fill : #8B4C39;
-    -fx-font-size : 13.5;
+    -fx-font-size : 14;
     -fx-font-weight : bold;
 }
 TextField, DatePicker, Spinner{

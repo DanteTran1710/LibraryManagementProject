@@ -47,7 +47,8 @@ import javafx.scene.text.Text;
  *
  * @author hp
  */
-public class TradeInforsController implements Initializable{
+public class TradeInforsController implements Initializable {
+
     // Borrow Book
     @FXML TextField name;
     @FXML TextField phoneNumber;
@@ -63,7 +64,7 @@ public class TradeInforsController implements Initializable{
     @FXML TableView<Book> tbBook;
     @FXML TextField idBs;
     @FXML TextField txtSearch;
-    
+
     // Returning Book
     @FXML TextField nameCus;
     @FXML TextField idCus;
@@ -78,72 +79,79 @@ public class TradeInforsController implements Initializable{
     @FXML Text idMCBill;
     @FXML Text stateCardBill;
     @FXML Text feeBorrowBill;
-    
-    ObservableList<Book> dataList;   
-    
+
+    ObservableList<Book> dataList;
+
     public void swtichToIndex(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Do you want return to main?");
+        alert.setContentText("Do you want to return to main?");
         alert.showAndWait();
         App.setRoot("Index");
     }
-    
-    public void switchtoChoice(ActionEvent event) throws IOException  {
-            
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Choose to choice");
-            alert.setContentText("Do you want to see your bill ?");
 
-            ButtonType btnYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-            ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+    public void switchtoChoice(ActionEvent event) throws IOException {
 
-            alert.getButtonTypes().setAll(btnNo, btnYes);
-            Optional<ButtonType> result = alert.showAndWait();
-            alert.show();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Choose to choice");
+        alert.setContentText("Do you want to see your bill ?");
 
-            if (result.get() == btnYes) {
-                alert.close();
-            } else {
-                App.setRoot("Index");
-            }
+        ButtonType btnYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+
+        alert.getButtonTypes().setAll(btnNo, btnYes);
+        Optional<ButtonType> result = alert.showAndWait();
+        alert.show();
+
+        if (result.get() == btnYes) {
+            alert.close();
+        } else {
+            App.setRoot("Index");
+        }
     }
-    
+
     public void completeReturnForm(ActionEvent event) throws IOException, SQLException, ParseException {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
                 && verifyCharacter(this.nameCus) && verifyUserName(this.idCus)) {
-            String id = MethodNeeded.createUUID();
+            if (MemberCardServices.checkMemberCard(this.idCus.getText()).equals("Enable")) {
+                String id = MethodNeeded.createUUID();
 
-            ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(),
-                    this.candidate1.getSelectionModel().getSelectedItem().toString(),
-                    this.nameCus.getText(), (int) this.bookCounted1.getValue(),
-                    borrowDay1.getEditor().getText(), MethodNeeded.getDateNow(),
-                    (int) this.stolenBookCounted.getValue(), (int) this.tornBookCounted.getValue(),caculateFine());
+                ReturnInfor ri = new ReturnInfor(id, this.idCus.getText(),
+                        this.candidate1.getSelectionModel().getSelectedItem().toString(),
+                        this.nameCus.getText(), (int) this.bookCounted1.getValue(),
+                        borrowDay1.getEditor().getText(), MethodNeeded.getDateNow(),
+                        (int) this.stolenBookCounted.getValue(), (int) this.tornBookCounted.getValue(), caculateFine());
 
-            try {
-                ReturnInforServices.addReturnInfor(ri);
-                String[] sub = BorrowInforServices.getIdBsFromBI(this.idCus.getText()).split(",");
-                for (int i = 0; i < sub.length; i++) {
-                    BookServices.updateStateBook(sub[i], "Available");
+                try {
+                    ReturnInforServices.addReturnInfor(ri);
+                    String[] sub = BorrowInforServices.getIdBsFromBI(this.idCus.getText()).split(",");
+                    for (int i = 0; i < sub.length; i++) {
+                        BookServices.updateStateBook(sub[i], "Available");
+                    }
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setContentText("Your returning-fill informations is done!");
+                    alert.showAndWait();
+                } catch (SQLException ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Error completed! Please try again");
+                    alert.showAndWait();
                 }
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("Your returning-fill informations is done!");
-                alert.showAndWait();
-            } catch (SQLException ex) {
+            } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Error completed! Please try again");
+                alert.setContentText("Your card is blocked! Please try again later");
                 alert.showAndWait();
+                this.idCus.clear();
             }
-        }
-        else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please complete your form before submit!");
             alert.showAndWait();
         }
-        if(MethodNeeded.caculateDate(borrowDay1.getEditor().getText(),
-                    MethodNeeded.getDateNow()) > 30)
+        if (MethodNeeded.caculateDate(borrowDay1.getEditor().getText(),
+                MethodNeeded.getDateNow()) > 30) {
             MemberCardServices.updateStateMC(this.idCus.getText(), "Disable");
+        }
     }
 
     public void checkoutMCBorrow(ActionEvent event) {
@@ -183,40 +191,48 @@ public class TradeInforsController implements Initializable{
             alert.showAndWait();
         }
     }
-    
-    public void loadB(ActionEvent event) throws SQLException{
+
+    public void loadB(ActionEvent event) throws SQLException {
         tbBook.getColumns().clear();
         loadBook(tbBook);
     }
-    
+
     public void completedBorrowBook(ActionEvent event) throws SQLException, ParseException {
         if (!this.name.getText().equals("") && !this.phoneNumber.getText().equals("")
                 && !this.idBs.getText().equals("") && !this.borrowDay.getEditor().getText().equals("")
                 && !this.returnDay.getEditor().getText().equals("")
-                && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("") 
-                && !this.cardID.getText().equals("") && verifyNumText() 
+                && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("")
+                && !this.cardID.getText().equals("") && verifyNumText()
                 && verifyCharacter(name) && verifyUserName(cardID) && checkoutBookText()) {
-            String id = MethodNeeded.createUUID();
+            if (MemberCardServices.checkMemberCard(this.cardID.getText()).equals("Enable")) {
+                String id = MethodNeeded.createUUID();
 
-            BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
-                    this.candidate.getSelectionModel().getSelectedItem().toString(),
-                    (int) this.bookCounted.getValue(),
-                    borrowDay.getEditor().getText(),
-                    returnDay.getEditor().getText(), this.idBs.getText(), this.cardID.getText());
+                BorrowInfor bi = new BorrowInfor(id, this.name.getText(), this.phoneNumber.getText(),
+                        this.candidate.getSelectionModel().getSelectedItem().toString(),
+                        (int) this.bookCounted.getValue(),
+                        borrowDay.getEditor().getText(),
+                        returnDay.getEditor().getText(), this.idBs.getText(), this.cardID.getText());
 
-            try {
-                BorrowInforServices.addBorrowInfor(bi);
-                String[] sub = this.idBs.getText().split(",");
-                for(int i=0; i < sub.length; i++)
-                    BookServices.updateStateBook(sub[i],"Borrowed");
+                try {
+                    BorrowInforServices.addBorrowInfor(bi);
+                    String[] sub = this.idBs.getText().split(",");
+                    for (int i = 0; i < sub.length; i++) {
+                        BookServices.updateStateBook(sub[i], "Borrowed");
+                    }
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Your borrow-fill informations is done!");
-                alert.showAndWait();
-            } catch (SQLException ex) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Your borrow-fill informations is done!");
+                    alert.showAndWait();
+                } catch (SQLException ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Error completed! Please try again later");
+                    alert.showAndWait();
+                }
+            } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Error completed! Please try again later");
+                alert.setContentText("Your card is blocked! Please try again later");
                 alert.showAndWait();
+                this.cardID.clear();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -261,30 +277,30 @@ public class TradeInforsController implements Initializable{
         sortedData.comparatorProperty().bind(tbBook.comparatorProperty());
         tbBook.setItems(sortedData);
     }
-    
-    public static void loadBook(TableView<Book> tbv) throws SQLException{
-         TableColumn colSTT = new TableColumn("Book Code");
-         colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
-         TableColumn colName = new TableColumn("Name");
-         colName.setCellValueFactory(new PropertyValueFactory("nameB"));
-         TableColumn colAuthorName = new TableColumn("Author");
-         colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
-         TableColumn colRelease = new TableColumn("Release Day");
-         colRelease.setCellValueFactory(new PropertyValueFactory("release"));
-         TableColumn colNXB = new TableColumn("Release Place");
-         colNXB.setCellValueFactory(new PropertyValueFactory("releasePlace"));
-         TableColumn colState = new TableColumn("State");
-         colState.setCellValueFactory(new PropertyValueFactory("state")); 
-         TableColumn colCategory = new TableColumn("Category");
-         colCategory.setCellValueFactory(new PropertyValueFactory("category"));   
-         TableColumn colPlace = new TableColumn("Place");
-         colPlace.setCellValueFactory(new PropertyValueFactory("place"));            
-         tbv.getColumns().addAll(colSTT, colName,colAuthorName,
-                                 colRelease,colNXB,colState,colCategory,colPlace);
-         
+
+    public static void loadBook(TableView<Book> tbv) throws SQLException {
+        TableColumn colSTT = new TableColumn("Book Code");
+        colSTT.setCellValueFactory(new PropertyValueFactory("idB"));
+        TableColumn colName = new TableColumn("Name");
+        colName.setCellValueFactory(new PropertyValueFactory("nameB"));
+        TableColumn colAuthorName = new TableColumn("Author");
+        colAuthorName.setCellValueFactory(new PropertyValueFactory("authorName"));
+        TableColumn colRelease = new TableColumn("Release Day");
+        colRelease.setCellValueFactory(new PropertyValueFactory("release"));
+        TableColumn colNXB = new TableColumn("Release Place");
+        colNXB.setCellValueFactory(new PropertyValueFactory("releasePlace"));
+        TableColumn colState = new TableColumn("State");
+        colState.setCellValueFactory(new PropertyValueFactory("state"));
+        TableColumn colCategory = new TableColumn("Category");
+        colCategory.setCellValueFactory(new PropertyValueFactory("category"));
+        TableColumn colPlace = new TableColumn("Place");
+        colPlace.setCellValueFactory(new PropertyValueFactory("place"));
+        tbv.getColumns().addAll(colSTT, colName, colAuthorName,
+                colRelease, colNXB, colState, colCategory, colPlace);
+
         tbv.setItems(FXCollections.observableArrayList(BookServices.getBook()));
-     }
-    
+    }
+
     public void returnBill(ActionEvent event) throws SQLException, ParseException {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
@@ -296,7 +312,7 @@ public class TradeInforsController implements Initializable{
             this.feeBorrowBill.setText(caculateFine() + " Đ");
         }
     }
-    
+
     public double caculateFine() throws ParseException {
         double fee = 0;
         double feeTorn = 100000;
@@ -333,15 +349,14 @@ public class TradeInforsController implements Initializable{
         }
         return fee;
     }
-    
-    public boolean verifyNumText(){
+
+    public boolean verifyNumText() {
         Pattern p = Pattern.compile("(0)?[0-9]{9}");
         Matcher m = p.matcher(this.phoneNumber.getText());
-        
-        if(m.find() && m.group().equals(this.phoneNumber.getText())){
+
+        if (m.find() && m.group().equals(this.phoneNumber.getText())) {
             return true;
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter valid number!");
             alert.showAndWait();
@@ -349,15 +364,14 @@ public class TradeInforsController implements Initializable{
             return false;
         }
     }
-    
+
     public boolean verifyCharacter(TextField txt) {
         Pattern p = Pattern.compile("[a-zA-Z\\s]+");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
             return true;
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter valid character!");
             alert.showAndWait();
@@ -367,7 +381,7 @@ public class TradeInforsController implements Initializable{
     }
 
     public boolean verifyUserName(TextField txt) {
-        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Pattern p = Pattern.compile("[a-z-|_|.]+");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
@@ -380,12 +394,12 @@ public class TradeInforsController implements Initializable{
             return false;
         }
     }
-    
+
     public boolean checkoutBookText() throws SQLException {
         boolean flat = true;
-        if (this.idBs.getText().length() == 3 &&
-                BookServices.checkBookByID(this.idBs.getText()).equals("Available")) {
-                return true;
+        if (this.idBs.getText().length() == 3
+                && BookServices.checkBookByID(this.idBs.getText()).equals("Available")) {
+            return true;
         } else if (this.idBs.getText().length() > 3) {
             if (this.idBs.getText().contains(",")) {
                 String[] sub = this.idBs.getText().split(",");
@@ -405,7 +419,7 @@ public class TradeInforsController implements Initializable{
         this.idBs.clear();
         return false;
     }
-        
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MethodNeeded.addSpinnerValue(bookCounted);
@@ -418,11 +432,11 @@ public class TradeInforsController implements Initializable{
         listS.add("GV");
         this.candidate.getItems().addAll(listS);
         this.candidate1.getItems().addAll(listS);
-        
+
         MethodNeeded.editFormmatDate(borrowDay);
         MethodNeeded.editFormmatDate(borrowDay1);
         MethodNeeded.editFormmatDate(returnDay);
-        
+
         try {
             loadBook(tbBook);
         } catch (SQLException ex) {

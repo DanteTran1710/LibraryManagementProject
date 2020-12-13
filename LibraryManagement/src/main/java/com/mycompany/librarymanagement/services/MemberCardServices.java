@@ -22,18 +22,18 @@ public class MemberCardServices {
 
     public static boolean addMC(MemberCard mc) throws SQLException {
         Connection connect = jdbcUtils.getConnection();
-        String query = "insert into membercard(idMemberCard, MemberName, DOB, Object,"
-                + "StateCard, UserName, Gmail, Sex, PhoneNumber, Major) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into membercard(UserName, PassWord, MemberName, DOB, Object,"
+                + "StateCard, Gmail, Sex, PhoneNumber, Major) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         connect.setAutoCommit(false);
 
         PreparedStatement stm = connect.prepareCall(query);
-        stm.setString(1, mc.getIdMC());
-        stm.setString(2, mc.getMemberName());
-        stm.setString(3, mc.getDOB());
-        stm.setString(4, mc.getObject());
-        stm.setString(5, mc.getStateCard());
-        stm.setString(6, mc.getUserName());
+        stm.setString(1, mc.getUserName());
+        stm.setString(2, mc.getPassWord());
+        stm.setString(3, mc.getMemberName());
+        stm.setString(4, mc.getDOB());
+        stm.setString(5, mc.getObject());
+        stm.setString(6, mc.getStateCard());
         stm.setString(7, mc.getGmail());
         stm.setString(8, mc.getSex());
         stm.setString(9, mc.getPhoneNum());
@@ -53,9 +53,9 @@ public class MemberCardServices {
 
         List<MemberCard> list = new ArrayList<>();
         while (rs.next()) {
-            MemberCard mc = new MemberCard(rs.getString("idMemberCard"),
+            MemberCard mc = new MemberCard(rs.getString("UserName"), rs.getString("PassWord"),
                     rs.getString("MemberName"), rs.getString("DOB"),
-                    rs.getString("Object"), rs.getString("StateCard"), rs.getString("UserName"),
+                    rs.getString("Object"), rs.getString("StateCard"),
                     rs.getString("Gmail"), rs.getString("Sex"), rs.getString("PhoneNumber"),
                     rs.getString("Major"));
             list.add(mc);

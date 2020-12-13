@@ -16,7 +16,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.text.Text;
 
 /**
@@ -24,11 +26,11 @@ import javafx.scene.text.Text;
  * @author hp
  */
 public class StatisticController implements Initializable{
-    @FXML CheckBox ckCourse1;
-    @FXML CheckBox ckCourse2;
-    @FXML CheckBox ckCourse3;
-    @FXML CheckBox ckCourse4;  
-    @FXML CheckBox ckCourseYear;
+    @FXML RadioButton rbCourse1;
+    @FXML RadioButton rbCourse2;
+    @FXML RadioButton rbCourse3;
+    @FXML RadioButton rbCourse4;
+    @FXML RadioButton rbCourseYear;
     @FXML Text amountBorrowBook;
     @FXML Text punctualityBorrowBook;
     @FXML Text lateBorrowBook;
@@ -38,7 +40,10 @@ public class StatisticController implements Initializable{
     private int minDay = 0;
     private int maxDay = 0;
     
-    public void swtichToIndex(ActionEvent event) throws IOException{
+    public void swtichToIndex(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Do you want to return to main?");
+        alert.showAndWait();
         App.setRoot("Index");
     }
     
@@ -95,27 +100,27 @@ public class StatisticController implements Initializable{
     }
             
     public void checkedChangingTime() {
-        if (this.ckCourse1.isSelected()){
+        if (this.rbCourse1.isSelected()){
             minDay = 1;
             maxDay = 90;
             this.time.textProperty().set("Jan - March");
         }
-        else if (this.ckCourse2.isSelected()){
+        else if (this.rbCourse2.isSelected()){
             minDay = 91;
             maxDay = 181;
             this.time.textProperty().set("April - Jun");
         }
-        else if (this.ckCourse3.isSelected()){
+        else if (this.rbCourse3.isSelected()){
             minDay = 182;
             maxDay = 273;
             this.time.textProperty().set("July - September");
         }
-        else if (this.ckCourse4.isSelected()){
+        else if (this.rbCourse4.isSelected()){
             minDay = 274;
             maxDay = 365;
             this.time.textProperty().set("October - December");
         }
-        else if(this.ckCourseYear.isSelected()){
+        else if(this.rbCourseYear.isSelected()){
             minDay = 1;
             maxDay = 365;
         }

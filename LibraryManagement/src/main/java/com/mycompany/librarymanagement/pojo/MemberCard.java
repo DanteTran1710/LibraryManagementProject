@@ -15,24 +15,24 @@ public class MemberCard {
      * @return the stateCard
      */
 
-    private String idMC;
+    private String userName;
+    private String passWord;
     private String memberName;
     private String DOB;
     private String object;
     private String stateCard;
-    private String userName;
     private String gmail;
     private String sex;
     private String phoneNum;
     private String major;
 
-    public MemberCard(String idMC, String memberName, String DOB, String object, String stateCard, String userName, String gmail, String sex, String phoneNum, String major) {
-        this.idMC = idMC;
+    public MemberCard(String userName, String passWord, String memberName, String DOB, String object, String stateCard, String gmail, String sex, String phoneNum, String major) {
+        this.userName = userName;
+        this.passWord = passWord;
         this.memberName = memberName;
         this.DOB = DOB;
         this.object = object;
         this.stateCard = stateCard;
-        this.userName = userName;
         this.gmail = gmail;
         this.sex = sex;
         this.phoneNum = phoneNum;
@@ -40,17 +40,31 @@ public class MemberCard {
     }
 
     /**
-     * @return the idMC
+     * @return the userName
      */
-    public String getIdMC() {
-        return idMC;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * @param idMC the idMC to set
+     * @param userName the userName to set
      */
-    public void setIdMC(String idMC) {
-        this.idMC = idMC;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    /**
+     * @return the passWord
+     */
+    public String getPassWord() {
+        return passWord;
+    }
+
+    /**
+     * @param passWord the passWord to set
+     */
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     /**
@@ -110,20 +124,6 @@ public class MemberCard {
     }
 
     /**
-     * @return the userName
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * @param userName the userName to set
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    /**
      * @return the gmail
      */
     public String getGmail() {
@@ -178,4 +178,5 @@ public class MemberCard {
     public void setMajor(String major) {
         this.major = major;
     }
+
 }

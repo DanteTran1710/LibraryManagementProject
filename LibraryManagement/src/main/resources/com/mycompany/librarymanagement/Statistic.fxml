@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -82,26 +83,6 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <CheckBox fx:id="ckCourse1" layoutX="119.0" layoutY="84.0" mnemonicParsing="false" text="1">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="ckCourse2" layoutX="223.0" layoutY="84.0" mnemonicParsing="false" text="2">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="ckCourse3" layoutX="326.0" layoutY="84.0" mnemonicParsing="false" text="3">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="ckCourse4" layoutX="429.0" layoutY="84.0" mnemonicParsing="false" text="4">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </CheckBox>
       <Text fx:id="time" layoutX="549.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="196.50439453125">
          <font>
             <Font size="20.0" />
@@ -119,16 +100,20 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <CheckBox fx:id="ckCourseYear" layoutX="119.0" layoutY="127.0" mnemonicParsing="false">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </CheckBox>
       <Text layoutX="14.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NĂM">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
       <ImageView fitHeight="363.0" fitWidth="291.0" layoutX="483.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true" />
+      <RadioButton fx:id="rbCourse1" layoutX="119.0" layoutY="84.0" mnemonicParsing="false" text="1">
+         <toggleGroup>
+            <ToggleGroup fx:id="course" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbCourse2" layoutX="223.0" layoutY="84.0" mnemonicParsing="false" text="2" toggleGroup="$course" />
+      <RadioButton fx:id="rbCourse3" layoutX="326.0" layoutY="84.0" mnemonicParsing="false" text="3" toggleGroup="$course" />
+      <RadioButton fx:id="rbCourse4" layoutX="429.0" layoutY="84.0" mnemonicParsing="false" text="4" toggleGroup="$course" />
+      <RadioButton fx:id="rbCourseYear" layoutX="119.0" layoutY="130.0" mnemonicParsing="false" toggleGroup="$course" />
    </children>
 </AnchorPane>

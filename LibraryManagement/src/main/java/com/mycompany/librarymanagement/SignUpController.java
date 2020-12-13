@@ -64,35 +64,30 @@ public class SignUpController implements Initializable {
                 && verifyCharacter(txtTenDocGia) && verifyID(txtMaDocGia)) {
 
             String id = MethodNeeded.createUUID();
-            MemberCard mc = new MemberCard(id, this.txtTenDocGia.getText(),
-                    dtpNgaySinh.getEditor().getText(),
+            MemberCard mc = new MemberCard(this.txtMaDocGia.getText(), id,
+                    this.txtTenDocGia.getText(), dtpNgaySinh.getEditor().getText(),
                     this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),
-                    "Enable", this.txtMaDocGia.getText(), this.txtGmail.getText(),
+                    "Enable", this.txtGmail.getText(),
                     this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString(),
                     this.txtSDT.getText(), this.cmbBoPhan.getSelectionModel().getSelectedItem().toString());
 
             try {
                 MemberCardServices.addMC(mc);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Sign up succesfully! Your account password is :" + id);
-                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-                if (alert.showAndWait().get() == ButtonType.YES) {
-                    alert.close();
-                }
+                alert.setContentText("Sign up succesfully! Your account password is : " + id);
+                alert.showAndWait();
+                App.setRoot("Login");
             } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Sign up unsuccesfully! Please try again later");
-                alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-                if (alert.showAndWait().get() == ButtonType.YES) {
-                    alert.close();
-                    Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
-                } else {
-                    alert.setContentText("Please complete your form before submit!");
-                    alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
-                    if (alert.showAndWait().get() == ButtonType.YES) {
-                        alert.close();
-                    }
-                }
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please complete your form before submit!");
+            alert.getButtonTypes().setAll(new ButtonType("OK", ButtonBar.ButtonData.YES));
+            if (alert.showAndWait().get() == ButtonType.YES) {
+                alert.close();
             }
         }
     }
@@ -113,7 +108,7 @@ public class SignUpController implements Initializable {
     }
 
     public boolean verifyCharacter(TextField txt) {
-        Pattern p = Pattern.compile("^[A-Z\\s]*$");
+        Pattern p = Pattern.compile("[a-zA-Z\\s]+");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
@@ -128,7 +123,7 @@ public class SignUpController implements Initializable {
     }
 
     public boolean verifyID(TextField txt) {
-        Pattern p = Pattern.compile("[a-zA-Z0-9]{5}+");
+        Pattern p = Pattern.compile("[a-z-|_|.]+");
         Matcher m = p.matcher(txt.getText());
 
         if (m.find() && m.group().equals(txt.getText())) {
