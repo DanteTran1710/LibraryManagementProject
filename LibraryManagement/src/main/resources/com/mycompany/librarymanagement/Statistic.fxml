@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -9,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="780.0" stylesheets="@../../../../java/com/mycompany/librarymanagement/css/StatisticCss.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.StatisticController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="780.0" stylesheets="@css/StatisticCss.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.StatisticController">
    <children>
-      <GridPane layoutY="181.0" prefHeight="362.0" prefWidth="773.0">
+      <GridPane layoutY="191.0" prefHeight="352.0" prefWidth="416.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -24,59 +25,59 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH ĐÃ MƯỢN" wrappingWidth="387.224609375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH ĐÃ MƯỢN" wrappingWidth="210.42462158203125">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH TRẢ ĐÚNG HẠN" wrappingWidth="386.2998046875" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH TRẢ ĐÚNG HẠN" wrappingWidth="207.89984130859375" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH TRẢ TRỄ HẠN" wrappingWidth="388.82440185546875" GridPane.rowIndex="2">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH TRẢ TRỄ HẠN" wrappingWidth="210.42437744140625" GridPane.rowIndex="2">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ TIỀN PHẠT" wrappingWidth="387.75018310546875" GridPane.rowIndex="3">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ TIỀN PHẠT" wrappingWidth="208.5501708984375" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH LỖI (MẤT, RÁCH,..)" wrappingWidth="386.0118103027344" GridPane.rowIndex="4">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ SÁCH LỖI (MẤT, RÁCH,..)" wrappingWidth="209.21176147460938" GridPane.rowIndex="4">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text fx:id="amountBorrowBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="387.20003032684326" GridPane.columnIndex="1">
+            <Text fx:id="amountBorrowBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="209.60002422332764" GridPane.columnIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text fx:id="punctualityBorrowBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="388.20003056526184" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="punctualityBorrowBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="209.80003666877747" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text fx:id="lateBorrowBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="388.80000591278076" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text fx:id="lateBorrowBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="210.4000120162964" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text fx:id="fine" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="387.20003056526184" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text fx:id="fine" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="208.79997563362122" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text fx:id="disrepairBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="387.199969291687" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Text fx:id="disrepairBook" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="209.5999631881714" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
          </children>
       </GridPane>
-      <Text fontSmoothingType="LCD" layoutX="163.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THỐNG KÊ SÁCH TRONG NĂM 2020" wrappingWidth="453.39324951171875">
+      <Text fx:id="logo" fontSmoothingType="LCD" layoutX="201.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISIC IN 2020" wrappingWidth="323.793212890625">
          <font>
             <Font size="28.0" />
          </font>
@@ -106,13 +107,13 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Button layoutX="18.0" layoutY="557.0" mnemonicParsing="false" onAction="#swtichToIndex" prefHeight="41.0" prefWidth="82.0" text="TRỞ LẠI" />
-      <Text layoutX="520.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG">
+      <Button layoutX="18.0" layoutY="557.0" mnemonicParsing="false" onAction="#swtichToIndex" prefHeight="42.0" prefWidth="99.0" text="TRỞ LẠI" />
+      <Text layoutX="270.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG">
          <font>
             <Font size="23.0" />
          </font>
       </Text>
-      <Button layoutX="654.0" layoutY="557.0" mnemonicParsing="false" onAction="#checkStatistic" prefHeight="41.0" prefWidth="82.0" text="KIỂM TRA" />
+      <Button layoutX="654.0" layoutY="557.0" mnemonicParsing="false" onAction="#checkStatistic" prefHeight="42.0" prefWidth="99.0" text="KIỂM TRA" />
       <Text layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUÝ">
          <font>
             <Font size="20.0" />
@@ -128,5 +129,6 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <ImageView fitHeight="363.0" fitWidth="291.0" layoutX="483.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

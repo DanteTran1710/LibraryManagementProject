@@ -64,7 +64,7 @@ public class MemberCardServices {
     }
 
     public static boolean checkLogin(String name, String pass) throws Exception {
-        String sql = "Select UserName,idMemberCard From membercard where UserName = ? and idMemberCard  = ?";
+        String sql = "Select UserName,PassWord From membercard where UserName = ? and PassWord  = ?";
 
         Connection connect = jdbcUtils.getConnection();
         PreparedStatement stm = connect.prepareStatement(sql);

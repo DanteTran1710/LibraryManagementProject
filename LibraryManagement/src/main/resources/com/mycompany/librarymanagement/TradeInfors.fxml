@@ -21,343 +21,345 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="780.0" stylesheets="@css/TradeInforCss.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.TradeInforsController">
-   <children>
-      <TabPane fx:id="tab" layoutY="75.0" prefHeight="562.0" prefWidth="780.0" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab text="BORROW BOOK">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="772.0">
-                     <children>
-                        <Accordion layoutX="-3.0" prefHeight="534.0" prefWidth="790.0">
-                           <panes>
-                              <TitledPane animated="false" text="CUSTOMER INFORMATIONS">
-                                 <content>
-                                    <AnchorPane fx:id="background" minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="818.0">
-                                       <children>
-                                          <Text layoutX="46.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN">
-                                             <font>
+    <children>
+        <TabPane fx:id="tab" layoutY="75.0" prefHeight="562.0" prefWidth="780.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="BORROW BOOK">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="772.0">
+                            <children>
+                                <Accordion layoutX="-3.0" prefHeight="534.0" prefWidth="790.0">
+                                    <panes>
+                                        <TitledPane animated="false" text="CUSTOMER INFORMATIONS">
+                                            <content>
+                                                <AnchorPane fx:id="background" minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="818.0">
+                                                    <children>
+                                                        <Text layoutX="46.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="44.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ ĐIỆN THOẠI">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="46.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ĐỐI TƯỢNG">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="44.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG SÁCH ">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="44.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY MƯỢN">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="44.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY TRẢ (DỰ KIẾN)">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <TextField fx:id="phoneNumber" layoutX="164.0" layoutY="150.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập số điện thoại" />
+                                                        <ComboBox fx:id="candidate" layoutX="200.0" layoutY="215.0" prefWidth="150.0" />
+                                                        <Spinner fx:id="bookCounted" layoutX="198.0" layoutY="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="69.0">
+                                                            <opaqueInsets>
+                                                                <Insets />
+                                                            </opaqueInsets>
+                                                        </Spinner>
+                                                        <DatePicker fx:id="borrowDay" layoutX="186.0" layoutY="344.0" prefWidth="178.0" promptText="nhập ngày mượn" />
+                                                        <DatePicker fx:id="returnDay" layoutX="211.0" layoutY="407.0" promptText="nhập ngày trả" />
+                                                        <TextField fx:id="name" layoutX="165.0" layoutY="33.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập họ tên" />
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0ffed00" height="134.0" layoutX="491.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
+                                                        <Text fx:id="title" layoutX="557.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BORROW ' S RULES">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="503.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MƯỢN SÁCH KHÔNG QUÁ 30 NGÀY">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="503.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUÁ HẠN PHẠT 5.000Đ / NGÀY">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f700" height="155.0" layoutX="491.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
+                                                        <Text fx:id="title" layoutX="569.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOK ' S STATE">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="501.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÊN SÁCH">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <TextField fx:id="bookName" layoutX="578.0" layoutY="194.0" prefHeight="26.0" prefWidth="184.0" promptText="nhập tên sách" />
+                                                        <Text layoutX="501.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f700" height="153.0" layoutX="491.0" layoutY="304.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
+                                                        <Text fx:id="title" layoutX="526.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBER CARD ' S STATE">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="502.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <TextField fx:id="cardName" layoutX="600.0" layoutY="349.0" prefHeight="26.0" prefWidth="163.0" promptText="nhập mã độc giả" />
+                                                        <Text layoutX="499.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Button layoutX="591.0" layoutY="262.0" mnemonicParsing="false" onAction="#checkoutBook" text="KIỂM TRA">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Button>
+                                                        <Button layoutX="589.0" layoutY="423.0" mnemonicParsing="false" onAction="#checkoutMCBorrow" text="KIỂM TRA">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Button>
+                                                        <Text fx:id="stateBook" layoutX="625.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="stateCard" layoutX="625.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text layoutX="46.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
+                                                            <font>
+                                                                <Font size="15.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <TextField fx:id="cardID" layoutX="166.0" layoutY="91.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập mã độc giả" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </TitledPane>
+                                        <TitledPane animated="false" prefHeight="508.0" prefWidth="827.0" text="BOOK INFORMATIONS">
+                                            <content>
+                                                <AnchorPane fx:id="background" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="781.0">
+                                                    <children>
+                                                        <TableView fx:id="tbBook" layoutY="50.0" prefHeight="366.0" prefWidth="780.0" />
+                                                        <Button layoutX="564.0" layoutY="425.0" mnemonicParsing="false" onAction="#loadB" prefHeight="42.0" prefWidth="90.0" text="CẬP NHẬT" />
+                                                        <Text layoutX="14.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NHẬP MÃ SÁCH ĐỂ MƯỢN">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <TextField fx:id="idBs" layoutX="195.0" layoutY="432.0" prefHeight="26.0" prefWidth="230.0" promptText="nhập mã sách" />
+                                                        <Button layoutX="670.0" layoutY="425.0" mnemonicParsing="false" onAction="#completedBorrowBook" prefHeight="42.0" prefWidth="90.0" text="XÁC NHẬN" />
+                                                        <Text layoutX="444.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="( Các mã sách cách nhau bởi dấu  &quot;,&quot; )" wrappingWidth="106.40000000000009" />
+                                                        <Text layoutX="28.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌM KIẾM SÁCH">
+                                                            <font>
+                                                                <Font size="17.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <TextField fx:id="txtSearch" layoutX="227.0" layoutY="12.0" onAction="#FindCX" prefHeight="26.0" prefWidth="276.0" promptText="nhập sách tìm kiếm" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </TitledPane>
+
+                                    </panes>
+                                </Accordion>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="RETURN BOOK">
+                    <content>
+                        <AnchorPane fx:id="background" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="155.0" layoutX="429.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
+                                <GridPane layoutX="20.0" layoutY="339.0" prefHeight="184.0" prefWidth="330.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ" GridPane.rowIndex="1">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="44.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ ĐIỆN THOẠI">
-                                             <font>
+                                            </font>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TRẠNG THÁI THẺ" GridPane.rowIndex="2">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="46.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ĐỐI TƯỢNG">
-                                             <font>
+                                            </font>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN ">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="44.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG SÁCH ">
-                                             <font>
+                                            </font>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT" GridPane.rowIndex="3">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="44.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY MƯỢN">
-                                             <font>
+                                            </font>
+                                        </Text>
+                                        <Text fx:id="nameBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="44.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY TRẢ (DỰ KIẾN)">
-                                             <font>
+                                            </font>
+                                        </Text>
+                                        <Text fx:id="idMCBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="phoneNumber" layoutX="164.0" layoutY="150.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập số điện thoại" />
-                                          <ComboBox fx:id="candidate" layoutX="200.0" layoutY="215.0" prefWidth="150.0" />
-                                          <Spinner fx:id="bookCounted" layoutX="198.0" layoutY="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="69.0">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                          </Spinner>
-                                          <DatePicker fx:id="borrowDay" layoutX="186.0" layoutY="344.0" prefWidth="178.0" promptText="nhập ngày mượn" />
-                                          <DatePicker fx:id="returnDay" layoutX="211.0" layoutY="407.0" promptText="nhập ngày trả" />
-                                          <TextField fx:id="name" layoutX="165.0" layoutY="33.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập họ tên" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0ffed00" height="134.0" layoutX="491.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
-                                          <Text fx:id="title" layoutX="557.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BORROW ' S RULES">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="503.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MƯỢN SÁCH KHÔNG QUÁ 30 NGÀY">
-                                             <font>
+                                            </font>
+                                        </Text>
+                                        <Text fx:id="stateCardBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="503.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUÁ HẠN PHẠT 5.000Đ / NGÀY">
-                                             <font>
+                                            </font>
+                                        </Text>
+                                        <Text fx:id="feeBorrowBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <font>
                                                 <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f700" height="155.0" layoutX="491.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
-                                          <Text fx:id="title" layoutX="569.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOK ' S STATE">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="501.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÊN SÁCH">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="bookName" layoutX="578.0" layoutY="194.0" prefHeight="26.0" prefWidth="184.0" promptText="nhập tên sách" />
-                                          <Text layoutX="501.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f700" height="153.0" layoutX="491.0" layoutY="304.0" stroke="BLACK" strokeType="INSIDE" width="280.0" />
-                                          <Text fx:id="title" layoutX="526.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBER CARD ' S STATE">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="502.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="cardName" layoutX="600.0" layoutY="349.0" prefHeight="26.0" prefWidth="163.0" promptText="nhập mã độc giả" />
-                                          <Text layoutX="499.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Button layoutX="591.0" layoutY="262.0" mnemonicParsing="false" onAction="#checkoutBook" text="KIỂM TRA">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Button>
-                                          <Button layoutX="589.0" layoutY="423.0" mnemonicParsing="false" onAction="#checkoutMCBorrow" text="KIỂM TRA">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Button>
-                                          <Text fx:id="stateBook" layoutX="625.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="stateCard" layoutX="625.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <Text layoutX="46.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="cardID" layoutX="166.0" layoutY="91.0" prefHeight="6.0" prefWidth="218.0" promptText="nhập mã độc giả" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </TitledPane>
-                              <TitledPane animated="false" prefHeight="508.0" prefWidth="827.0" text="BOOK INFORMATIONS">
-                                 <content>
-                                    <AnchorPane fx:id="background" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="781.0">
-                                       <children>
-                                          <TableView fx:id="tbBook" layoutY="50.0" prefHeight="366.0" prefWidth="780.0" />
-                                          <Button layoutX="591.0" layoutY="425.0" mnemonicParsing="false" onAction="#loadB" prefHeight="41.0" prefWidth="82.0" text="CẬP NHẬT" />
-                                          <Text layoutX="14.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NHẬP MÃ SÁCH ĐỂ MƯỢN">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="idBs" layoutX="227.0" layoutY="432.0" prefHeight="26.0" prefWidth="230.0" promptText="nhập mã sách" />
-                                          <Button layoutX="688.0" layoutY="425.0" mnemonicParsing="false" onAction="#completedBorrowBook" prefHeight="41.0" prefWidth="82.0" text="XÁC NHẬN" />
-                                          <Text layoutX="474.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="( Các mã sách cách nhau bởi dấu  &quot;,&quot; )" wrappingWidth="82.40000000000009" />
-                                          <Text layoutX="28.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌM KIẾM SÁCH">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="txtSearch" layoutX="227.0" layoutY="12.0" onAction="#FindCX" prefHeight="26.0" prefWidth="276.0" promptText="nhập sách tìm kiếm" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </TitledPane>
-                           </panes>
-                        </Accordion>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="RETURN BOOK">
-               <content>
-                  <AnchorPane fx:id="background" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="155.0" layoutX="429.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
-                        <GridPane layoutX="20.0" layoutY="339.0" prefHeight="184.0" prefWidth="330.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TRẠNG THÁI THẺ" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN ">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIỀN PHẠT" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="nameBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="idMCBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="stateCardBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="feeBorrowBill" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </GridPane>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="248.0" layoutX="374.0" layoutY="276.0" stroke="BLACK" strokeType="INSIDE" width="270.0" />
-                        <Text fx:id="title" layoutX="402.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBER CARD ' S STATE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="388.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="447.0" layoutY="444.0" mnemonicParsing="false" onAction="#checkoutMCReturn" prefHeight="42.0" prefWidth="124.0" text="KIỂM TRA">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Button>
-                        <Text layoutX="37.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="nameCus" layoutX="130.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" promptText="nhập họ và tên" />
-                        <Text layoutX="403.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="idCus" layoutX="551.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" promptText="nhập mã độc giả" />
-                        <Text layoutX="39.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ĐỐI TƯỢNG">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <ComboBox fx:id="candidate1" layoutX="159.0" layoutY="106.0" prefWidth="150.0" />
-                        <Text layoutX="31.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG SÁCH">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <Spinner fx:id="bookCounted1" layoutX="174.0" layoutY="234.0" prefHeight="24.0" prefWidth="56.0" />
-                        <DatePicker fx:id="borrowDay1" layoutX="155.0" layoutY="165.0" />
-                        <Text layoutX="31.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY MƯỢN">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="390.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="cardName1" layoutX="479.0" layoutY="346.0" prefHeight="26.0" prefWidth="153.0" promptText="nhập mã độc giả" />
-                        <Text fx:id="title" layoutX="452.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOK ' S STATE BEFORE RETURN">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="462.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RÁCH, HƯ HỎNG">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="462.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MẤT">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Spinner fx:id="stolenBookCounted" layoutX="640.0" layoutY="172.0" prefHeight="0.0" prefWidth="52.0" />
-                        <Spinner fx:id="tornBookCounted" layoutX="640.0" layoutY="221.0" prefHeight="26.0" prefWidth="52.0" />
-                        <Text layoutX="711.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(SL)">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="711.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(SL)">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="656.0" layoutY="296.0" mnemonicParsing="false" onAction="#completeReturnForm" prefHeight="51.0" prefWidth="119.0" text="XÁC NHẬN">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Button>
-                        <Text fx:id="title" layoutX="77.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RETURN BILL" textAlignment="CENTER" wrappingWidth="222.66851806640625">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="654.0" layoutY="436.0" mnemonicParsing="false" onAction="#returnBill" prefHeight="51.0" prefWidth="123.0" text="XEM HÓA ĐƠN">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Button>
-                        <Text fx:id="stateCard1" layoutX="506.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="state" layoutX="188.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-      <Label layoutX="640.0" layoutY="29.0" />
-      <Button fx:id="button" layoutX="683.0" layoutY="17.0" mnemonicParsing="false" onAction="#swtichToIndex" prefHeight="41.0" prefWidth="82.0" text="TRANG CHỦ" />
-      <Text fx:id="logo" layoutX="28.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INFORMATION FORM">
-         <font>
-            <Font size="35.0" />
-         </font>
-      </Text>
-   </children>
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </GridPane>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="248.0" layoutX="374.0" layoutY="276.0" stroke="BLACK" strokeType="INSIDE" width="270.0" />
+                                <Text fx:id="title" layoutX="402.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBER CARD ' S STATE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="388.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÌNH TRẠNG ">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <Button layoutX="447.0" layoutY="444.0" mnemonicParsing="false" onAction="#checkoutMCReturn" prefHeight="42.0" prefWidth="124.0" text="KIỂM TRA">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
+                                <Text layoutX="37.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỌ VÀ TÊN ">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="nameCus" layoutX="130.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" promptText="nhập họ và tên" />
+                                <Text layoutX="403.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="idCus" layoutX="551.0" layoutY="48.0" prefHeight="26.0" prefWidth="205.0" promptText="nhập mã độc giả" />
+                                <Text layoutX="39.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ĐỐI TƯỢNG">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <ComboBox fx:id="candidate1" layoutX="159.0" layoutY="106.0" prefWidth="150.0" />
+                                <Text layoutX="31.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SỐ LƯỢNG SÁCH">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <Spinner fx:id="bookCounted1" layoutX="174.0" layoutY="234.0" prefHeight="24.0" prefWidth="56.0" />
+                                <DatePicker fx:id="borrowDay1" layoutX="155.0" layoutY="165.0" promptText="nhập ngày mượn" />
+                                <Text layoutX="31.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGÀY MƯỢN">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="390.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MÃ ĐỘC GIẢ">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="cardName1" layoutX="479.0" layoutY="346.0" prefHeight="26.0" prefWidth="153.0" promptText="nhập mã độc giả" />
+                                <Text fx:id="title" layoutX="452.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOK ' S STATE BEFORE RETURN">
+                                    <font>
+                                        <Font size="19.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="462.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RÁCH, HƯ HỎNG">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="462.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MẤT">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Spinner fx:id="stolenBookCounted" layoutX="640.0" layoutY="172.0" prefHeight="0.0" prefWidth="52.0" />
+                                <Spinner fx:id="tornBookCounted" layoutX="640.0" layoutY="221.0" prefHeight="26.0" prefWidth="52.0" />
+                                <Text layoutX="711.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(SL)">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="711.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(SL)">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Button layoutX="656.0" layoutY="296.0" mnemonicParsing="false" onAction="#completeReturnForm" prefHeight="51.0" prefWidth="119.0" text="XÁC NHẬN">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
+                                <Text fx:id="title" layoutX="77.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RETURN BILL" textAlignment="CENTER" wrappingWidth="222.66851806640625">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <Button layoutX="654.0" layoutY="436.0" mnemonicParsing="false" onAction="#returnBill" prefHeight="51.0" prefWidth="123.0" text="XEM HÓA ĐƠN">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
+                                <Text fx:id="stateCard1" layoutX="506.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <Text fx:id="state" layoutX="188.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Label layoutX="640.0" layoutY="29.0" />
+        <Button fx:id="button" layoutX="659.0" layoutY="17.0" mnemonicParsing="false" onAction="#swtichToIndex" prefHeight="42.0" prefWidth="106.0" text="TRANG CHỦ" />
+        <Text fx:id="logo" layoutX="28.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INFORMATION FORM">
+            <font>
+                <Font size="35.0" />
+            </font>
+        </Text>
+    </children>
 </AnchorPane>

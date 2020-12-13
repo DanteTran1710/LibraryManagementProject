@@ -4,26 +4,26 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Dec 12, 2020, 3:06:51 PM
+    Created on : Dec 13, 2020, 12:01:27 PM
     Author     : hp
 */
-*{
-    -fx-font-family: Cambria; 
-    -fx-fill : #8B4C39;
-    -fx-font-size : 16;
-    -fx-font-weight : bold;
+#logo{
+    -fx-font-family : Forte;
+    -fx-fill : #8B4726;
+    -fx-font-size : 28;
 }
 #background{
     -fx-background-color: #F5DEB3;
 }
-#logo{
-    -fx-font-family : Forte;
-    -fx-fill : #8B4726;
-    -fx-font-size : 38;
-}
 Button:hover{
     -fx-background-color : #8B7B8B;
 }
-Button{
+Button, ComboBox{
     -fx-background-color : white;
+}
+*{
+    -fx-font-family: Cambria; 
+    -fx-fill : #8B4C39;
+    -fx-font-size : 18;
+    -fx-font-weight : bold;
 }
