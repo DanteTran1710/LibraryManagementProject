@@ -22,6 +22,13 @@ import javafx.scene.control.TextField;
 public class LoginController {
     @FXML private TextField txtUserName;
     @FXML private PasswordField txtPassword;
+    
+    public void swtichToIndex(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Do you want to return to main?");
+        alert.showAndWait();
+        App.setRoot("Index");
+    }
 
     public void Login(ActionEvent event) throws Exception {
         if (!this.txtUserName.getText().equals("") && !this.txtPassword.getText().equals("")

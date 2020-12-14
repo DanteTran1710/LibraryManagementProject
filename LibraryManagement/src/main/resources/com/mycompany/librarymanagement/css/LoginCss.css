@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 *{
     -fx-font-family: Cambria; 
-    -fx-fill : #8B4C39;
+    -fx-fill : black;
     -fx-font-size : 16;
     -fx-font-weight : bold;
 }
@@ -17,14 +17,17 @@ and open the template in the editor.
     -fx-background-color: #F5DEB3;
 }
 Button:hover{
-    -fx-background-color : #8B7B8B;
+    -fx-background-color : #F5DEB3;
 }
-Button{
+Button, #txtUserName, #txtPassword{
     -fx-background-color : white;
 }
 #logo{
     -fx-font-family : Forte;
-    -fx-fill : #8B4726;
+    -fx-fill : #F5DEB3;
     -fx-font-size : 38;
     -fx-text-align: center;
+}
+#paneLeft{
+    -fx-background-color : #6E8B3D;
 }

@@ -53,6 +53,13 @@ public class SignUpController implements Initializable {
     @FXML
     private ComboBox cmbDoiTuong;
 
+    public void swtichToIndex(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Do you want to return to main?");
+        alert.showAndWait();
+        App.setRoot("Index");
+    }
+
 // han the
 // ngay sinh
     public void SignUp(ActionEvent evt) throws IOException, ParseException {

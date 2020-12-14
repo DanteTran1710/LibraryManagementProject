@@ -18,12 +18,14 @@ and open the template in the editor.
 }
 #logo{
     -fx-font-family : Forte;
-    -fx-fill : #8B4726;
     -fx-font-size : 38;
 }
 Button:hover{
-    -fx-background-color : #8B7B8B;
+    -fx-background-color : #6E8B3D;
 }
-Button{
+Button,TextField,ComboBox,DatePicker{
+    -fx-background-color : white;
+}
+Pane{
     -fx-background-color : white;
 }

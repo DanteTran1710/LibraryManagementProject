@@ -10,7 +10,7 @@ and open the template in the editor.
 *{
     -fx-font-family: Cambria; 
     -fx-fill : #8B4C39;
-    -fx-font-size : 16;
+    -fx-font-size : 18;
     -fx-font-weight : bold;
 }
 #background{
@@ -18,11 +18,19 @@ and open the template in the editor.
 }
 #logo{
     -fx-font-family : Forte;
-    -fx-fill : #8B4726;
+    -fx-fill : #6E8B3D;
     -fx-font-size : 38;
 }
+#time{
+    -fx-font-family : Forte;
+    -fx-fill : #6E8B3D;
+    -fx-font-size : 25;
+}
+#amountBorrowBook,#punctualityBorrowBook,#lateBorrowBook,#fine,#disrepairBook{
+   -fx-fill : #6E8B3D;
+}
 Button:hover{
-    -fx-background-color : #8B7B8B;
+    -fx-background-color : #6E8B3D;
 }
 Button{
     -fx-background-color : white;

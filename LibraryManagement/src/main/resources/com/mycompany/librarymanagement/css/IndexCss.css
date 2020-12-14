@@ -9,18 +9,22 @@ and open the template in the editor.
 */
 #logo{
     -fx-font-family : Forte;
-    -fx-fill : #8B4726;
-    -fx-font-size : 28;
+    -fx-fill : #6E8B3D;
+    -fx-font-size : 27;
 }
 #background{
     -fx-background-color: #F5DEB3;
 }
+#paneLeft{
+    -fx-background-color : #6E8B3D;
+}
 Button:hover{
-    -fx-background-color : #8B7B8B;
+    -fx-background-color : #6E8B3D;
 }
 Button, ComboBox{
     -fx-background-color : white;
 }
+
 *{
     -fx-font-family: Cambria; 
     -fx-fill : #8B4C39;
