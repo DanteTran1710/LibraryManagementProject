@@ -23,6 +23,7 @@ import org.junit.jupiter.api.BeforeEach;
  * @author thinh
  */
 public class MemberCardTester {
+
     private static Connection connect;
 
     @BeforeEach
@@ -38,39 +39,38 @@ public class MemberCardTester {
             Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     @Test
-    public void testLogin() throws Exception {       
-        try{
-            boolean user = MemberCardServices.checkLogin("nhinhi", "21bb2");            
+    public void testLogin() throws Exception {
+        try {
+            boolean user = MemberCardServices.checkLogin("nhinhi", "21bb2");
             Assert.assertTrue(user);
-            
-            System.out.println("Check login successfully!");
+
+            System.out.println("Check login successful!");
 
         } catch (SQLException ex) {
-            System.err.println("Check login unsuccessfully!");
+            System.err.println("Check login unsuccessful!");
             Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     @Test
+
+    @Test
     public void testAddMC() {
-          MemberCard mc = new MemberCard("thanh.h", "050400", "THINH","05/04/2000",
+        MemberCard mc = new MemberCard("thanh.h", "050400", "THINH", "05/04/2000",
                 "SV", "", "thinh@ou.edu.vn", "Nam", "0365708408", "Công Ngh? Thông Tin");
 
         try {
             boolean kq = MemberCardServices.addMC(mc);
             Assert.assertTrue(kq);
 
-            System.out.println("Add Member successfully!");
+            System.out.println("Add Member successful!");
         } catch (SQLException ex) {
 
-            System.err.println("Add member unsuccessfully!");
+            System.err.println("Add member unsuccessful!");
             Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Test
     public void testidMCInMCListNotNull() {
 
@@ -87,18 +87,75 @@ public class MemberCardTester {
             Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Test
     public void testGetListBorrowInfor() {
         try {
             List<MemberCard> listMC = MemberCardServices.getMC();
 
             Assert.assertTrue(listMC.size() > 0);
-            System.out.println("Test get list Member Card successfully!");
+            System.out.println("Test get list Member Card successful!");
         } catch (SQLException ex) {
-            System.err.println("Test get list Member Card unsuccessfully!");
+            System.err.println("Test get list Member Card unsuccessful!");
             Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    @Test
+    public void testChangeState() {
+        boolean kq;
+        try {
+            kq = MemberCardServices.updateStateMC("tlam.tr", "Disable");
+
+            Assert.assertTrue(kq);
+            System.out.println("Test change state successful!");
+        } catch (SQLException ex) {
+
+            System.err.println("Test change state unsuccessful!");
+            Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Test
+    public void testCheckStateMC() {
+        try {
+            String state = MemberCardServices.checkMemberCard("nhinhi");
+
+            Assert.assertEquals("Disable", state);
+            System.out.println("Test check state of member card successful");
+        } catch (SQLException ex) {
+            System.err.println("Test check state of member card unsuccessful");
+            Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Test
+    public void testCheckObjectMC() {
+        try {
+            String state = MemberCardServices.checkObject("nhinhi");
+
+            Assert.assertEquals("SV", state);
+            System.out.println("Test check object successful");
+        } catch (SQLException ex) {
+            System.err.println("Test check object unsuccessful");
+            Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Test
+    public void testCheckExistAccount() {
+        boolean kq;
+        try {
+            kq = MemberCardServices.checkExistUserName("nhinhi");
+
+            Assert.assertTrue(kq);
+            System.out.println("Test check object successful");
+        } catch (Exception ex) {
+            System.err.println("Test check object unsuccessful");
+            Logger.getLogger(MemberCardTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }

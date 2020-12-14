@@ -203,7 +203,9 @@ public class TradeInforsController implements Initializable {
                 && !this.returnDay.getEditor().getText().equals("")
                 && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.cardID.getText().equals("") && verifyNumText()
-                && verifyCharacter(name) && verifyUserName(cardID) && checkoutBookText()) {
+                && verifyCharacter(name) && verifyUserName(cardID) && checkoutBookText()
+                && MethodNeeded.caculateDate(this.borrowDay.getEditor().getText(),
+                        this.returnDay.getEditor().getText()) > 30) {
             if (MemberCardServices.checkMemberCard(this.cardID.getText()).equals("Enable")) {
                 String id = MethodNeeded.createUUID();
 
@@ -241,7 +243,7 @@ public class TradeInforsController implements Initializable {
         }
     }
 
-    public void FindCX(ActionEvent event) throws SQLException {
+   public void FindCX() throws SQLException {
         dataList = BookServices.getBook();
         tbBook.setItems(dataList);
         FilteredList<Book> filteredData = new FilteredList<>(dataList, b -> true);
@@ -428,8 +430,8 @@ public class TradeInforsController implements Initializable {
         MethodNeeded.addSpinnerValue(tornBookCounted);
 
         List<String> listS = new ArrayList<>();
-        listS.add("SV");
-        listS.add("GV");
+        listS.add("Sinh Viên");
+        listS.add("Giảng Viên");
         this.candidate.getItems().addAll(listS);
         this.candidate1.getItems().addAll(listS);
 

@@ -62,32 +62,40 @@ public class SignUpController implements Initializable {
 
 // han the
 // ngay sinh
-    public void SignUp(ActionEvent evt) throws IOException, ParseException {
+    public void SignUp(ActionEvent evt) throws IOException, ParseException, Exception {
         if (!this.txtMaDocGia.getText().equals("") && !this.txtSDT.getText().equals("")
                 && !this.txtTenDocGia.getText().equals("") && !this.cmbBoPhan.getSelectionModel().getSelectedItem().toString().equals("Khoa")
                 && !this.dtpNgaySinh.getEditor().getText().equals("") && !this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString().equals("Đối Tượng")
                 && !this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString().equals("Giới Tính")
                 && !this.txtGmail.getText().equals("") && verifyNumText() && verifyGmail(txtGmail)
                 && verifyCharacter(txtTenDocGia) && verifyID(txtMaDocGia)) {
+            if (!MemberCardServices.checkExistUserName(this.txtMaDocGia.getText())) {
 
-            String id = MethodNeeded.createUUID();
-            MemberCard mc = new MemberCard(this.txtMaDocGia.getText(), id,
-                    this.txtTenDocGia.getText(), dtpNgaySinh.getEditor().getText(),
-                    this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),
-                    "Enable", this.txtGmail.getText(),
-                    this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString(),
-                    this.txtSDT.getText(), this.cmbBoPhan.getSelectionModel().getSelectedItem().toString());
+                String id = MethodNeeded.createUUID();
+                MemberCard mc = new MemberCard(this.txtMaDocGia.getText(), id,
+                        this.txtTenDocGia.getText(), dtpNgaySinh.getEditor().getText(),
+                        this.cmbDoiTuong.getSelectionModel().getSelectedItem().toString(),
+                        "Enable", this.txtGmail.getText(),
+                        this.cmbGioiTinh.getSelectionModel().getSelectedItem().toString(),
+                        this.txtSDT.getText(), this.cmbBoPhan.getSelectionModel().getSelectedItem().toString());
 
-            try {
-                MemberCardServices.addMC(mc);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Sign up succesfully! Your account password is : " + id);
-                alert.showAndWait();
-                App.setRoot("Login");
-            } catch (SQLException ex) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Sign up unsuccesfully! Please try again later");
-                alert.showAndWait();
+                try {
+                    MemberCardServices.addMC(mc);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Sign up succesfully! Your account password is : " + id);
+                    alert.showAndWait();
+                    App.setRoot("Login");
+                } catch (SQLException ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Sign up unsuccesfully! Please try again later");
+                    alert.showAndWait();
+                }
+            }
+            else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Your account are already exist! Please try again");
+                    alert.showAndWait();
+                    this.txtMaDocGia.clear();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

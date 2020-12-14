@@ -1,0 +1,11 @@
+QUY TRÌNH SỬ DỤNG PHẦN MỀM QUẢN LÝ THƯ VIỆN ĐẠI HỌC MỞ
+
+Đến với phần mềm quản lý thư viện của trường đại học mở do team chúng tôi (Tấn Thành, Hồng Thịnh, Mỹ Duyên, Kim Ngân) xây dựng chúng ta có thể đăng ký phiếu mượn - trả sách trước rồi ta sẽ lên thư viện đưa phiếu để hoàn tất việc mượn - trả sách
+
+Đối với việc truy cập hệ thống, chúng ta chỉ có thể thực hiện việc điền phiếu khi đã có một tài khoản thư viện online. Nếu như chưa có tài khoản thì ta sẽ nhập vào đăng kí để thực hiện công việc điền phiếu
+
+Sau khi có tài khoản, ta tiếp tục thực hiện điền phiếu mượn, phải tuân thủ các quy định điền phiếu như tài khoản đã tồn tại, chọn sách chưa được mượn, điền đầy đủ thông tin thì mới có thể thực hiện được việc điền phiếu, nếu thành công sẽ lưu lại dữ liệu để có thể dễ việc soi cóp phiếu khi mượn sách tại thư viện
+
+Khi thực hiện việc điền phiếu trả hay mượn thì phải đảm bảo tài khoản vẫn chưa khóa, nếu đã khóa thì phải mở khóa tại thư viện để tiếp tục.
+
+Ngoài ra, các thành viên trong team đều có tài khoản admin có thể thực hiện tính thống kê theo từng quý, năm. 

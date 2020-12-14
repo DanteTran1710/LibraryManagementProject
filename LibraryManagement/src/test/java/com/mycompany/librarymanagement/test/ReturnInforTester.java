@@ -49,10 +49,10 @@ public class ReturnInforTester {
             boolean kq = ReturnInforServices.addReturnInfor(ri);
             
             Assert.assertTrue(kq);
-            System.out.println("Add return form successfully!");
+            System.out.println("Add return form successful!");
         } catch (SQLException ex) {
             
-            System.err.println("Add return form successfully!");
+            System.err.println("Add return form unsuccessful!");
             Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -66,10 +66,10 @@ public class ReturnInforTester {
             boolean kq = ReturnInforServices.addReturnInfor(ri);
             
             Assert.assertFalse(kq);
-            System.out.println("Add deficient infors successfully!");
+            System.out.println("Add deficient infors successful!");
         } catch (SQLException ex) {
             
-            System.err.println("Add deficient infors unsuccessfully!");
+            System.err.println("Add deficient infors unsuccessful!");
             Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -80,9 +80,9 @@ public class ReturnInforTester {
             List<ReturnInfor> list = ReturnInforServices.getReturnInfor();
             
             Assert.assertEquals(3, list.size());
-            System.out.println("Test get list return-infor successfully!");
+            System.out.println("Test get list return-infor successful!");
         } catch (SQLException ex) {
-            System.err.println("Test get list return-infor unsuccessfully!");
+            System.err.println("Test get list return-infor unsuccessful!");
             Logger.getLogger(ReturnInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
         

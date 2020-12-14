@@ -25,18 +25,8 @@ public class MethodNeededTester {
         Assert.assertNotEquals("", uuid.trim());
         Assert.assertEquals(5, uuid.length());
 
-        System.out.println("Test create uuid string successfully!");
+        System.out.println("Test create uuid string successful!");
     }
-
-//    @Test
-//    public void testEditDatePickerAsFormat(){
-//        DatePicker day1 = new DatePicker();
-//        day1.setValue(LocalDate.of(2000, 10, 17));
-//        MethodNeeded.editFormmatDate(day1);
-//        
-//        Assert.assertEquals("10/17/2000", day1.getEditor().getText());
-//        
-//    }
     
     @Test
     public void testGetDayNowByFormat(){
@@ -44,7 +34,7 @@ public class MethodNeededTester {
         
         Assert.assertNotNull(day);
         Assert.assertEquals("07/12/2020", day);
-        System.out.println("Test day now by input format successfully!");
+        System.out.println("Test day now by input format successful!");
     }
     
     @Test
@@ -52,7 +42,7 @@ public class MethodNeededTester {
         long dayBetween = MethodNeeded.caculateDate("", "");
 
         Assert.assertEquals(365, dayBetween);
-        System.out.println("Test day between by not input day successfully!");
+        System.out.println("Test day between by not input day successful!");
     }
 
     @Test
@@ -60,6 +50,6 @@ public class MethodNeededTester {
         long dayBetween = MethodNeeded.caculateDate("01/10/2000", "17/10/2000");
 
         Assert.assertEquals(16, dayBetween);
-        System.out.println("Test day between by input day successfully!");
+        System.out.println("Test day between by input day successful!");
     }
 }

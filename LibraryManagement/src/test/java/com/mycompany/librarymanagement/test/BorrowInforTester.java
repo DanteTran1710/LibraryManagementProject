@@ -49,10 +49,10 @@ public class BorrowInforTester {
             boolean kq = BorrowInforServices.addBorrowInfor(bi);
             Assert.assertTrue(kq);
 
-            System.out.println("Add adding borrow form successfully!");
+            System.out.println("Add adding borrow form successful!");
         } catch (SQLException ex) {
 
-            System.err.println("Add adding borrow form unsuccessfully!");
+            System.err.println("Add adding borrow form unsuccessful!");
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -66,10 +66,10 @@ public class BorrowInforTester {
             boolean kq = BorrowInforServices.addBorrowInfor(bi);
             Assert.assertFalse(kq);
 
-            System.out.println("Add adding deficient infors successfully!");
+            System.out.println("Add adding deficient infors successful!");
         } catch (SQLException ex) {
 
-            System.err.println("Add adding deficient infors unsuccessfully!");
+            System.err.println("Add adding deficient infors unsuccessful!");
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -97,9 +97,9 @@ public class BorrowInforTester {
             String kq = BorrowInforServices.getIdBsFromBI("12a2b");
             
             Assert.assertEquals("123", kq);
-            System.out.println("Get id successfully!");
+            System.out.println("Get id successful!");
         } catch (SQLException ex) {
-            System.err.println("Get id unsuccessfully!");
+            System.err.println("Get id unsuccessful!");
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -110,9 +110,9 @@ public class BorrowInforTester {
             List<BorrowInfor> list = BorrowInforServices.getBorrowInfor();
 
             Assert.assertEquals(4, list.size());
-            System.out.println("Test get list borrow-infors successfully!");
+            System.out.println("Test get list borrow-infors successful!");
         } catch (SQLException ex) {
-            System.err.println("Test get list borrow-infors unsuccessfully!");
+            System.err.println("Test get list borrow-infors unsuccessful!");
             Logger.getLogger(BorrowInforTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

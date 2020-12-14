@@ -78,7 +78,20 @@ public class MemberCardServices {
             return false;
         }
     }
+     public static boolean checkExistUserName(String name) throws Exception {
+        String sql = "Select UserName From membercard where UserName = ?";
 
+        Connection connect = jdbcUtils.getConnection();
+        PreparedStatement stm = connect.prepareStatement(sql);
+        stm.setString(1, name);
+        ResultSet rs = stm.executeQuery();
+
+        if (rs.next()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static String checkObject(String nameUser) throws SQLException {
         String query = "Select Object from membercard where UserName=?";
 
@@ -109,7 +122,7 @@ public class MemberCardServices {
         return state;
     }
 
-    public static void updateStateMC(String id, String state) throws SQLException {
+    public static boolean updateStateMC(String id, String state) throws SQLException {
         String query = "Update membercard set StateCard=? where UserName=?";
 
         Connection connect = jdbcUtils.getConnection();
@@ -123,5 +136,6 @@ public class MemberCardServices {
         stm.executeUpdate();
 
         connect.commit();
+        return true;
     }
 }

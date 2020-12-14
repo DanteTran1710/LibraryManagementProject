@@ -44,7 +44,7 @@ public class BookTester {
     public void testGetListBook(){
         List<Book> list = BookServices.getBook();
         Assert.assertEquals(2, list.size());
-        System.out.println("Test get list book successfully!");
+        System.out.println("Test get list book successful!");
     }
     
     @Test
@@ -54,9 +54,9 @@ public class BookTester {
             Assert.assertNotEquals("", name);
             Assert.assertNotNull(name);
 
-            System.err.println("Check book by name successfully!");
+            System.err.println("Check book by name successful!");
         } catch (SQLException ex) {
-            System.err.println("Check book by name unsuccessfully!");
+            System.err.println("Check book by name unsuccessful!");
             Logger.getLogger(BookTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -68,9 +68,9 @@ public class BookTester {
             Assert.assertNotEquals("", id);
             Assert.assertNotNull(id);
 
-            System.err.println("Check book by name successfully!");
+            System.err.println("Check book by name successful!");
         } catch (SQLException ex) {
-            System.err.println("Check book by name unsuccessfully!");
+            System.err.println("Check book by name unsuccessful!");
             Logger.getLogger(BookTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -88,9 +88,9 @@ public class BookTester {
             }
             
             Assert.assertEquals("Borrowed", state);
-            System.err.println("Change state by id book successfully!");
+            System.err.println("Change state by id book successful!");
         } catch (SQLException ex) {
-            System.err.println("Change state by id book unsuccessfully!");
+            System.err.println("Change state by id book unsuccessful!");
             Logger.getLogger(BookTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
