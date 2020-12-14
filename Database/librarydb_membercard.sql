@@ -43,7 +43,7 @@ CREATE TABLE `membercard` (
 
 LOCK TABLES `membercard` WRITE;
 /*!40000 ALTER TABLE `membercard` DISABLE KEYS */;
-INSERT INTO `membercard` VALUES ('nhinhi','21bb2','nhi','26/12/2013','SV','Enable','nhi@gmail.com','Female','0879564123','IT'),('tantan','12a21','tt','17/10/2000','SV','Disable','thah@gmail.com','Male','0987313125','CS'),('tanth','12a2b','tt','17/10/2000','SV','Disable','thah@gmail.com','Male','0987313125','CS');
+INSERT INTO `membercard` VALUES ('dhthanh','55hh2','Duong Huu Thanh','17/01/1985','Giảng Viên','Enable','dhthanh@ou.edu.vn','Nam','0124569873','Công Nghệ Thông Tin'),('duyen.h','90d5a','Duyen Ha','08/12/2000','Sinh Viên','Enable','duyen@ou.edu.vn','Nữ','0123546987','Đào Tạo Đặc Biệt'),('hthinh','34dde','Hong Thinh','08/09/2000','Admin','Enable','thinh@ou.edu.vn','Nam','0145236987','Công Nghệ Thông Tin'),('tan.th','886a3','Tan Thanh','15/12/200','Admin','Enable','tanth@ou.edu.vn','Nam','0123456789','Công Nghệ Thông Tin'),('tlam.tr','59afa','Truc Lam','02/12/2000','Sinh Viên','Disable','tlam@ou.edu.vn','Nữ','0213654789','Công Nghệ Thông Tin');
 /*!40000 ALTER TABLE `membercard` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-12  1:13:55
+-- Dump completed on 2020-12-14 22:16:00

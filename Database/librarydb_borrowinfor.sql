@@ -26,7 +26,7 @@ CREATE TABLE `borrowinfor` (
   `id` varchar(7) NOT NULL,
   `ObjectName` varchar(45) NOT NULL,
   `PhoneNumber` varchar(11) NOT NULL,
-  `Object` varchar(5) NOT NULL,
+  `Object` varchar(15) NOT NULL,
   `Book` int NOT NULL,
   `BorrowDate` varchar(15) NOT NULL,
   `ReturnDate` varchar(15) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `borrowinfor` (
 
 LOCK TABLES `borrowinfor` WRITE;
 /*!40000 ALTER TABLE `borrowinfor` DISABLE KEYS */;
-INSERT INTO `borrowinfor` VALUES ('1345','Truc Lam','0321456987','SV',2,'11/11/2020','18/11/2020','123','tantan'),('5b5f7','Tan Thanh','0984381617','SV',1,'08/12/2020','16/12/2020','123','tantan'),('772b3','Dante','0125463987','GV',2,'30/11/2020','10/12/2020','456','nhinhi'),('e0f44','Trang Kem','0987456321','SV',1,'02/12/2020','24/12/2020','123','tantan');
+INSERT INTO `borrowinfor` VALUES ('0bf85','tan','0123654789','Sinh Viên',1,'15/12/2020','14/12/2020','456','tan.th'),('0d8e3','Tan','0123654789','Sinh Viên',1,'23/12/2020','24/12/2020','123','tan.th'),('c71bf','Tan','0123654789','Sinh Viên',1,'29/12/2020','14/12/2020','123','tan.th'),('f8f42','tan','0123654789','Sinh Viên',1,'29/12/2020','14/12/2020','123','tan.th');
 /*!40000 ALTER TABLE `borrowinfor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-12  1:13:55
+-- Dump completed on 2020-12-14 22:15:59
