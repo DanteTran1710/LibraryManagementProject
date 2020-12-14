@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `returninfor`;
 CREATE TABLE `returninfor` (
   `id` varchar(7) NOT NULL,
   `UserName` varchar(20) NOT NULL,
-  `Object` varchar(5) NOT NULL,
+  `Object` varchar(15) NOT NULL,
   `ObjectName` varchar(45) NOT NULL,
   `Book` int NOT NULL,
   `BorrowDate` varchar(15) NOT NULL,
@@ -45,7 +45,6 @@ CREATE TABLE `returninfor` (
 
 LOCK TABLES `returninfor` WRITE;
 /*!40000 ALTER TABLE `returninfor` DISABLE KEYS */;
-INSERT INTO `returninfor` VALUES ('123456','nhinhi','SV','Tan Thanh',2,'20/10/2020','22/11/2020',1,2,20000),('123eq','tanth','SV','Dante',2,'1/11/2020','6/12/2020',3,4,200000),('9bfa8','nhinhi','SV','Trang Kem',1,'01/12/2020','12/12/2020',1,1,300000),('dc3d5','tantan','GV','Tan',2,'01/12/2020','06/12/2020',1,1,300000);
 /*!40000 ALTER TABLE `returninfor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-12  1:13:56
+-- Dump completed on 2020-12-14 21:59:51
