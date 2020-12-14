@@ -8,4 +8,4 @@ Sau khi có tài khoản, ta tiếp tục thực hiện điền phiếu mượn,
 
 Khi thực hiện việc điền phiếu trả hay mượn thì phải đảm bảo tài khoản vẫn chưa khóa, nếu đã khóa thì phải mở khóa tại thư viện để tiếp tục.
 
-Ngoài ra, các thành viên trong team đều có tài khoản admin có thể thực hiện tính thống kê theo từng quý, năm. 
+Ngoài ra, các thành viên trong team đều có tài khoản admin có thể thực hiện tính thống kê theo từng quý, theo năm.
