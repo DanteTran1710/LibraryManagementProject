@@ -156,7 +156,8 @@ public class SignUpController implements Initializable {
         Pattern p = Pattern.compile("[a-zA-Z0-9]+@ou.edu.vn");
         Matcher m = p.matcher(txt.getText());
 
-        if (m.find() && m.group().equals(txt.getText())) {
+        if (m.find() && m.group().equals(txt.getText())
+                && txt.getText().toString().endsWith("@ou.edu.vn")) {
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

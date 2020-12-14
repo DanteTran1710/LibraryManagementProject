@@ -57,7 +57,7 @@ public class MemberCardTester {
     @Test
     public void testAddMC() {
         MemberCard mc = new MemberCard("thanh.h", "050400", "THINH", "05/04/2000",
-                "SV", "", "thinh@ou.edu.vn", "Nam", "0365708408", "Công Ngh? Thông Tin");
+                "SV", "", "thinh@ou.edu.vn", "Nam", "0365708408", "Công Nghệ Thông Tin");
 
         try {
             boolean kq = MemberCardServices.addMC(mc);

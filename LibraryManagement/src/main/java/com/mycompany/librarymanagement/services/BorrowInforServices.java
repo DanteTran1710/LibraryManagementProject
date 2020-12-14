@@ -46,7 +46,6 @@ public class BorrowInforServices {
         stm.executeUpdate();
 
         connect.commit();
-        
         return true;
        }
        return false;

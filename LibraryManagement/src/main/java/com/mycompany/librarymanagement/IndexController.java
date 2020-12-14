@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 
 /**
@@ -27,6 +28,7 @@ public class IndexController implements Initializable {
 
     public void switchToLogin(ActionEvent event) throws IOException {
         App.setRoot("Login");
+
     }
 
     /**

@@ -113,7 +113,9 @@ public class TradeInforsController implements Initializable {
         if (!this.nameCus.getText().equals("")
                 && !this.candidate1.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.idCus.getText().equals("") && !this.borrowDay1.getEditor().getText().equals("")
-                && verifyCharacter(this.nameCus) && verifyUserName(this.idCus)) {
+                && verifyCharacter(this.nameCus) && verifyUserName(this.idCus)
+                && !this.bookCounted1.getValue().equals("0") && !this.stolenBookCounted.getValue().equals("0")
+                && !this.tornBookCounted.getValue().equals("0")) {
             if (MemberCardServices.checkMemberCard(this.idCus.getText()).equals("Enable")) {
                 String id = MethodNeeded.createUUID();
 
@@ -204,8 +206,7 @@ public class TradeInforsController implements Initializable {
                 && !this.candidate.getSelectionModel().getSelectedItem().toString().equals("")
                 && !this.cardID.getText().equals("") && verifyNumText()
                 && verifyCharacter(name) && verifyUserName(cardID) && checkoutBookText()
-                && MethodNeeded.caculateDate(this.borrowDay.getEditor().getText(),
-                        this.returnDay.getEditor().getText()) > 30) {
+                && !this.bookCounted.getValue().equals("0")) {
             if (MemberCardServices.checkMemberCard(this.cardID.getText()).equals("Enable")) {
                 String id = MethodNeeded.createUUID();
 
